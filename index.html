@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fetty Athiyatul Maula — QA Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0b0d11;
+  --surface: #13161d;
+  --surface2: #1c2030;
+  --border: #252a3a;
+  --accent: #00e5b0;
+  --accent2: #ff6b35;
+  --accent3: #7c5cfc;
+  --text: #e8eaf2;
+  --muted: #6b7280;
+  --mono: 'Space Mono', monospace;
+  --sans: 'Syne', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(11,13,17,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 60px;
+}
+.nav-brand { font-weight: 800; font-size: 1rem; letter-spacing: 0.05em; color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-family: var(--mono); transition: color .2s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 100px 5vw 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+}
+.hero-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+.hero-title span { color: var(--accent); }
+.hero-role {
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--accent2);
+  margin-bottom: 1.5rem;
+}
+.hero-bio {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 440px;
+  margin-bottom: 2rem;
+}
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all .2s;
+}
+.btn-primary { background: var(--accent); color: #000; font-weight: 700; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,229,176,0.3); }
+.btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.btn-outline:hover { background: rgba(0,229,176,0.08); }
+
+/* hero visual */
+.hero-visual {
+  display: flex; justify-content: center; align-items: center;
+}
+.profile-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 280px;
+  position: relative;
+}
+.profile-avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; margin-bottom: 1rem;
+}
+.profile-card h3 { font-size: 1.1rem; font-weight: 700; }
+.profile-card p { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; }
+.stat-row { display: flex; gap: 1rem; }
+.stat { text-align: center; }
+.stat-num { font-size: 1.4rem; font-weight: 800; color: var(--accent); font-family: var(--mono); }
+.stat-label { font-size: 0.7rem; color: var(--muted); }
+.available-badge {
+  position: absolute; top: -10px; right: 16px;
+  background: var(--accent); color: #000;
+  font-family: var(--mono); font-size: 0.65rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+  display: flex; align-items: center; gap: 5px;
+}
+.pulse-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #000;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ===== BACKGROUND DECORATION ===== */
+.bg-glow {
+  position: fixed; pointer-events: none; z-index: 0;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.08;
+}
+.bg-glow-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -100px; }
+.bg-glow-2 { width: 400px; height: 400px; background: var(--accent3); bottom: -100px; left: -100px; }
+
+/* ===== SECTION BASE ===== */
+section { position: relative; z-index: 1; padding: 100px 5vw; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-header { margin-bottom: 3.5rem; }
+.section-tag {
+  font-family: var(--mono); font-size: 0.72rem;
+  color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; }
+.divider { width: 40px; height: 3px; background: var(--accent); margin-top: 0.8rem; }
+
+/* ===== SUMMARY / ABOUT ===== */
+#summary { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.summary-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+.info-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.info-item {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--surface2); padding: 0.8rem 1.2rem;
+  border-radius: 8px; border: 1px solid var(--border);
+}
+.info-icon { font-size: 1.1rem; }
+.info-label { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+.info-val { font-size: 0.9rem; font-weight: 600; }
+
+/* ===== EXPERIENCE / JOURNEY ===== */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.timeline-item { position: relative; margin-bottom: 3rem; }
+.timeline-dot {
+  position: absolute; left: -2.55rem; top: 6px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent); border: 3px solid var(--bg);
+  z-index: 1;
+}
+.timeline-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem 1.8rem;
+  transition: border-color .2s, transform .2s;
+}
+.timeline-card:hover { border-color: var(--accent); transform: translateX(4px); }
+.timeline-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem; }
+.timeline-role { font-size: 1rem; font-weight: 700; }
+.timeline-period {
+  font-family: var(--mono); font-size: 0.72rem;
+  color: var(--accent); background: rgba(0,229,176,0.08);
+  padding: 2px 10px; border-radius: 20px; white-space: nowrap;
+}
+.timeline-company { font-size: 0.85rem; color: var(--accent2); margin-bottom: 0.8rem; font-weight: 600; }
+.timeline-desc { color: var(--muted); font-size: 0.88rem; }
+.timeline-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+.tag {
+  font-family: var(--mono); font-size: 0.68rem;
+  padding: 2px 8px; border-radius: 4px;
+  background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+}
+.tag.green { border-color: var(--accent); color: var(--accent); background: rgba(0,229,176,0.06); }
+.tag.purple { border-color: var(--accent3); color: var(--accent3); background: rgba(124,92,252,0.06); }
+.tag.orange { border-color: var(--accent2); color: var(--accent2); background: rgba(255,107,53,0.06); }
+
+/* ===== SKILLS ===== */
+#skills { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.skill-category {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem;
+}
+.skill-cat-title {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.skill-item { margin-bottom: 1rem; }
+.skill-name-row { display: flex; justify-content: space-between; margin-bottom: 0.3rem; }
+.skill-name { font-size: 0.85rem; }
+.skill-level { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+.skill-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.skill-fill { height: 100%; border-radius: 2px; background: linear-gradient(to right, var(--accent), var(--accent3)); transition: width 1s ease; width: 0%; }
+
+/* ===== TOOLS ===== */
+.tools-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+.tool-chip {
+  display: flex; align-items: center; gap: 0.6rem;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.6rem 1rem;
+  font-size: 0.85rem; font-weight: 600;
+  transition: all .2s;
+}
+.tool-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.tool-icon { font-size: 1.1rem; }
+
+/* ===== EDUCATION ===== */
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+.edu-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem;
+}
+.edu-degree { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+.edu-school { color: var(--accent2); font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem; }
+.edu-year { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+
+/* ===== CERTIFICATES ===== */
+#certificates { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.cert-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.2rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+  transition: all .2s;
+}
+.cert-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.cert-icon { font-size: 1.6rem; flex-shrink: 0; }
+.cert-name { font-size: 0.88rem; font-weight: 700; }
+.cert-issuer { font-size: 0.75rem; color: var(--muted); font-family: var(--mono); }
+
+/* ===== PROJECTS ===== */
+.project-filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.filter-btn {
+  font-family: var(--mono); font-size: 0.75rem;
+  padding: 5px 14px; border-radius: 20px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--muted); cursor: pointer; transition: all .2s;
+}
+.filter-btn.active, .filter-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,229,176,0.08); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+.project-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.8rem;
+  cursor: pointer; transition: all .2s;
+  position: relative; overflow: hidden;
+}
+.project-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(to right, var(--accent), var(--accent3));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.project-card:hover::before { transform: scaleX(1); }
+.project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+.project-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; }
+.project-type-icon { font-size: 1.5rem; }
+.project-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
+.project-desc { font-size: 0.84rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.project-footer {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center; padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; width: 100%; max-width: 780px;
+  max-height: 90vh; overflow-y: auto;
+  animation: modalIn .25s ease;
+}
+@keyframes modalIn { from{opacity:0;transform:scale(0.95) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }
+.modal-header {
+  padding: 2rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: var(--surface); z-index: 1;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.modal-title { font-size: 1.4rem; font-weight: 800; }
+.modal-subtitle { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+.modal-close {
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text); width: 36px; height: 36px; border-radius: 50%;
+  cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all .2s;
+}
+.modal-close:hover { border-color: var(--accent); color: var(--accent); }
+.modal-body { padding: 2rem; }
+.modal-section { margin-bottom: 2rem; }
+.modal-section-title {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.modal-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.modal-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+.tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tech-badge {
+  font-family: var(--mono); font-size: 0.72rem;
+  padding: 4px 12px; border-radius: 6px;
+  background: rgba(0,229,176,0.1); border: 1px solid rgba(0,229,176,0.3);
+  color: var(--accent);
+}
+.structure-tree {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.2rem 1.5rem;
+  font-family: var(--mono); font-size: 0.8rem;
+  color: var(--muted); line-height: 2;
+  white-space: pre;
+}
+.tc-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.tc-table th {
+  background: var(--surface2); padding: 0.6rem 0.8rem;
+  text-align: left; font-family: var(--mono); font-size: 0.7rem;
+  color: var(--accent); letter-spacing: 0.1em;
+  border: 1px solid var(--border);
+}
+.tc-table td { padding: 0.6rem 0.8rem; border: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+.tc-table tr:hover td { background: var(--surface2); }
+.pass { color: #22c55e; font-weight: 700; }
+.fail { color: #ef4444; font-weight: 700; }
+.pattern-box {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.2rem 1.5rem;
+  font-family: var(--mono); font-size: 0.82rem; color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ===== CONTACT ===== */
+#contact { background: var(--surface); border-top: 1px solid var(--border); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.contact-cards { display: flex; flex-direction: column; gap: 1rem; }
+.contact-card {
+  display: flex; align-items: center; gap: 1.2rem;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1rem 1.4rem;
+  text-decoration: none; color: var(--text);
+  transition: all .2s;
+}
+.contact-card:hover { border-color: var(--accent); transform: translateX(6px); }
+.contact-icon { font-size: 1.3rem; }
+.contact-label { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+.contact-val { font-size: 0.9rem; font-weight: 600; }
+.contact-cta h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+.contact-cta p { color: var(--muted); margin-bottom: 2rem; font-size: 0.9rem; }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center; padding: 2rem 5vw;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono); font-size: 0.75rem; color: var(--muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero-grid, .summary-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .nav-links { display: none; }
+  section { padding: 70px 5vw; }
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- BG GLOW -->
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- NAV -->
+<nav>
+  <!-- <div class="nav-brand">FAM.QA</div>-->
+  <ul class="nav-links">
+    <li><a href="#summary">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-label">// QA Engineer Portfolio</div>
+      <h1 class="hero-title">Fetty Athiyatul <span>Maula</span></h1>
+      <div class="hero-role">Quality Assurance Engineer</div>
+      <p class="hero-bio">4+ tahun pengalaman di software testing — manual, automation, mobile, web, dan API. Passionate dalam meningkatkan kualitas produk dan memastikan pengalaman terbaik bagi pengguna.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">Lihat Projects →</a>
+        <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="profile-card">
+        <div class="available-badge"><span class="pulse-dot"></span> Open to Work</div>
+        <div class="profile-avatar">👩‍💻</div>
+        <h3>Fetty A. Maula</h3>
+        <p>QA Engineer · Tangerang Selatan, Indonesia</p>
+        <div class="stat-row">
+          <div class="stat"><div class="stat-num">4+</div><div class="stat-label">Years Exp</div></div>
+          <div class="stat"><div class="stat-num">5</div><div class="stat-label">Companies</div></div>
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label">Certs</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// 01. About</div>
+      <h2 class="section-title">Professional Summary</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="summary-grid fade-in">
+      <div class="summary-text">
+        <p>Saya adalah QA Engineer dengan pengalaman lebih dari 4 tahun di industri perbankan, teknologi, dan keuangan. Saya terbiasa bekerja di lingkungan agile yang cepat, berkolaborasi lintas tim untuk menghasilkan produk berkualitas tinggi.</p>
+        <p>Keahlian saya mencakup <strong>manual testing</strong> (SIT, UAT, regression) hingga <strong>automation testing</strong> menggunakan Katalon Studio, Selenium, dan integrasi CI/CD. Saya juga berpengalaman dalam API testing menggunakan Swagger dan SQL untuk validasi data.</p>
+        <p>Saya percaya bahwa Quality Assurance bukan hanya tentang menemukan bug, tetapi tentang membangun budaya kualitas yang berkelanjutan dalam tim.</p>
+      </div>
+      <div class="info-list">
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <div><div class="info-label">Location</div><div class="info-val">Tangerang Selatan, Banten, Indonesia</div></div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📧</span>
+          <div><div class="info-label">Email</div><div class="info-val">fetty.maula98@gmail.com</div></div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📱</span>
+          <div><div class="info-label">Phone</div><div class="info-val">+62 85156392506</div></div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🎯</span>
+          <div><div class="info-label">Specialization</div><div class="info-val">Manual & Automation Testing</div></div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🏦</span>
+          <div><div class="info-label">Domain</div><div class="info-val">Banking, Fintech, Software Company</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// 02. Journey</div>
+      <h2 class="section-title">Work Experience</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="timeline fade-in">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-role">QA Engineer</div>
+            <div class="timeline-period">Jan 2025 – Jan 2026</div>
+          </div>
+          <div class="timeline-company">Ikonsultan Inovatama · Placement at Maybank Indonesia</div>
+          <div class="timeline-desc">Melakukan manual dan automation testing untuk sales digital tools Maybank, termasuk mobile apps, web-based platforms, dan admin portals. Bertanggung jawab atas pembuatan test case, eksekusi pengujian, pelaporan bug, dan kolaborasi erat dengan tim developer dan business analyst.</div>
+          <div class="timeline-tags">
+            <span class="tag green">Manual Testing</span>
+            <span class="tag green">Automation Testing</span>
+            <span class="tag purple">Mobile App</span>
+            <span class="tag purple">Web Platform</span>
+            <span class="tag orange">Banking</span>
+            <span class="tag">Maybank</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-role">QA Engineer</div>
+            <div class="timeline-period">May 2023 – Jan 2025</div>
+          </div>
+          <div class="timeline-company">Monster Group</div>
+          <div class="timeline-desc">Melakukan pengujian untuk berbagai proyek dan produk, memastikan dokumentasi dan pelacakan masalah yang menyeluruh. Mengembangkan, memelihara, dan mengoptimalkan automation scripts menggunakan Katalon Studio.</div>
+          <div class="timeline-tags">
+            <span class="tag green">Katalon Studio</span>
+            <span class="tag green">Automation Scripts</span>
+            <span class="tag purple">Multiple Projects</span>
+            <span class="tag">Bug Tracking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-role">QA Automation</div>
+            <div class="timeline-period">May 2022 – May 2023</div>
+          </div>
+          <div class="timeline-company">Sharing Vision · Placement at Bank Rakyat Indonesia (BRI)</div>
+          <div class="timeline-desc">Mengotomatiskan pengujian untuk New Delivery System (NDS) yang digunakan di seluruh cabang BRI untuk melayani nasabah. Membuat automation scripts untuk fitur general, finansial, dan non-finansial, serta mengintegrasikannya ke dalam CI/CD pipeline.</div>
+          <div class="timeline-tags">
+            <span class="tag green">CI/CD Integration</span>
+            <span class="tag green">Automation Scripts</span>
+            <span class="tag orange">Banking — BRI</span>
+            <span class="tag purple">NDS System</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-role">QC Engineer</div>
+            <div class="timeline-period">May 2021 – May 2022</div>
+          </div>
+          <div class="timeline-company">Persada · Placement at Astra Credit Companies</div>
+          <div class="timeline-desc">Melakukan manual testing (SIT dan UAT) dengan fokus pada sistem AOL, aplikasi desktop untuk proses bisnis di Astra Credit Companies, termasuk pembayaran kendaraan baru dan bekas. Mengembangkan dokumentasi user manual untuk panduan pengguna.</div>
+          <div class="timeline-tags">
+            <span class="tag green">SIT</span>
+            <span class="tag green">UAT</span>
+            <span class="tag purple">Desktop App</span>
+            <span class="tag orange">Automotive Finance</span>
+            <span class="tag">User Manual</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <div class="timeline-role">Junior Programmer</div>
+            <div class="timeline-period">Oct 2019 – May 2020</div>
+          </div>
+          <div class="timeline-company">Primalogic Global Teknologi</div>
+          <div class="timeline-desc">Menulis dan memelihara aplikasi asuransi menggunakan C# dan Visual Studio. Bertanggung jawab atas perbaikan bugs dan pengerjaan minor change requests.</div>
+          <div class="timeline-tags">
+            <span class="tag green">C#</span>
+            <span class="tag purple">Visual Studio</span>
+            <span class="tag orange">Insurance App</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// 03. Skills</div>
+      <h2 class="section-title">QA Skills & Expertise</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="skills-grid fade-in">
+
+      <div class="skill-category">
+        <div class="skill-cat-title">🔍 Testing Types</div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Manual Testing</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Automation Testing</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">API Testing</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Mobile Testing</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Regression Testing</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">⚙️ Testing Methodologies</div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">System Integration Testing (SIT)</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">User Acceptance Testing (UAT)</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Behavior Driven Development (BDD)</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">CI/CD Integration</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-cat-title">📋 QA Processes</div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Test Case Design</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Bug Reporting & Tracking</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Test Planning</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Test Documentation</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-item"><div class="skill-name-row"><span class="skill-name">Root Cause Analysis</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+      </div>
+
+    </div>
+
+    <!-- Tools -->
+    <div style="margin-top: 3rem;">
+      <div class="section-tag" style="margin-bottom: 1.2rem;">🛠️ Tools & Technologies</div>
+      <div class="tools-grid">
+        <div class="tool-chip"><span class="tool-icon">⚡</span> Katalon Studio</div>
+        <div class="tool-chip"><span class="tool-icon">🟠</span> Selenium</div>
+        <div class="tool-chip"><span class="tool-icon">🥒</span> Cucumber (BDD)</div>
+        <div class="tool-chip"><span class="tool-icon">🐙</span> Git</div>
+        <div class="tool-chip"><span class="tool-icon">☁️</span> Azure DevOps</div>
+        <div class="tool-chip"><span class="tool-icon">🐛</span> Jira</div>
+        <div class="tool-chip"><span class="tool-icon">📅</span> Monday.com</div>
+        <div class="tool-chip"><span class="tool-icon">🔌</span> Swagger / Postman</div>
+        <div class="tool-chip"><span class="tool-icon">🗄️</span> SQL</div>
+        <div class="tool-chip"><span class="tool-icon">📝</span> Notion</div>
+        <div class="tool-chip"><span class="tool-icon">📄</span> Google Docs</div>
+        <div class="tool-chip"><span class="tool-icon">💻</span> Visual Studio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// 04. Education</div>
+      <h2 class="section-title">Education</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="edu-grid fade-in">
+      <div class="edu-card">
+        <div class="edu-degree">Amd Teknik Informatika</div>
+        <div class="edu-school">Politeknik POS Indonesia</div>
+        <div class="edu-year">📅 2016 – 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// 05. Certificates</div>
+      <h2 class="section-title">Certificates</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="cert-grid fade-in">
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">SQL (Intermediate) Certificate</div>
+          <div class="cert-issuer">HackerRank</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">Katalon Professional Certification</div>
+          <div class="cert-issuer">Katalon Academy</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <div>
+          <div class="cert-name">Automation Testing using Selenium & Katalon Studio</div>
+          <div class="cert-issuer">Online Course Platform</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// 06. Projects</div>
+      <h2 class="section-title">Projects</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="project-filters fade-in">
+      <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+      <button class="filter-btn" onclick="filterProjects('manual')">Manual Testing</button>
+      <button class="filter-btn" onclick="filterProjects('automation')">Automation</button>
+      <button class="filter-btn" onclick="filterProjects('api')">API Testing</button>
+      <button class="filter-btn" onclick="filterProjects('mobile')">Mobile</button>
+      <button class="filter-btn" onclick="filterProjects('dummy')">Dummy/Practice</button>
+      <button class="filter-btn" onclick="filterProjects('company')">Company Project</button>
+    </div>
+    <div class="projects-grid fade-in" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// 07. Contact</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-cta">
+        <h3>Ada project atau<br>peluang menarik?</h3>
+        <p>Saya terbuka untuk peluang baru, kolaborasi, atau sekadar berdiskusi tentang QA dan software testing. Jangan ragu untuk menghubungi saya!</p>
+        <a href="mailto:fetty.maula98@gmail.com" class="btn btn-primary">Kirim Email →</a>
+      </div>
+      <div class="contact-cards">
+        <a href="mailto:fetty.maula98@gmail.com" class="contact-card">
+          <span class="contact-icon">📧</span>
+          <div><div class="contact-label">Email</div><div class="contact-val">fetty.maula98@gmail.com</div></div>
+        </a>
+        <a href="tel:+6285156392506" class="contact-card">
+          <span class="contact-icon">📱</span>
+          <div><div class="contact-label">WhatsApp / Phone</div><div class="contact-val">+62 85156392506</div></div>
+        </a>
+        <a href="https://linkedin.com/in/fetty-athiyatul-maula" target="_blank" class="contact-card">
+          <span class="contact-icon">💼</span>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-val">Fetty Athiyatul Maula</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Fetty Athiyatul Maula · QA Engineer Portfolio · Built with ❤️ using HTML/CSS/JS</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-subtitle" id="modalSubtitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// ✏️ DATA PROJECTS — Edit bagian ini untuk menambah/ubah project
+// ============================================================
+const PROJECTS = [
+  {
+    id: 1,
+    name: "OrangeHRM Automation",
+    subtitle: "Web Automation Testing · Dummy Project",
+    icon: "🤖",
+    type: ["automation", "dummy"],
+    tags: [
+      { label: "Dummy", style: "orange" },
+      { label: "Automation", style: "green" },
+      { label: "Web", style: "purple" }
+    ],
+    shortDesc: "Automation scripts menggunakan Katalon Studio untuk testing web OrangeHRM (dummy HRM system).",
+    description: `
+      Project ini merupakan latihan automation testing menggunakan Katalon Studio pada website dummy OrangeHRM. 
+      OrangeHRM adalah sistem manajemen SDM yang digunakan sebagai target pengujian untuk mengasah skill automation.
+      Fokus pengujian meliputi fitur login, manajemen karyawan, absensi, dan laporan.
+    `,
+    techStack: ["Katalon Studio", "Groovy", "Git", "Chrome Driver", "TestNG"],
+    projectStructure: `OrangeHRM-Automation/
+├── Test Cases/
+│   ├── TC_Login/
+│   │   ├── TC_Login_Valid.tc
+│   │   └── TC_Login_Invalid.tc
+│   ├── TC_Employee/
+│   │   ├── TC_Add_Employee.tc
+│   │   └── TC_Edit_Employee.tc
+│   └── TC_Leave/
+│       └── TC_Apply_Leave.tc
+├── Object Repository/
+│   ├── Login/
+│   └── Employee/
+├── Test Suites/
+│   └── Regression_Suite.ts
+└── Reports/`,
+    testCases: [
+      { id: "TC-001", name: "Login dengan kredensial valid", input: "Username: Admin, Password: admin123", expected: "Berhasil masuk ke dashboard", status: "pass" },
+      { id: "TC-002", name: "Login dengan password salah", input: "Username: Admin, Password: wrong", expected: "Muncul pesan error 'Invalid credentials'", status: "pass" },
+      { id: "TC-003", name: "Tambah karyawan baru", input: "Nama: John Doe, Employee ID: 001", expected: "Karyawan berhasil ditambahkan", status: "pass" },
+      { id: "TC-004", name: "Edit data karyawan", input: "Ubah nama karyawan yang sudah ada", expected: "Data berhasil diupdate", status: "pass" },
+      { id: "TC-005", name: "Apply cuti karyawan", input: "Pilih jenis cuti dan tanggal", expected: "Permohonan cuti berhasil diajukan", status: "fail" },
+    ],
+    pattern: `Pola Implementasi: Page Object Model (POM)
+─────────────────────────────────────────
+1. Object Repository  → Simpan semua locator element (XPath, CSS)
+2. Test Cases         → Script pengujian yang memanggil object
+3. Custom Keywords    → Fungsi reusable (login, logout, dll)
+4. Test Suites        → Kumpulan test case yang dijalankan bersama
+5. Reports            → Hasil eksekusi otomatis (pass/fail/screenshot)`
+  },
+  {
+    id: 2,
+    name: "Petstore API Testing",
+    subtitle: "API Automation · Dummy Project",
+    icon: "🔌",
+    type: ["automation", "api", "dummy"],
+    tags: [
+      { label: "Dummy", style: "orange" },
+      { label: "API", style: "purple" },
+      { label: "Automation", style: "green" }
+    ],
+    shortDesc: "Automation scripts untuk testing dummy Swagger Petstore API menggunakan Katalon Studio.",
+    description: `
+      Project ini fokus pada API testing menggunakan Swagger Petstore sebagai dummy endpoint. 
+      Pengujian mencakup semua HTTP methods (GET, POST, PUT, DELETE) dan validasi response body, 
+      status code, serta schema response. Digunakan sebagai latihan API automation dengan Katalon Studio.
+    `,
+    techStack: ["Katalon Studio", "Swagger", "REST API", "JSON", "Groovy", "Git"],
+    projectStructure: `Petstore-API-Testing/
+├── Test Cases/
+│   ├── Pet/
+│   │   ├── TC_GET_Pet_By_ID.tc
+│   │   ├── TC_POST_Add_Pet.tc
+│   │   ├── TC_PUT_Update_Pet.tc
+│   │   └── TC_DELETE_Pet.tc
+│   ├── Store/
+│   │   └── TC_GET_Inventory.tc
+│   └── User/
+│       ├── TC_POST_Create_User.tc
+│       └── TC_GET_User_By_Name.tc
+├── Test Suites/
+│   └── API_Regression.ts
+└── Reports/`,
+    testCases: [
+      { id: "API-001", name: "GET Pet by ID", input: "GET /pet/{petId} → ID: 1", expected: "Status 200, response berisi data pet", status: "pass" },
+      { id: "API-002", name: "POST Add new Pet", input: "POST /pet body: {name, status}", expected: "Status 200, pet berhasil ditambahkan", status: "pass" },
+      { id: "API-003", name: "PUT Update Pet", input: "PUT /pet body: {id, name baru}", expected: "Status 200, data terupdate", status: "pass" },
+      { id: "API-004", name: "DELETE Pet", input: "DELETE /pet/{petId}", expected: "Status 200, pet terhapus", status: "pass" },
+      { id: "API-005", name: "GET Pet with invalid ID", input: "GET /pet/99999", expected: "Status 404, Pet not found", status: "fail" },
+    ],
+    pattern: `Pola Implementasi: API Automation with Katalon
+─────────────────────────────────────────────────
+1. Buat Web Service Object (endpoint URL + method)
+2. Set Request Headers (Content-Type: application/json)
+3. Set Request Body (JSON payload)
+4. Tambahkan Verification Point:
+   - verifyResponseStatusCode(200)
+   - verifyElementPropertyValue('id', expectedId)
+5. Run dalam Test Suite untuk regression`
+  },
+  {
+    id: 3,
+    name: "Automation Tiket.com (BDD)",
+    subtitle: "Web Automation · BDD · Dummy Project",
+    icon: "🎫",
+    type: ["automation", "dummy"],
+    tags: [
+      { label: "Dummy", style: "orange" },
+      { label: "BDD", style: "purple" },
+      { label: "Web", style: "green" }
+    ],
+    shortDesc: "Demonstrasi BDD testing menggunakan Katalon Studio terintegrasi dengan Cucumber untuk website Tiket.com.",
+    description: `
+      Project ini mendemonstrasikan penerapan Behavior Driven Development (BDD) menggunakan Katalon Studio 
+      yang diintegrasikan dengan Cucumber framework. Test scenario ditulis dalam bahasa Gherkin (Given-When-Then) 
+      sehingga bisa dipahami oleh tim non-teknis seperti business analyst dan product owner.
+    `,
+    techStack: ["Katalon Studio", "Cucumber", "Gherkin", "BDD", "Git", "Chrome Driver"],
+    projectStructure: `Tiket-BDD-Automation/
+├── Features/
+│   ├── search_flight.feature
+│   ├── search_hotel.feature
+│   └── checkout.feature
+├── Step Definitions/
+│   ├── SearchFlightSteps.groovy
+│   ├── SearchHotelSteps.groovy
+│   └── CheckoutSteps.groovy
+├── Object Repository/
+│   ├── Search/
+│   └── Checkout/
+├── Test Suites/
+│   └── BDD_Suite.ts
+└── Reports/`,
+    testCases: [
+      { id: "BDD-001", name: "Search penerbangan Jakarta-Bali", input: "Given user di halaman utama / When search JKT-DPS tanggal besok / Then tampil list penerbangan", expected: "Hasil pencarian muncul dengan filter aktif", status: "pass" },
+      { id: "BDD-002", name: "Filter maskapai penerbangan", input: "Given hasil search tampil / When pilih filter 'Garuda' / Then hanya Garuda yang muncul", expected: "List terfilter sesuai maskapai", status: "pass" },
+      { id: "BDD-003", name: "Search hotel di Bali", input: "Given user di tab Hotel / When search 'Bali' check-in besok / Then tampil list hotel", expected: "Hasil pencarian hotel muncul", status: "pass" },
+      { id: "BDD-004", name: "Tambah penumpang ke keranjang", input: "Given flight dipilih / When klik 'Pilih' / Then redirect ke halaman passenger", expected: "Form pengisian penumpang tampil", status: "pass" },
+    ],
+    pattern: `Pola Implementasi: BDD dengan Cucumber + Katalon
+─────────────────────────────────────────────────
+Feature File (.feature) — Gherkin language:
+  Scenario: Search penerbangan
+    Given user berada di halaman utama tiket.com
+    When user mencari penerbangan dari "Jakarta" ke "Bali"
+    And user memilih tanggal "besok"
+    Then sistem menampilkan daftar penerbangan tersedia
+
+Step Definition — Groovy/Java:
+  @Given("user berada di halaman utama tiket.com")
+  def givenUserAtHomePage() {
+    WebUI.openBrowser('https://tiket.com')
+  }
+
+Keunggulan BDD:
+  ✓ Test mudah dipahami non-teknis
+  ✓ Living documentation
+  ✓ Kolaborasi developer + QA + BA`
+  },
+  {
+    id: 4,
+    name: "Automation redBus (Mobile)",
+    subtitle: "Mobile Automation · Dummy Project",
+    icon: "📱",
+    type: ["automation", "mobile", "dummy"],
+    tags: [
+      { label: "Dummy", style: "orange" },
+      { label: "Mobile", style: "purple" },
+      { label: "Automation", style: "green" }
+    ],
+    shortDesc: "Automation scripts menggunakan Katalon Studio untuk testing mobile application redBus.",
+    description: `
+      Project ini berfokus pada mobile automation testing untuk aplikasi redBus menggunakan Katalon Studio 
+      dengan Appium framework sebagai backbone. Testing dilakukan pada Android device/emulator untuk memvalidasi 
+      alur pemesanan tiket bus, pencarian rute, dan fitur-fitur utama aplikasi.
+    `,
+    techStack: ["Katalon Studio", "Appium", "Android", "Mobile Testing", "Groovy", "Git"],
+    projectStructure: `redBus-Mobile-Automation/
+├── Test Cases/
+│   ├── TC_Onboarding/
+│   │   └── TC_App_Launch.tc
+│   ├── TC_Search/
+│   │   ├── TC_Search_Route.tc
+│   │   └── TC_Filter_Bus.tc
+│   └── TC_Booking/
+│       └── TC_Select_Seat.tc
+├── Object Repository/
+│   ├── Onboarding/
+│   ├── Search/
+│   └── Booking/
+├── Test Suites/
+│   └── Mobile_Regression.ts
+└── Reports/`,
+    testCases: [
+      { id: "MOB-001", name: "Launch aplikasi & Onboarding", input: "Buka app redBus pertama kali", expected: "Splash screen muncul, redirect ke onboarding", status: "pass" },
+      { id: "MOB-002", name: "Search rute bus", input: "From: Jakarta, To: Bandung, Tanggal: besok", expected: "List bus tersedia muncul", status: "pass" },
+      { id: "MOB-003", name: "Filter bus berdasarkan waktu", input: "Filter 'Pagi' (06:00 - 12:00)", expected: "Hanya bus berangkat pagi yang tampil", status: "pass" },
+      { id: "MOB-004", name: "Pilih kursi", input: "Tap pada kursi yang tersedia", expected: "Kursi berubah warna (selected) dan harga update", status: "pass" },
+      { id: "MOB-005", name: "Checkout tanpa login", input: "Tap Checkout tanpa akun", expected: "Redirect ke halaman login/register", status: "pass" },
+    ],
+    pattern: `Pola Implementasi: Mobile Testing dengan Katalon + Appium
+────────────────────────────────────────────────────────
+Setup:
+  1. Install Appium Server
+  2. Connect Android device / start emulator
+  3. Set desired capabilities di Katalon:
+     - platformName: Android
+     - deviceName: [device ID]
+     - appPackage: com.redbus.in
+     - appActivity: .ui.SplashActivity
+
+Locator Strategy (Mobile):
+  - Accessibility ID (recommended)
+  - XPath
+  - ID Resource
+
+Best Practice:
+  ✓ Gunakan explicit wait (tidak hardcode sleep)
+  ✓ Screenshot on failure
+  ✓ Modular test dengan Custom Keywords`
+  },
+  {
+    id: 5,
+    name: "NDS (New Delivery System) — BRI",
+    subtitle: "Automation Testing · Company Project · Banking",
+    icon: "🏦",
+    type: ["automation", "company"],
+    tags: [
+      { label: "BRI", style: "orange" },
+      { label: "Company Project", style: "purple" },
+      { label: "CI/CD", style: "green" },
+      { label: "Banking", style: "green" }
+    ],
+    shortDesc: "Automation testing untuk sistem NDS yang digunakan di seluruh cabang BRI, mencakup fitur general, finansial, dan non-finansial dengan integrasi CI/CD pipeline.",
+    description: `
+      New Delivery System (NDS) adalah sistem utama yang digunakan di seluruh cabang Bank Rakyat Indonesia (BRI) 
+      untuk melayani nasabah. Project ini melibatkan pembuatan automation scripts komprehensif yang mencakup 
+      transaksi finansial (setor, tarik, transfer) dan non-finansial (pembukaan rekening, perubahan data), 
+      serta diintegrasikan ke CI/CD pipeline untuk pengujian berkelanjutan.
+    `,
+    techStack: ["Katalon Studio", "Java/Groovy", "CI/CD Pipeline", "Git", "Jenkins", "SQL", "Banking Core System"],
+    projectStructure: `NDS-Automation/
+├── Test Cases/
+│   ├── General/
+│   │   ├── TC_Login_Teller.tc
+│   │   └── TC_Navigation.tc
+│   ├── Financial/
+│   │   ├── TC_Setoran_Tunai.tc
+│   │   ├── TC_Penarikan.tc
+│   │   └── TC_Transfer.tc
+│   └── NonFinancial/
+│       ├── TC_Buka_Rekening.tc
+│       └── TC_Update_Data_Nasabah.tc
+├── Custom Keywords/
+│   ├── BankingUtils.groovy
+│   └── DatabaseValidator.groovy
+├── Test Suites/
+│   ├── Smoke_Test.ts
+│   └── Regression_Full.ts
+├── Profiles/
+│   ├── dev.glbl
+│   └── staging.glbl
+└── pipeline.yml`,
+    testCases: [
+      { id: "NDS-001", name: "Login teller ke sistem NDS", input: "ID Teller + Password + Kode Cabang", expected: "Berhasil masuk ke dashboard teller", status: "pass" },
+      { id: "NDS-002", name: "Setoran tunai ke rekening", input: "No. Rekening, Nominal, Mata Uang", expected: "Saldo bertambah, struk tercetak", status: "pass" },
+      { id: "NDS-003", name: "Penarikan tunai dari rekening", input: "No. Rekening, Nominal ≤ saldo", expected: "Saldo berkurang, uang dikeluarkan", status: "pass" },
+      { id: "NDS-004", name: "Transfer antar rekening BRI", input: "Rekening asal, rekening tujuan, nominal", expected: "Saldo ter-debet/kredit sesuai", status: "pass" },
+      { id: "NDS-005", name: "Pembukaan rekening tabungan", input: "Data KTP nasabah baru", expected: "Rekening baru terbuat dengan nomor unik", status: "pass" },
+      { id: "NDS-006", name: "Penarikan melebihi saldo", input: "Nominal > saldo tersedia", expected: "Transaksi ditolak, pesan error muncul", status: "pass" },
+    ],
+    pattern: `Pola Implementasi: Automation Banking System + CI/CD
+────────────────────────────────────────────────────
+Arsitektur:
+  Developer push code → Git trigger Jenkins → 
+  Jenkins run Katalon → Report ke tim QA
+
+Environment Management:
+  - Profile 'dev' untuk development environment
+  - Profile 'staging' untuk UAT environment
+  - Konfigurasi URL, DB, kredensial per environment
+
+Data-Driven Testing:
+  - Test data disimpan di Excel/CSV
+  - Tidak ada hardcode data di test script
+  - Mendukung multi-skenario dalam 1 test case
+
+Database Validation:
+  - Setelah transaksi, query DB untuk verifikasi
+  - Pastikan data konsisten antara UI dan database
+  
+Security Note:
+  - Semua test menggunakan dummy/UAT data
+  - Tidak ada data nasabah asli`
+  },
+  {
+    id: 6,
+    name: "AOL System — Astra Credit Companies",
+    subtitle: "Manual Testing (SIT & UAT) · Company Project",
+    icon: "🚗",
+    type: ["manual", "company"],
+    tags: [
+      { label: "Astra Credit", style: "orange" },
+      { label: "Company Project", style: "purple" },
+      { label: "SIT", style: "green" },
+      { label: "UAT", style: "green" }
+    ],
+    shortDesc: "Manual testing (SIT & UAT) untuk sistem AOL — aplikasi desktop untuk proses bisnis pembiayaan kendaraan di Astra Credit Companies.",
+    description: `
+      AOL (Automotive Online) System adalah aplikasi desktop yang digunakan oleh Astra Credit Companies 
+      untuk mengelola proses pembiayaan kendaraan baru dan bekas. Sebagai QC Engineer, saya bertanggung jawab 
+      melakukan System Integration Testing (SIT) dan User Acceptance Testing (UAT), serta membuat dokumentasi 
+      user manual untuk panduan pengguna di lapangan.
+    `,
+    techStack: ["Manual Testing", "Microsoft Excel", "Word (User Manual)", "SIT", "UAT", "Jira", "SQL"],
+    projectStructure: `AOL-Testing/
+├── Test Plan/
+│   └── Test_Plan_AOL_v1.xlsx
+├── Test Cases/
+│   ├── SIT/
+│   │   ├── TC_Payment_New_Car.xlsx
+│   │   ├── TC_Payment_Used_Car.xlsx
+│   │   └── TC_Integration_Core.xlsx
+│   └── UAT/
+│       ├── TC_UAT_Dealer_Flow.xlsx
+│       └── TC_UAT_Admin_Flow.xlsx
+├── Bug Reports/
+│   └── Bug_Report_AOL.xlsx
+├── User Manual/
+│   └── User_Manual_AOL_v2.docx
+└── Test Summary Report/
+    └── TSR_AOL_Sprint_1.pdf`,
+    testCases: [
+      { id: "AOL-001", name: "Input pengajuan pembiayaan mobil baru", input: "Data customer + data kendaraan + DP", expected: "Pengajuan berhasil dengan nomor aplikasi unik", status: "pass" },
+      { id: "AOL-002", name: "Perhitungan cicilan otomatis", input: "Harga OTR, DP, tenor 36 bulan", expected: "Cicilan dihitung sesuai bunga yang berlaku", status: "pass" },
+      { id: "AOL-003", name: "Proses pembayaran angsuran", input: "Nomor kontrak + nominal bayar", expected: "Status pembayaran update, receipt tercetak", status: "pass" },
+      { id: "AOL-004", name: "Integrasi data ke sistem core", input: "Approval dari credit analyst", expected: "Data otomatis terinput ke sistem core banking", status: "fail" },
+      { id: "AOL-005", name: "UAT: Alur pembiayaan end-to-end", input: "Business user menjalankan skenario nyata", expected: "Seluruh alur berjalan sesuai SOP dealer", status: "pass" },
+    ],
+    pattern: `Pola Implementasi: Manual Testing Methodology
+──────────────────────────────────────────────
+1. TEST PLANNING
+   - Pelajari requirement & SRS dokumen
+   - Identifikasi scope testing (in/out of scope)
+   - Estimasi effort & resources
+
+2. TEST CASE DESIGN
+   - Equivalence Partitioning
+   - Boundary Value Analysis
+   - Error Guessing
+   - Decision Table
+
+3. EXECUTION TRACKING
+   - Status: Pass / Fail / Blocked / Skip
+   - Screenshot untuk setiap failure
+   - Link ke bug report di Jira
+
+4. BUG LIFECYCLE
+   New → Assigned → In Progress → 
+   Fixed → Retest → Verified → Closed
+
+5. UAT SIGN-OFF
+   - Business user validasi skenario
+   - Sign-off document dari stakeholder`
+  },
+  {
+    id: 7,
+    name: "Sales4u — Maybank",
+    subtitle: "Manual & Automation Testing · Company Project · Banking",
+    icon: "💳",
+    type: ["manual", "automation", "company"],
+    tags: [
+      { label: "Maybank", style: "orange" },
+      { label: "Company Project", style: "purple" },
+      { label: "Mobile + Web", style: "green" }
+    ],
+    shortDesc: "Testing komprehensif untuk sales digital tools Maybank meliputi mobile app, web platform, dan admin portal untuk tim sales perbankan.",
+    description: `
+      Sales4u adalah ekosistem digital tools yang digunakan oleh tim sales Maybank Indonesia untuk menjual 
+      produk perbankan (tabungan, deposito, kredit, kartu kredit). Project ini mencakup pengujian pada 3 platform: 
+      mobile app untuk sales di lapangan, web platform untuk supervisor, dan admin portal untuk back office. 
+      Melibatkan manual testing intensif dan automation untuk regression.
+    `,
+    techStack: ["Katalon Studio", "Jira", "Azure DevOps", "Swagger", "SQL", "Mobile Testing", "Web Testing"],
+    projectStructure: `Sales4u-Testing/
+├── Mobile App/
+│   ├── Test Cases/
+│   │   ├── TC_Login_Sales.xlsx
+│   │   ├── TC_Customer_Registration.xlsx
+│   │   └── TC_Product_Application.xlsx
+│   └── Automation/
+│       └── Mobile_Regression.ts
+├── Web Platform/
+│   ├── Test Cases/
+│   │   ├── TC_Dashboard_Supervisor.xlsx
+│   │   └── TC_Performance_Report.xlsx
+│   └── Automation/
+│       └── Web_Regression.ts
+├── Admin Portal/
+│   └── Test Cases/
+│       ├── TC_User_Management.xlsx
+│       └── TC_Product_Config.xlsx
+└── API Testing/
+    └── Sales4u_API_Collection.json`,
+    testCases: [
+      { id: "S4U-001", name: "Login sales ke mobile app", input: "Employee ID + Password + OTP", expected: "Berhasil masuk dengan role 'Sales'", status: "pass" },
+      { id: "S4U-002", name: "Registrasi calon nasabah baru", input: "Data KTP, foto selfie, data diri", expected: "Lead tersimpan, notifikasi ke supervisor", status: "pass" },
+      { id: "S4U-003", name: "Pengajuan produk tabungan", input: "Data nasabah + pilih produk + submit", expected: "Aplikasi terinput dengan status 'Pending Review'", status: "pass" },
+      { id: "S4U-004", name: "Supervisor approval di web platform", input: "Login supervisor + review + approve", expected: "Status aplikasi berubah ke 'Approved'", status: "pass" },
+      { id: "S4U-005", name: "Sinkronisasi data mobile ke web", input: "Data input di app mobile", expected: "Tampil real-time di web dashboard", status: "pass" },
+      { id: "S4U-006", name: "API: Get product list", input: "GET /api/products?type=savings", expected: "Response 200 dengan list produk tabungan", status: "pass" },
+    ],
+    pattern: `Pola Implementasi: Multi-Platform Testing Strategy
+──────────────────────────────────────────────────
+Koordinasi Testing 3 Platform:
+  Mobile App ←→ API ←→ Web Platform ←→ Admin Portal
+
+Testing Layers:
+  1. Unit API  → Swagger/Postman: validasi endpoint
+  2. Mobile UI → Katalon + Appium: alur sales
+  3. Web UI    → Katalon + Chrome: alur supervisor
+  4. Integration: end-to-end flow lintas platform
+
+Sprint Workflow (Agile/Scrum):
+  Sprint Planning → Dev → QA (1-2 day testing) → 
+  Bug Fix → Retest → Sprint Review → Release
+
+Jira Workflow:
+  To Do → In Progress → In Review → Done
+  Bug: Open → In Progress → Fixed → Retest → Closed`
+  }
+];
+
+// ============================================================
+// RENDER & FILTER LOGIC — Tidak perlu diedit
+// ============================================================
+function renderProjects(filter = 'all') {
+  const grid = document.getElementById('projectsGrid');
+  const filtered = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.type.includes(filter));
+  grid.innerHTML = filtered.map(p => `
+    <div class="project-card" onclick="openModal(${p.id})">
+      <div class="project-card-header">
+        <div style="font-size:1.8rem">${p.icon}</div>
+        <div style="font-size:0.75rem;font-family:var(--mono);color:var(--muted)">Detail →</div>
+      </div>
+      <div class="project-name">${p.name}</div>
+      <div class="project-desc">${p.shortDesc}</div>
+      <div class="project-tags">
+        ${p.tags.map(t => `<span class="tag ${t.style}">${t.label}</span>`).join('')}
+      </div>
+      <div class="project-footer">🔍 Lihat Detail</div>
+    </div>
+  `).join('');
+}
+
+function filterProjects(type) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderProjects(type);
+}
+
+function openModal(id) {
+  const p = PROJECTS.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalSubtitle').textContent = p.subtitle;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-section">
+      <div class="modal-section-title">📋 Deskripsi Project</div>
+      <div class="modal-desc">${p.description}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">⚡ Tech Stack</div>
+      <div class="tech-stack">${p.techStack.map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">📁 Struktur Project</div>
+      <div class="structure-tree">${p.projectStructure}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">🧪 Sample Test Cases</div>
+      <div style="overflow-x:auto">
+        <table class="tc-table">
+          <thead><tr><th>ID</th><th>Test Case</th><th>Input</th><th>Expected Result</th><th>Status</th></tr></thead>
+          <tbody>${p.testCases.map(tc => `
+            <tr>
+              <td><code style="color:var(--accent);font-size:0.75rem">${tc.id}</code></td>
+              <td>${tc.name}</td>
+              <td style="font-size:0.78rem">${tc.input}</td>
+              <td style="font-size:0.78rem">${tc.expected}</td>
+              <td class="${tc.status}">${tc.status === 'pass' ? '✓ Pass' : '✗ Fail'}</td>
+            </tr>
+          `).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">⚙️ Pola Implementasi</div>
+      <div class="pattern-box">${p.pattern}</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">🏷️ Tags</div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem">${p.tags.map(t=>`<span class="tag ${t.style}">${t.label}</span>`).join('')}</div>
+    </div>
+  `;
+  document.getElementById('projectModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('projectModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('projectModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// SKILL BARS ANIMATION
+function animateSkillBars() {
+  document.querySelectorAll('.skill-fill').forEach(bar => {
+    const w = bar.getAttribute('data-width');
+    bar.style.width = w + '%';
+  });
+}
+
+// SCROLL ANIMATION
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Trigger skill bars when visible
+const skillsSection = document.getElementById('skills');
+const skillObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) animateSkillBars();
+}, { threshold: 0.3 });
+skillObserver.observe(skillsSection);
+
+// INIT
+renderProjects();
+</script>
+</body>
+</html>
