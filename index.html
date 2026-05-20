@@ -77,7 +77,7 @@ nav {
   margin-bottom: 1rem;
 }
 .hero-title {
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 0.5rem;
@@ -91,7 +91,7 @@ nav {
 }
 .hero-bio {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.6rem;
   max-width: 440px;
   margin-bottom: 2rem;
 }
@@ -418,6 +418,65 @@ footer {
   section { padding: 70px 5vw; }
 }
 
+
+.lang-toggle {
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
+}
+.lang-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+.lang-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0,229,176,0.08);
+}
+.section-container {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(19,22,29,0.55);
+}
+.coursework-list {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.cert-link {
+  text-decoration:none;
+  color:inherit;
+}
+@media (max-width: 600px) {
+  .section-container {
+    padding: 1.2rem;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .projects-grid,
+  .skills-grid,
+  .edu-grid,
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+  .btn-group {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* ===== ANIMATIONS ===== */
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -430,15 +489,20 @@ footer {
 <div class="bg-glow bg-glow-2"></div>
 
 <!-- NAV -->
+
 <nav>
-  <!-- <div class="nav-brand">FAM.QA</div>-->
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLanguage('id')" id="btn-id">ID</button>
+    <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+  </div>
   <ul class="nav-links">
-    <li><a href="#summary">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
+
+    <li><a href="#summary"><span class="lang-id">Tentang</span><span class="lang-en" style="display:none;">About</span></a></li>
+    <li><a href="#experience"><span class="lang-id">Pengalaman</span><span class="lang-en" style="display:none;">Experience</span></a></li>
+    <li><a href="#skills"><span class="lang-id">Keahlian</span><span class="lang-en" style="display:none;">Skills</span></a></li>
+    <li><a href="#education"><span class="lang-id">Pendidikan</span><span class="lang-en" style="display:none;">Education</span></a></li>
+    <li><a href="#projects"><span class="lang-id">Proyek</span><span class="lang-en" style="display:none;">Projects</span></a></li>
+    <li><a href="#contact"><span class="lang-id">Kontak</span><span class="lang-en" style="display:none;">Contact</span></a></li>
   </ul>
 </nav>
 
@@ -447,24 +511,61 @@ footer {
   <div class="hero-grid">
     <div>
       <div class="hero-label">// QA Engineer Portfolio</div>
-      <h1 class="hero-title">Fetty Athiyatul <span>Maula</span></h1>
-      <div class="hero-role">Quality Assurance Engineer</div>
-      <p class="hero-bio">4+ tahun pengalaman di software testing — manual, automation, mobile, web, dan API. Passionate dalam meningkatkan kualitas produk dan memastikan pengalaman terbaik bagi pengguna.</p>
+
+      <h1 class="hero-title">
+        Fetty Athiyatul <span>Maula</span>
+      </h1>
+
+      <div class="hero-role">
+        <span class="lang-id">Quality Assurance Engineer</span>
+        <span class="lang-en" style="display:none;">
+          Quality Assurance Engineer
+        </span>
+      </div>
+
+      <p class="hero-bio">
+        <span class="lang-id">
+          4+ tahun pengalaman di software testing — manual, automation,
+          mobile, web, dan API. Passionate dalam meningkatkan kualitas
+          produk dan memastikan pengalaman terbaik bagi pengguna.
+        </span>
+
+        <span class="lang-en" style="display:none;">
+          4+ years of experience in software testing — manual,
+          automation, mobile, web, and API testing. Passionate about
+          improving product quality and ensuring the best experience
+          for users.
+        </span>
+      </p>
+
       <div class="btn-group">
-        <a href="#projects" class="btn btn-primary">Lihat Projects →</a>
-        <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+        <a href="#projects" class="btn btn-primary">
+          <span class="lang-id">Lihat Projects →</span>
+          <span class="lang-en" style="display:none;">
+            View Projects →
+          </span>
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          <span class="lang-id">Hubungi Saya</span>
+          <span class="lang-en" style="display:none;">
+            Contact Me
+          </span>
+        </a>
       </div>
     </div>
+  </div>
     <div class="hero-visual">
       <div class="profile-card">
         <div class="available-badge"><span class="pulse-dot"></span> Open to Work</div>
         <div class="profile-avatar">👩‍💻</div>
+        <!-- <img src="foto.jpg" style="width:80px;height:80px;border-radius:50%;object-fit:cover;" /> -->
         <h3>Fetty A. Maula</h3>
         <p>QA Engineer · Tangerang Selatan, Indonesia</p>
         <div class="stat-row">
-          <div class="stat"><div class="stat-num">4+</div><div class="stat-label">Years Exp</div></div>
-          <div class="stat"><div class="stat-num">5</div><div class="stat-label">Companies</div></div>
-          <div class="stat"><div class="stat-num">3</div><div class="stat-label">Certs</div></div>
+          <div class="stat"><div class="stat-num">4+</div><div class="stat-label"><span class="lang-id">Tahun Exp</span><span class="lang-en" style="display:none;">Years Exp</span></div></div>
+          <div class="stat"><div class="stat-num">5</div><div class="stat-label"><span class="lang-id">Perusahaan</span><span class="lang-en" style="display:none;">Companies</span></div></div>
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label"><span class="lang-id">Sertifikat</span><span class="lang-en" style="display:none;">Certs</span></div></div>
         </div>
       </div>
     </div>
@@ -473,39 +574,160 @@ footer {
 
 <!-- SUMMARY -->
 <section id="summary">
-  <div class="section-inner">
+  <div class="section-inner section-container">
+
     <div class="section-header fade-in">
       <div class="section-tag">// 01. About</div>
-      <h2 class="section-title">Professional Summary</h2>
+
+      <h2 class="section-title">
+        <span class="lang-id">Ringkasan Profesional</span>
+        <span class="lang-en" style="display:none;">
+          Professional Summary
+        </span>
+      </h2>
+
       <div class="divider"></div>
     </div>
+
     <div class="summary-grid fade-in">
+
+      <!-- LEFT CONTENT -->
       <div class="summary-text">
-        <p>Saya adalah QA Engineer dengan pengalaman lebih dari 4 tahun di industri perbankan, teknologi, dan keuangan. Saya terbiasa bekerja di lingkungan agile yang cepat, berkolaborasi lintas tim untuk menghasilkan produk berkualitas tinggi.</p>
-        <p>Keahlian saya mencakup <strong>manual testing</strong> (SIT, UAT, regression) hingga <strong>automation testing</strong> menggunakan Katalon Studio, Selenium, dan integrasi CI/CD. Saya juga berpengalaman dalam API testing menggunakan Swagger dan SQL untuk validasi data.</p>
-        <p>Saya percaya bahwa Quality Assurance bukan hanya tentang menemukan bug, tetapi tentang membangun budaya kualitas yang berkelanjutan dalam tim.</p>
+
+        <p>
+          <span class="lang-id">
+            Saya adalah QA Engineer dengan pengalaman lebih dari 4 tahun
+            di industri perbankan, teknologi, dan keuangan. Saya terbiasa
+            bekerja di lingkungan agile yang cepat, berkolaborasi lintas
+            tim untuk menghasilkan produk berkualitas tinggi.
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            I am a QA Engineer with more than 4 years of experience in
+            banking, technology, and financial industries. I am experienced
+            working in fast-paced agile environments and collaborating
+            across teams to deliver high-quality products.
+          </span>
+        </p>
+
+        <p>
+          <span class="lang-id">
+            Keahlian saya mencakup
+            <strong>manual testing</strong>
+            (SIT, UAT, regression) hingga
+            <strong>automation testing</strong>
+            menggunakan Katalon Studio, Selenium, dan integrasi CI/CD.
+            Saya juga berpengalaman dalam API testing menggunakan Swagger
+            dan SQL untuk validasi data.
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            My expertise includes
+            <strong>manual testing</strong>
+            (SIT, UAT, regression) and
+            <strong>automation testing</strong>
+            using Katalon Studio, Selenium, and CI/CD integration.
+            I also have experience in API testing using Swagger and SQL
+            for data validation.
+          </span>
+        </p>
+
+        <p>
+          <span class="lang-id">
+            Saya percaya bahwa Quality Assurance bukan hanya tentang
+            menemukan bug, tetapi tentang membangun budaya kualitas
+            yang berkelanjutan dalam tim.
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            I believe Quality Assurance is not only about finding bugs,
+            but also about building a sustainable quality culture
+            within the team.
+          </span>
+        </p>
+
       </div>
+
+      <!-- RIGHT INFO -->
       <div class="info-list">
+
         <div class="info-item">
           <span class="info-icon">📍</span>
-          <div><div class="info-label">Location</div><div class="info-val">Tangerang Selatan, Banten, Indonesia</div></div>
+
+          <div>
+            <div class="info-label">
+              <span class="lang-id">Lokasi</span>
+              <span class="lang-en" style="display:none;">
+                Location
+              </span>
+            </div>
+
+            <div class="info-val">
+              Tangerang Selatan, Banten, Indonesia
+            </div>
+          </div>
         </div>
+
         <div class="info-item">
           <span class="info-icon">📧</span>
-          <div><div class="info-label">Email</div><div class="info-val">fetty.maula98@gmail.com</div></div>
+
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-val">maulafetty@gmail.com</div>
+          </div>
         </div>
+
         <div class="info-item">
           <span class="info-icon">📱</span>
-          <div><div class="info-label">Phone</div><div class="info-val">+62 85156392506</div></div>
+
+          <div>
+            <div class="info-label">
+              <span class="lang-id">Telepon</span>
+              <span class="lang-en" style="display:none;">
+                Phone
+              </span>
+            </div>
+
+            <div class="info-val">
+              +62 85156392506
+            </div>
+          </div>
         </div>
+
         <div class="info-item">
           <span class="info-icon">🎯</span>
-          <div><div class="info-label">Specialization</div><div class="info-val">Manual & Automation Testing</div></div>
+
+          <div>
+            <div class="info-label">
+              <span class="lang-id">Spesialisasi</span>
+              <span class="lang-en" style="display:none;">
+                Specialization
+              </span>
+            </div>
+
+            <div class="info-val">
+              Manual & Automation Testing
+            </div>
+          </div>
         </div>
+
         <div class="info-item">
           <span class="info-icon">🏦</span>
-          <div><div class="info-label">Domain</div><div class="info-val">Banking, Fintech, Software Company</div></div>
+
+          <div>
+            <div class="info-label">
+              <span class="lang-id">Bidang</span>
+              <span class="lang-en" style="display:none;">
+                Domain
+              </span>
+            </div>
+
+            <div class="info-val">
+              Banking, Fintech, Software Company
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -513,23 +735,109 @@ footer {
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="section-inner">
+  <div class="section-inner section-container">
+
     <div class="section-header fade-in">
       <div class="section-tag">// 02. Journey</div>
-      <h2 class="section-title">Work Experience</h2>
+
+      <h2 class="section-title">
+        <span class="lang-id">Pengalaman Kerja</span>
+        <span class="lang-en" style="display:none;">
+          Work Experience
+        </span>
+      </h2>
+
       <div class="divider"></div>
     </div>
+
     <div class="timeline fade-in">
 
+      <!-- HIGO -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
+
         <div class="timeline-card">
+
           <div class="timeline-top">
             <div class="timeline-role">QA Engineer</div>
-            <div class="timeline-period">Jan 2025 – Jan 2026</div>
+
+            <div class="timeline-period">
+              Feb 2026 – Present
+            </div>
           </div>
-          <div class="timeline-company">Ikonsultan Inovatama · Placement at Maybank Indonesia</div>
-          <div class="timeline-desc">Melakukan manual dan automation testing untuk sales digital tools Maybank, termasuk mobile apps, web-based platforms, dan admin portals. Bertanggung jawab atas pembuatan test case, eksekusi pengujian, pelaporan bug, dan kolaborasi erat dengan tim developer dan business analyst.</div>
+
+          <div class="timeline-company">
+            PT Higo Fitur Indonesia
+          </div>
+
+          <div class="timeline-desc">
+
+            <span class="lang-id">
+              Melakukan manual dan automation testing untuk sales digital
+              tools, termasuk mobile apps, web-based platforms, dan admin
+              portals. Bertanggung jawab atas pembuatan test case,
+              eksekusi pengujian, pelaporan bug, dan kolaborasi erat
+              dengan tim.
+            </span>
+
+            <span class="lang-en" style="display:none;">
+              Conduct manual and automation testing for sales digital
+              tools, including mobile apps, web-based platforms,
+              and admin portals. Responsible for creating test cases,
+              executing tests, reporting bugs, and collaborating closely
+              with the team.
+            </span>
+
+          </div>
+
+          <div class="timeline-tags">
+            <span class="tag green">Manual Testing</span>
+            <span class="tag green">Automation Testing</span>
+            <span class="tag purple">Mobile App</span>
+            <span class="tag purple">Web Platform</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAYBANK -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-card">
+
+          <div class="timeline-top">
+            <div class="timeline-role">QA Engineer</div>
+
+            <div class="timeline-period">
+              Jan 2025 – Jan 2026
+            </div>
+          </div>
+
+          <div class="timeline-company">
+            Ikonsultan Inovatama · Placement at Maybank Indonesia
+          </div>
+
+          <div class="timeline-desc">
+
+            <span class="lang-id">
+              Melakukan manual dan automation testing untuk sales digital
+              tools Maybank, termasuk mobile apps, web-based platforms,
+              dan admin portals. Bertanggung jawab atas pembuatan test
+              case, eksekusi pengujian, pelaporan bug, dan kolaborasi
+              erat dengan tim developer dan business analyst.
+            </span>
+
+            <span class="lang-en" style="display:none;">
+              Conducted manual and automation testing for Maybank sales
+              digital tools, including mobile apps, web-based platforms,
+              and admin portals. Responsible for creating test cases,
+              executing tests, bug reporting, and collaborating closely
+              with developers and business analysts.
+            </span>
+
+          </div>
+
           <div class="timeline-tags">
             <span class="tag green">Manual Testing</span>
             <span class="tag green">Automation Testing</span>
@@ -538,54 +846,141 @@ footer {
             <span class="tag orange">Banking</span>
             <span class="tag">Maybank</span>
           </div>
+
         </div>
       </div>
 
+      <!-- MONSTER GROUP -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
+
         <div class="timeline-card">
+
           <div class="timeline-top">
             <div class="timeline-role">QA Engineer</div>
-            <div class="timeline-period">May 2023 – Jan 2025</div>
+
+            <div class="timeline-period">
+              May 2023 – Jan 2025
+            </div>
           </div>
-          <div class="timeline-company">Monster Group</div>
-          <div class="timeline-desc">Melakukan pengujian untuk berbagai proyek dan produk, memastikan dokumentasi dan pelacakan masalah yang menyeluruh. Mengembangkan, memelihara, dan mengoptimalkan automation scripts menggunakan Katalon Studio.</div>
+
+          <div class="timeline-company">
+            Monster Group
+          </div>
+
+          <div class="timeline-desc">
+
+            <span class="lang-id">
+              Melakukan pengujian untuk berbagai proyek dan produk,
+              memastikan dokumentasi dan pelacakan masalah yang
+              menyeluruh. Mengembangkan, memelihara, dan mengoptimalkan
+              automation scripts menggunakan Katalon Studio.
+            </span>
+
+            <span class="lang-en" style="display:none;">
+              Performed testing for multiple projects and products,
+              ensuring comprehensive documentation and issue tracking.
+              Developed, maintained, and optimized automation scripts
+              using Katalon Studio.
+            </span>
+
+          </div>
+
           <div class="timeline-tags">
             <span class="tag green">Katalon Studio</span>
             <span class="tag green">Automation Scripts</span>
             <span class="tag purple">Multiple Projects</span>
             <span class="tag">Bug Tracking</span>
           </div>
+
         </div>
       </div>
 
+      <!-- BRI -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
+
         <div class="timeline-card">
+
           <div class="timeline-top">
             <div class="timeline-role">QA Automation</div>
-            <div class="timeline-period">May 2022 – May 2023</div>
+
+            <div class="timeline-period">
+              May 2022 – May 2023
+            </div>
           </div>
-          <div class="timeline-company">Sharing Vision · Placement at Bank Rakyat Indonesia (BRI)</div>
-          <div class="timeline-desc">Mengotomatiskan pengujian untuk New Delivery System (NDS) yang digunakan di seluruh cabang BRI untuk melayani nasabah. Membuat automation scripts untuk fitur general, finansial, dan non-finansial, serta mengintegrasikannya ke dalam CI/CD pipeline.</div>
+
+          <div class="timeline-company">
+            Sharing Vision · Placement at Bank Rakyat Indonesia (BRI)
+          </div>
+
+          <div class="timeline-desc">
+
+            <span class="lang-id">
+              Mengotomatiskan pengujian untuk New Delivery System (NDS)
+              yang digunakan di seluruh cabang BRI untuk melayani nasabah.
+              Membuat automation scripts untuk fitur general, finansial,
+              dan non-finansial, serta mengintegrasikannya ke dalam
+              CI/CD pipeline.
+            </span>
+
+            <span class="lang-en" style="display:none;">
+              Automated testing for the New Delivery System (NDS) used
+              across all BRI branches to serve customers. Created
+              automation scripts for general, financial, and
+              non-financial features and integrated them into the
+              CI/CD pipeline.
+            </span>
+
+          </div>
+
           <div class="timeline-tags">
             <span class="tag green">CI/CD Integration</span>
             <span class="tag green">Automation Scripts</span>
             <span class="tag orange">Banking — BRI</span>
             <span class="tag purple">NDS System</span>
           </div>
+
         </div>
       </div>
 
+      <!-- ACC -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
+
         <div class="timeline-card">
+
           <div class="timeline-top">
             <div class="timeline-role">QC Engineer</div>
-            <div class="timeline-period">May 2021 – May 2022</div>
+
+            <div class="timeline-period">
+              May 2021 – May 2022
+            </div>
           </div>
-          <div class="timeline-company">Persada · Placement at Astra Credit Companies</div>
-          <div class="timeline-desc">Melakukan manual testing (SIT dan UAT) dengan fokus pada sistem AOL, aplikasi desktop untuk proses bisnis di Astra Credit Companies, termasuk pembayaran kendaraan baru dan bekas. Mengembangkan dokumentasi user manual untuk panduan pengguna.</div>
+
+          <div class="timeline-company">
+            Persada · Placement at Astra Credit Companies
+          </div>
+
+          <div class="timeline-desc">
+
+            <span class="lang-id">
+              Melakukan manual testing (SIT dan UAT) dengan fokus pada
+              sistem AOL, aplikasi desktop untuk proses bisnis di Astra
+              Credit Companies, termasuk pembayaran kendaraan baru dan
+              bekas. Mengembangkan dokumentasi user manual untuk panduan
+              pengguna.
+            </span>
+
+            <span class="lang-en" style="display:none;">
+              Conducted manual testing (SIT and UAT) focused on the AOL
+              system, a desktop application for business processes at
+              Astra Credit Companies, including new and used vehicle
+              payments. Developed user manual documentation for users.
+            </span>
+
+          </div>
+
           <div class="timeline-tags">
             <span class="tag green">SIT</span>
             <span class="tag green">UAT</span>
@@ -593,23 +988,50 @@ footer {
             <span class="tag orange">Automotive Finance</span>
             <span class="tag">User Manual</span>
           </div>
+
         </div>
       </div>
 
+      <!-- PRIMALOGIC -->
       <div class="timeline-item">
         <div class="timeline-dot"></div>
+
         <div class="timeline-card">
+
           <div class="timeline-top">
             <div class="timeline-role">Junior Programmer</div>
-            <div class="timeline-period">Oct 2019 – May 2020</div>
+
+            <div class="timeline-period">
+              Oct 2019 – May 2020
+            </div>
           </div>
-          <div class="timeline-company">Primalogic Global Teknologi</div>
-          <div class="timeline-desc">Menulis dan memelihara aplikasi asuransi menggunakan C# dan Visual Studio. Bertanggung jawab atas perbaikan bugs dan pengerjaan minor change requests.</div>
+
+          <div class="timeline-company">
+            Primalogic Global Teknologi
+          </div>
+
+          <div class="timeline-desc">
+
+            <span class="lang-id">
+              Menulis dan memelihara aplikasi asuransi menggunakan C#
+              dan Visual Studio. Bertanggung jawab atas perbaikan bugs
+              dan pengerjaan minor change requests.
+            </span>
+
+            <span class="lang-en" style="display:none;">
+              Developed and maintained insurance applications using C#
+              and Visual Studio. Responsible for bug fixing and handling
+              minor change requests.
+            </span>
+
+          </div>
+
           <div class="timeline-tags">
             <span class="tag green">C#</span>
             <span class="tag purple">Visual Studio</span>
             <span class="tag orange">Insurance App</span>
           </div>
+
         </div>
       </div>
 
@@ -619,10 +1041,10 @@ footer {
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-inner">
+  <div class="section-inner section-container">
     <div class="section-header fade-in">
       <div class="section-tag">// 03. Skills</div>
-      <h2 class="section-title">QA Skills & Expertise</h2>
+      <h2 class="section-title"> Skills & Expertise</h2>
       <div class="divider"></div>
     </div>
     <div class="skills-grid fade-in">
@@ -678,62 +1100,167 @@ footer {
 
 <!-- EDUCATION -->
 <section id="education">
-  <div class="section-inner">
+  <div class="section-inner section-container">
+
     <div class="section-header fade-in">
+
       <div class="section-tag">// 04. Education</div>
-      <h2 class="section-title">Education</h2>
+
+      <h2 class="section-title">
+        <span class="lang-id">Pendidikan</span>
+
+        <span class="lang-en" style="display:none;">
+          Education
+        </span>
+      </h2>
+
       <div class="divider"></div>
+
     </div>
+
     <div class="edu-grid fade-in">
+
+      <!-- COLLEGE -->
       <div class="edu-card">
-        <div class="edu-degree">Amd Teknik Informatika</div>
-        <div class="edu-school">Politeknik POS Indonesia</div>
-        <div class="edu-year">📅 2016 – 2019</div>
+
+        <div class="edu-degree">
+
+          <span class="lang-id">
+            D3 Teknik Informatika
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            Associate Degree in Informatics Engineering
+          </span>
+
+        </div>
+
+        <div class="edu-school">
+          Politeknik POS Indonesia
+        </div>
+
+        <div class="edu-year">
+          📅 2016 – 2019
+        </div>
+
+        <div class="coursework-list">
+
+          <strong>
+            <span class="lang-id">
+              Mata Kuliah Relevan:
+            </span>
+
+            <span class="lang-en" style="display:none;">
+              Relevant Coursework:
+            </span>
+          </strong>
+
+          <br>
+
+          <span class="lang-id">
+            Struktur Data dan Algoritma,
+            Pemrograman Berorientasi Objek,
+            Sistem Basis Data,
+            Keamanan Jaringan,
+            Pemrograman Mobile
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            Data Structures and Algorithms,
+            Object-Oriented Programming,
+            Database Systems,
+            Network Security,
+            Mobile Programming
+          </span>
+
+        </div>
+
       </div>
+
+      <!-- HIGH SCHOOL -->
+      <div class="edu-card">
+
+        <div class="edu-degree">
+
+          <span class="lang-id">
+            Sekolah Menengah Atas
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            Senior High School
+          </span>
+
+        </div>
+
+        <div class="edu-school">
+          SMA Negeri 4 Cirebon
+        </div>
+
+        <div class="edu-year">
+          📅 2013 – 2016
+        </div>
+
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- CERTIFICATES -->
 <section id="certificates">
-  <div class="section-inner">
+  <div class="section-inner section-container">
     <div class="section-header fade-in">
       <div class="section-tag">// 05. Certificates</div>
-      <h2 class="section-title">Certificates</h2>
+      <h2 class="section-title"><span class="lang-id">Sertifikat</span><span class="lang-en" style="display:none;">Certificates</span></h2>
       <div class="divider"></div>
     </div>
     <div class="cert-grid fade-in">
-      <div class="cert-card">
-        <div class="cert-icon">🏅</div>
-        <div>
-          <div class="cert-name">SQL (Intermediate) Certificate</div>
-          <div class="cert-issuer">HackerRank</div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">🏅</div>
-        <div>
-          <div class="cert-name">Katalon Professional Certification</div>
-          <div class="cert-issuer">Katalon Academy</div>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">🏅</div>
-        <div>
-          <div class="cert-name">Automation Testing using Selenium & Katalon Studio</div>
-          <div class="cert-issuer">Online Course Platform</div>
-        </div>
+
+  <a href="https://www.hackerrank.com/certificates/63bfc01e3d4b"
+     target="_blank"
+     class="cert-link">
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">SQL (Intermediate) Certificate</div>
+        <div class="cert-issuer">HackerRank</div>
       </div>
     </div>
-  </div>
+  </a> <!-- INI YANG KURANG -->
+
+  <a href="https://academy.katalon.com/mcertificate/6426e60fd9dd4"
+     target="_blank"
+     class="cert-link">
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Katalon Professional Certification</div>
+        <div class="cert-issuer">Katalon Academy</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="https://www.udemy.com/certificate/UC-bb1d967a-1fd9-458c-b993-00f6835c3104/"
+     target="_blank"
+     class="cert-link">
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Automation Testing using Selenium & Katalon Studio</div>
+        <div class="cert-issuer">Online Course Platform</div>
+      </div>
+    </div>
+  </a>
+
+</div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-inner">
+  <div class="section-inner section-container">
     <div class="section-header fade-in">
       <div class="section-tag">// 06. Projects</div>
-      <h2 class="section-title">Projects</h2>
+      <h2 class="section-title"><span class="lang-id">Proyek</span><span class="lang-en" style="display:none;">Projects</span></h2>
       <div class="divider"></div>
     </div>
     <div class="project-filters fade-in">
@@ -751,33 +1278,160 @@ footer {
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-inner">
+  <div class="section-inner section-container">
+
     <div class="section-header fade-in">
-      <div class="section-tag">// 07. Contact</div>
-      <h2 class="section-title">Let's Connect</h2>
+
+      <div class="section-tag">
+        // 07. Contact
+      </div>
+
+      <h2 class="section-title">
+
+        <span class="lang-id">
+          Mari Terhubung
+        </span>
+
+        <span class="lang-en" style="display:none;">
+          Let’s Connect
+        </span>
+
+      </h2>
+
       <div class="divider"></div>
+
     </div>
+
     <div class="contact-grid fade-in">
+
+      <!-- LEFT -->
       <div class="contact-cta">
-        <h3>Ada project atau<br>peluang menarik?</h3>
-        <p>Saya terbuka untuk peluang baru, kolaborasi, atau sekadar berdiskusi tentang QA dan software testing. Jangan ragu untuk menghubungi saya!</p>
-        <a href="mailto:fetty.maula98@gmail.com" class="btn btn-primary">Kirim Email →</a>
+
+        <h3>
+
+          <span class="lang-id">
+            Ada project atau<br>peluang menarik?
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            Have an interesting<br>project or opportunity?
+          </span>
+
+        </h3>
+
+        <p>
+
+          <span class="lang-id">
+            Saya terbuka untuk peluang baru, kolaborasi,
+            atau sekadar berdiskusi tentang QA dan software testing.
+            Jangan ragu untuk menghubungi saya!
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            I’m open to new opportunities, collaborations,
+            or simply discussing QA and software testing.
+            Feel free to contact me!
+          </span>
+
+        </p>
+
+        <a href="mailto:maulafetty@gmail.com"
+           class="btn btn-primary">
+
+          <span class="lang-id">
+            Kirim Email →
+          </span>
+
+          <span class="lang-en" style="display:none;">
+            Send Email →
+          </span>
+
+        </a>
+
       </div>
+
+      <!-- RIGHT -->
       <div class="contact-cards">
-        <a href="mailto:fetty.maula98@gmail.com" class="contact-card">
-          <span class="contact-icon">📧</span>
-          <div><div class="contact-label">Email</div><div class="contact-val">fetty.maula98@gmail.com</div></div>
+
+        <!-- EMAIL -->
+        <a href="mailto:maulafetty@gmail.com"
+           class="contact-card">
+
+          <span class="contact-icon">
+            📧
+          </span>
+
+          <div>
+
+            <div class="contact-label">
+              Email
+            </div>
+
+            <div class="contact-val">
+              maulafetty@gmail.com
+            </div>
+
+          </div>
+
         </a>
-        <a href="tel:+6285156392506" class="contact-card">
-          <span class="contact-icon">📱</span>
-          <div><div class="contact-label">WhatsApp / Phone</div><div class="contact-val">+62 85156392506</div></div>
+
+        <!-- PHONE -->
+        <a href="tel:+6285156392506"
+           class="contact-card">
+
+          <span class="contact-icon">
+            📱
+          </span>
+
+          <div>
+
+            <div class="contact-label">
+
+              <span class="lang-id">
+                WhatsApp / Telepon
+              </span>
+
+              <span class="lang-en" style="display:none;">
+                WhatsApp / Phone
+              </span>
+
+            </div>
+
+            <div class="contact-val">
+              +62 85156392506
+            </div>
+
+          </div>
+
         </a>
-        <a href="https://linkedin.com/in/fetty-athiyatul-maula" target="_blank" class="contact-card">
-          <span class="contact-icon">💼</span>
-          <div><div class="contact-label">LinkedIn</div><div class="contact-val">Fetty Athiyatul Maula</div></div>
+
+        <!-- LINKEDIN -->
+        <a href="https://linkedin.com/in/fetty-athiyatul-maula"
+           target="_blank"
+           class="contact-card">
+
+          <span class="contact-icon">
+            💼
+          </span>
+
+          <div>
+
+            <div class="contact-label">
+              LinkedIn
+            </div>
+
+            <div class="contact-val">
+              Fetty Athiyatul Maula
+            </div>
+
+          </div>
+
         </a>
+
       </div>
+
     </div>
+
   </div>
 </section>
 
@@ -1349,5 +2003,32 @@ skillObserver.observe(skillsSection);
 // INIT
 renderProjects();
 </script>
+
+<script>
+function setLanguage(lang){
+  const isID = lang === 'id';
+  document.querySelectorAll('.lang-id').forEach(el => {
+    el.style.display = isID ? 'inline' : 'none';
+  });
+  document.querySelectorAll('.lang-en').forEach(el => {
+    el.style.display = isID ? 'none' : 'inline';
+  });
+
+  document.getElementById('btn-id').classList.toggle('active', isID);
+  document.getElementById('btn-en').classList.toggle('active', !isID);
+}
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('keydown', function(event) {
+  if (
+    event.key === 'F12' ||
+    (event.ctrlKey && event.shiftKey && ['I','J','C'].includes(event.key)) ||
+    (event.ctrlKey && event.key === 'u')
+  ) {
+    event.preventDefault();
+  }
+});
+</script>
+
 </body>
 </html>
