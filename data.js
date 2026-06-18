@@ -11,19 +11,29 @@ const PROJECT_RECORDS = [
     name: "OrangeHRM Automation",
     subtitle: "Web Automation Testing · Dummy Project",
     icon: "🤖",
-    repoUrl: "https://github.com/maulaf/Katalon-OrangeHRM",
+    repoUrl: "https://github.com/fettymaula/orangehrm-automation",
     type: ["automation", "dummy"],
     tags: [
       { label: "Dummy", style: "orange" },
       { label: "Automation", style: "green" },
       { label: "Web", style: "purple" }
     ],
-    shortDesc: "Automation scripts menggunakan Katalon Studio untuk testing web OrangeHRM (dummy HRM system).",
-    description: `
-      Project ini merupakan latihan automation testing menggunakan Katalon Studio pada website dummy OrangeHRM. 
-      OrangeHRM adalah sistem manajemen SDM yang digunakan sebagai target pengujian untuk mengasah skill automation.
-      Fokus pengujian meliputi fitur login, manajemen karyawan, absensi, dan laporan.
-    `,
+    shortDesc: {
+      id: "Automation scripts menggunakan Katalon Studio untuk testing web OrangeHRM (dummy HRM system).",
+      en: "Automation scripts built with Katalon Studio for testing the OrangeHRM web app (a dummy HRM system)."
+    },
+    description: {
+      id: `
+        Project ini merupakan latihan automation testing menggunakan Katalon Studio pada website dummy OrangeHRM. 
+        OrangeHRM adalah sistem manajemen SDM yang digunakan sebagai target pengujian untuk mengasah skill automation.
+        Fokus pengujian meliputi fitur login, manajemen karyawan, absensi, dan laporan.
+      `,
+      en: `
+        This project is an automation testing exercise using Katalon Studio against the OrangeHRM dummy website. 
+        OrangeHRM is an HR management system used as the test target to sharpen automation skills.
+        The testing focus covers login, employee management, attendance, and reporting features.
+      `
+    },
     techStack: ["Katalon Studio", "Groovy", "Git", "Chrome Driver", "TestNG"],
     projectStructure: `OrangeHRM-Automation/
 ├── Test Cases/
@@ -61,19 +71,29 @@ const PROJECT_RECORDS = [
     name: "Petstore API Testing",
     subtitle: "API Automation · Dummy Project",
     icon: "🔌",
-    repoUrl: "https://github.com/maulaf/Katalon-Petstore-API",
+    repoUrl: "https://github.com/fettymaula/petstore-api-testing",
     type: ["automation", "api", "dummy"],
     tags: [
       { label: "Dummy", style: "orange" },
       { label: "API", style: "purple" },
       { label: "Automation", style: "green" }
     ],
-    shortDesc: "Automation scripts untuk testing dummy Swagger Petstore API menggunakan Katalon Studio.",
-    description: `
-      Project ini fokus pada API testing menggunakan Swagger Petstore sebagai dummy endpoint. 
-      Pengujian mencakup semua HTTP methods (GET, POST, PUT, DELETE) dan validasi response body, 
-      status code, serta schema response. Digunakan sebagai latihan API automation dengan Katalon Studio.
-    `,
+    shortDesc: {
+      id: "Automation scripts untuk testing dummy Swagger Petstore API menggunakan Katalon Studio.",
+      en: "Automation scripts for testing the dummy Swagger Petstore API using Katalon Studio."
+    },
+    description: {
+      id: `
+        Project ini fokus pada API testing menggunakan Swagger Petstore sebagai dummy endpoint. 
+        Pengujian mencakup semua HTTP methods (GET, POST, PUT, DELETE) dan validasi response body, 
+        status code, serta schema response. Digunakan sebagai latihan API automation dengan Katalon Studio.
+      `,
+      en: `
+        This project focuses on API testing using Swagger Petstore as the dummy endpoint. 
+        Testing covers all HTTP methods (GET, POST, PUT, DELETE) along with response body validation, 
+        status codes, and response schema. Used as an API automation exercise with Katalon Studio.
+      `
+    },
     techStack: ["Katalon Studio", "Swagger", "REST API", "JSON", "Groovy", "Git"],
     projectStructure: `Petstore-API-Testing/
 ├── Test Cases/
@@ -112,19 +132,29 @@ const PROJECT_RECORDS = [
     name: "Automation Tiket.com (BDD)",
     subtitle: "Web Automation · BDD · Dummy Project",
     icon: "🎫",
-    repoUrl: "https://github.com/maulaf/Katalon-Tiket.com",
+    repoUrl: "https://github.com/fettymaula/tiketcom-bdd-automation",
     type: ["automation", "dummy"],
     tags: [
       { label: "Dummy", style: "orange" },
       { label: "BDD", style: "purple" },
       { label: "Web", style: "green" }
     ],
-    shortDesc: "Demonstrasi BDD testing menggunakan Katalon Studio terintegrasi dengan Cucumber untuk website Tiket.com.",
-    description: `
-      Project ini mendemonstrasikan penerapan Behavior Driven Development (BDD) menggunakan Katalon Studio 
-      yang diintegrasikan dengan Cucumber framework. Test scenario ditulis dalam bahasa Gherkin (Given-When-Then) 
-      sehingga bisa dipahami oleh tim non-teknis seperti business analyst dan product owner.
-    `,
+    shortDesc: {
+      id: "Demonstrasi BDD testing menggunakan Katalon Studio terintegrasi dengan Cucumber untuk website Tiket.com.",
+      en: "A demonstration of BDD testing using Katalon Studio integrated with Cucumber for the Tiket.com website."
+    },
+    description: {
+      id: `
+        Project ini mendemonstrasikan penerapan Behavior Driven Development (BDD) menggunakan Katalon Studio 
+        yang diintegrasikan dengan Cucumber framework. Test scenario ditulis dalam bahasa Gherkin (Given-When-Then) 
+        sehingga bisa dipahami oleh tim non-teknis seperti business analyst dan product owner.
+      `,
+      en: `
+        This project demonstrates the application of Behavior Driven Development (BDD) using Katalon Studio 
+        integrated with the Cucumber framework. Test scenarios are written in Gherkin language (Given-When-Then) 
+        so they can be understood by non-technical teams such as business analysts and product owners.
+      `
+    },
     techStack: ["Katalon Studio", "Cucumber", "Gherkin", "BDD", "Git", "Chrome Driver"],
     projectStructure: `Tiket-BDD-Automation/
 ├── Features/
@@ -172,19 +202,29 @@ Keunggulan BDD:
     name: "Automation redBus (Mobile)",
     subtitle: "Mobile Automation · Dummy Project",
     icon: "📱",
-    repoUrl: "https://github.com/maulaf/Katalon-redBus",
+    repoUrl: "https://github.com/fettymaula/redbus-mobile-automation",
     type: ["automation", "mobile", "dummy"],
     tags: [
       { label: "Dummy", style: "orange" },
       { label: "Mobile", style: "purple" },
       { label: "Automation", style: "green" }
     ],
-    shortDesc: "Automation scripts menggunakan Katalon Studio untuk testing mobile application redBus.",
-    description: `
-      Project ini berfokus pada mobile automation testing untuk aplikasi redBus menggunakan Katalon Studio 
-      dengan Appium framework sebagai backbone. Testing dilakukan pada Android device/emulator untuk memvalidasi 
-      alur pemesanan tiket bus, pencarian rute, dan fitur-fitur utama aplikasi.
-    `,
+    shortDesc: {
+      id: "Automation scripts menggunakan Katalon Studio untuk testing mobile application redBus.",
+      en: "Automation scripts built with Katalon Studio for testing the redBus mobile application."
+    },
+    description: {
+      id: `
+        Project ini berfokus pada mobile automation testing untuk aplikasi redBus menggunakan Katalon Studio 
+        dengan Appium framework sebagai backbone. Testing dilakukan pada Android device/emulator untuk memvalidasi 
+        alur pemesanan tiket bus, pencarian rute, dan fitur-fitur utama aplikasi.
+      `,
+      en: `
+        This project focuses on mobile automation testing for the redBus application using Katalon Studio 
+        with the Appium framework as its backbone. Testing is performed on an Android device/emulator to validate 
+        the bus ticket booking flow, route search, and the app's core features.
+      `
+    },
     techStack: ["Katalon Studio", "Appium", "Android", "Mobile Testing", "Groovy", "Git"],
     projectStructure: `redBus-Mobile-Automation/
 ├── Test Cases/
@@ -235,7 +275,7 @@ Best Practice:
     name: "NDS (New Delivery System) — BRI",
     subtitle: "Automation Testing · Company Project · Banking",
     icon: "🏦",
-    //repoUrl: "https://github.com/fettymaula/nds-bri-automation",
+    repoUrl: "https://github.com/fettymaula/nds-bri-automation",
     type: ["automation", "company"],
     tags: [
       { label: "BRI", style: "orange" },
@@ -243,13 +283,24 @@ Best Practice:
       { label: "CI/CD", style: "green" },
       { label: "Banking", style: "green" }
     ],
-    shortDesc: "Automation testing untuk sistem NDS yang digunakan di seluruh cabang BRI, mencakup fitur general, finansial, dan non-finansial dengan integrasi CI/CD pipeline.",
-    description: `
-      New Delivery System (NDS) adalah sistem utama yang digunakan di seluruh cabang Bank Rakyat Indonesia (BRI) 
-      untuk melayani nasabah. Project ini melibatkan pembuatan automation scripts komprehensif yang mencakup 
-      transaksi finansial (setor, tarik, transfer) dan non-finansial (pembukaan rekening, perubahan data), 
-      serta diintegrasikan ke CI/CD pipeline untuk pengujian berkelanjutan.
-    `,
+    shortDesc: {
+      id: "Automation testing untuk sistem NDS yang digunakan di seluruh cabang BRI, mencakup fitur general, finansial, dan non-finansial dengan integrasi CI/CD pipeline.",
+      en: "Automation testing for the NDS system used across all BRI branches, covering general, financial, and non-financial features with CI/CD pipeline integration."
+    },
+    description: {
+      id: `
+        New Delivery System (NDS) adalah sistem utama yang digunakan di seluruh cabang Bank Rakyat Indonesia (BRI) 
+        untuk melayani nasabah. Project ini melibatkan pembuatan automation scripts komprehensif yang mencakup 
+        transaksi finansial (setor, tarik, transfer) dan non-finansial (pembukaan rekening, perubahan data), 
+        serta diintegrasikan ke CI/CD pipeline untuk pengujian berkelanjutan.
+      `,
+      en: `
+        The New Delivery System (NDS) is the core system used across all Bank Rakyat Indonesia (BRI) branches 
+        to serve customers. This project involved building comprehensive automation scripts covering 
+        financial transactions (deposit, withdrawal, transfer) and non-financial ones (account opening, data changes), 
+        integrated into a CI/CD pipeline for continuous testing.
+      `
+    },
     techStack: ["Katalon Studio", "Java/Groovy", "CI/CD Pipeline", "Git", "Jenkins", "SQL", "Banking Core System"],
     projectStructure: `NDS-Automation/
 ├── Test Cases/
@@ -310,7 +361,7 @@ Security Note:
     name: "AOL System — Astra Credit Companies",
     subtitle: "Manual Testing (SIT & UAT) · Company Project",
     icon: "🚗",
-    //repoUrl: "https://github.com/fettymaula/aol-astra-credit-testing",
+    repoUrl: "https://github.com/fettymaula/aol-astra-credit-testing",
     type: ["manual", "company"],
     tags: [
       { label: "Astra Credit", style: "orange" },
@@ -318,13 +369,24 @@ Security Note:
       { label: "SIT", style: "green" },
       { label: "UAT", style: "green" }
     ],
-    shortDesc: "Manual testing (SIT & UAT) untuk sistem AOL — aplikasi desktop untuk proses bisnis pembiayaan kendaraan di Astra Credit Companies.",
-    description: `
-      AOL (Automotive Online) System adalah aplikasi desktop yang digunakan oleh Astra Credit Companies 
-      untuk mengelola proses pembiayaan kendaraan baru dan bekas. Sebagai QC Engineer, saya bertanggung jawab 
-      melakukan System Integration Testing (SIT) dan User Acceptance Testing (UAT), serta membuat dokumentasi 
-      user manual untuk panduan pengguna di lapangan.
-    `,
+    shortDesc: {
+      id: "Manual testing (SIT & UAT) untuk sistem AOL — aplikasi desktop untuk proses bisnis pembiayaan kendaraan di Astra Credit Companies.",
+      en: "Manual testing (SIT & UAT) for the AOL system — a desktop application for vehicle financing business processes at Astra Credit Companies."
+    },
+    description: {
+      id: `
+        AOL (Automotive Online) System adalah aplikasi desktop yang digunakan oleh Astra Credit Companies 
+        untuk mengelola proses pembiayaan kendaraan baru dan bekas. Sebagai QC Engineer, saya bertanggung jawab 
+        melakukan System Integration Testing (SIT) dan User Acceptance Testing (UAT), serta membuat dokumentasi 
+        user manual untuk panduan pengguna di lapangan.
+      `,
+      en: `
+        The AOL (Automotive Online) System is a desktop application used by Astra Credit Companies 
+        to manage new and used vehicle financing processes. As a QC Engineer, I was responsible for 
+        conducting System Integration Testing (SIT) and User Acceptance Testing (UAT), as well as creating 
+        user manual documentation as a field guide for users.
+      `
+    },
     techStack: ["Manual Testing", "Microsoft Excel", "Word (User Manual)", "SIT", "UAT", "Jira", "SQL"],
     projectStructure: `AOL-Testing/
 ├── Test Plan/
@@ -381,20 +443,31 @@ Security Note:
     name: "Sales4u — Maybank",
     subtitle: "Manual & Automation Testing · Company Project · Banking",
     icon: "💳",
-    //repoUrl: "https://github.com/fettymaula/sales4u-maybank-testing",
+    repoUrl: "https://github.com/fettymaula/sales4u-maybank-testing",
     type: ["manual", "automation", "company"],
     tags: [
       { label: "Maybank", style: "orange" },
       { label: "Company Project", style: "purple" },
       { label: "Mobile + Web", style: "green" }
     ],
-    shortDesc: "Testing komprehensif untuk sales digital tools Maybank meliputi mobile app, web platform, dan admin portal untuk tim sales perbankan.",
-    description: `
-      Sales4u adalah ekosistem digital tools yang digunakan oleh tim sales Maybank Indonesia untuk menjual 
-      produk perbankan (tabungan, deposito, kredit, kartu kredit). Project ini mencakup pengujian pada 3 platform: 
-      mobile app untuk sales di lapangan, web platform untuk supervisor, dan admin portal untuk back office. 
-      Melibatkan manual testing intensif dan automation untuk regression.
-    `,
+    shortDesc: {
+      id: "Testing komprehensif untuk sales digital tools Maybank meliputi mobile app, web platform, dan admin portal untuk tim sales perbankan.",
+      en: "Comprehensive testing for Maybank's sales digital tools, covering a mobile app, web platform, and admin portal for the banking sales team."
+    },
+    description: {
+      id: `
+        Sales4u adalah ekosistem digital tools yang digunakan oleh tim sales Maybank Indonesia untuk menjual 
+        produk perbankan (tabungan, deposito, kredit, kartu kredit). Project ini mencakup pengujian pada 3 platform: 
+        mobile app untuk sales di lapangan, web platform untuk supervisor, dan admin portal untuk back office. 
+        Melibatkan manual testing intensif dan automation untuk regression.
+      `,
+      en: `
+        Sales4u is an ecosystem of digital tools used by Maybank Indonesia's sales team to sell 
+        banking products (savings, deposits, loans, credit cards). This project covered testing across 3 platforms: 
+        a mobile app for field sales, a web platform for supervisors, and an admin portal for back office. 
+        It involved intensive manual testing along with automation for regression.
+      `
+    },
     techStack: ["Katalon Studio", "Jira", "Azure DevOps", "Swagger", "SQL", "Mobile Testing", "Web Testing"],
     projectStructure: `Sales4u-Testing/
 ├── Mobile App/
@@ -473,6 +546,14 @@ class Project {
 
   hasRepo() {
     return Boolean(this.repoUrl);
+  }
+
+  getShortDesc(lang = 'id') {
+    return this.shortDesc[lang] || this.shortDesc.id;
+  }
+
+  getDescription(lang = 'id') {
+    return this.description[lang] || this.description.id;
   }
 }
 

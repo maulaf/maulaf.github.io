@@ -11,7 +11,7 @@
    Bertanggung jawab membangun markup HTML untuk satu project card.
    ========================================================================== */
 class ProjectCardRenderer {
-  render(project) {
+  render(project, lang = 'id') {
     return `
       <div class="project-card" data-project-id="${project.id}">
         <div class="project-card-header">
@@ -19,7 +19,7 @@ class ProjectCardRenderer {
           <div style="font-size:0.75rem;font-family:var(--mono);color:var(--muted)">Detail →</div>
         </div>
         <div class="project-name">${project.name}</div>
-        <div class="project-desc">${project.shortDesc}</div>
+        <div class="project-desc">${project.getShortDesc(lang)}</div>
         <div class="project-tags">
           ${project.tags.map(t => `<span class="tag ${t.style}">${t.label}</span>`).join('')}
         </div>
@@ -48,6 +48,7 @@ class ProjectGallery {
     this.gridElement = document.getElementById(gridElementId);
     this.cardRenderer = cardRenderer;
     this.currentFilter = 'all';
+    this.currentLang = 'id';
     this.onCardSelect = null;
 
     this._bindCardClicks();
@@ -56,7 +57,12 @@ class ProjectGallery {
   render(filterType = this.currentFilter) {
     this.currentFilter = filterType;
     const projects = this.repository.filterByType(filterType);
-    this.gridElement.innerHTML = projects.map(p => this.cardRenderer.render(p)).join('');
+    this.gridElement.innerHTML = projects.map(p => this.cardRenderer.render(p, this.currentLang)).join('');
+  }
+
+  setLanguage(lang) {
+    this.currentLang = lang;
+    this.render(this.currentFilter);
   }
 
   setActiveFilterButton(clickedButton) {
@@ -83,57 +89,96 @@ class ProjectGallery {
    Bertanggung jawab membangun markup HTML untuk konten dalam modal detail.
    ========================================================================== */
 class ProjectModalRenderer {
-  render(project) {
+  render(project, lang = 'id') {
+    const t = this._labels(lang);
     return `
       <div class="modal-section">
-        <div class="modal-section-title">📋 Deskripsi Project</div>
-        <div class="modal-desc">${project.description}</div>
+        <div class="modal-section-title">📋 ${t.description}</div>
+        <div class="modal-desc">${project.getDescription(lang)}</div>
       </div>
       <div class="modal-section">
-        <div class="modal-section-title">⚡ Tech Stack</div>
+        <div class="modal-section-title">⚡ ${t.techStack}</div>
         <div class="tech-stack">${project.techStack.map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
       </div>
       <div class="modal-section">
-        <div class="modal-section-title">📁 Struktur Project</div>
+        <div class="modal-section-title">📁 ${t.structure}</div>
         <div class="structure-tree">${project.projectStructure}</div>
       </div>
       <div class="modal-section">
-        <div class="modal-section-title">🧪 Sample Test Cases</div>
+        <div class="modal-section-title">🧪 ${t.testCases}</div>
         <div style="overflow-x:auto">
           <table class="tc-table">
-            <thead><tr><th>ID</th><th>Test Case</th><th>Input</th><th>Expected Result</th><th>Status</th></tr></thead>
+            <thead><tr><th>ID</th><th>${t.testCase}</th><th>${t.input}</th><th>${t.expected}</th><th>${t.status}</th></tr></thead>
             <tbody>${project.testCases.map(tc => `
               <tr>
                 <td><code style="color:var(--accent);font-size:0.75rem">${tc.id}</code></td>
                 <td>${tc.name}</td>
                 <td style="font-size:0.78rem">${tc.input}</td>
                 <td style="font-size:0.78rem">${tc.expected}</td>
-                <td class="${tc.status}">${tc.status === 'pass' ? '✓ Pass' : '✗ Fail'}</td>
+                <td class="${tc.status}">${tc.status === 'pass' ? `✓ ${t.pass}` : `✗ ${t.fail}`}</td>
               </tr>
             `).join('')}</tbody>
           </table>
         </div>
       </div>
       <div class="modal-section">
-        <div class="modal-section-title">⚙️ Pola Implementasi</div>
+        <div class="modal-section-title">⚙️ ${t.pattern}</div>
         <div class="pattern-box">${project.pattern}</div>
       </div>
-      ${this._renderRepoSection(project)}
+      ${this._renderRepoSection(project, t)}
       <div class="modal-section">
-        <div class="modal-section-title">🏷️ Tags</div>
-        <div style="display:flex;flex-wrap:wrap;gap:0.4rem">${project.tags.map(t => `<span class="tag ${t.style}">${t.label}</span>`).join('')}</div>
+        <div class="modal-section-title">🏷️ ${t.tags}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem">${project.tags.map(tag => `<span class="tag ${tag.style}">${tag.label}</span>`).join('')}</div>
       </div>
     `;
   }
 
-  _renderRepoSection(project) {
+  _renderRepoSection(project, t) {
     if (!project.hasRepo()) return '';
     return `
       <div class="modal-section">
-        <div class="modal-section-title">🔗 Repository</div>
-        <a href="${project.repoUrl}" target="_blank" rel="noopener" class="modal-repo-link">🔗 Lihat Repository →</a>
+        <div class="modal-section-title">🔗 ${t.repository}</div>
+        <a href="${project.repoUrl}" target="_blank" rel="noopener" class="modal-repo-link">🔗 ${t.viewRepo} →</a>
       </div>
     `;
+  }
+
+  _labels(lang) {
+    const labels = {
+      id: {
+        description: "Deskripsi Project",
+        techStack: "Tech Stack",
+        structure: "Struktur Project",
+        testCases: "Sample Test Cases",
+        testCase: "Test Case",
+        input: "Input",
+        expected: "Expected Result",
+        status: "Status",
+        pass: "Pass",
+        fail: "Fail",
+        pattern: "Pola Implementasi",
+        repository: "Repository",
+        viewRepo: "Lihat Repository",
+        tags: "Tags"
+      },
+      en: {
+        description: "Project Description",
+        techStack: "Tech Stack",
+        structure: "Project Structure",
+        testCases: "Sample Test Cases",
+        testCase: "Test Case",
+        input: "Input",
+        expected: "Expected Result",
+        status: "Status",
+        pass: "Pass",
+        fail: "Fail",
+        pattern: "Implementation Pattern",
+        repository: "Repository",
+        viewRepo: "View Repository",
+        tags: "Tags"
+      }
+    };
+    return labels[lang] || labels.id;
   }
 }
 
@@ -149,6 +194,8 @@ class ProjectModal {
     this.titleEl = document.getElementById('modalTitle');
     this.subtitleEl = document.getElementById('modalSubtitle');
     this.bodyEl = document.getElementById('modalBody');
+    this.currentLang = 'id';
+    this.currentProject = null;
 
     this._bindDismissEvents();
   }
@@ -157,9 +204,8 @@ class ProjectModal {
     const project = this.repository.getById(projectId);
     if (!project) return;
 
-    this.titleEl.textContent = project.name;
-    this.subtitleEl.textContent = project.subtitle;
-    this.bodyEl.innerHTML = this.modalRenderer.render(project);
+    this.currentProject = project;
+    this._renderContent();
 
     this.overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -168,6 +214,20 @@ class ProjectModal {
   close() {
     this.overlay.classList.remove('open');
     document.body.style.overflow = '';
+  }
+
+  setLanguage(lang) {
+    this.currentLang = lang;
+    if (this.currentProject && this.overlay.classList.contains('open')) {
+      this._renderContent();
+    }
+  }
+
+  _renderContent() {
+    const project = this.currentProject;
+    this.titleEl.textContent = project.name;
+    this.subtitleEl.textContent = project.subtitle;
+    this.bodyEl.innerHTML = this.modalRenderer.render(project, this.currentLang);
   }
 
   _bindDismissEvents() {
@@ -202,6 +262,11 @@ class ProjectsController {
     this.modal.close();
   }
 
+  setLanguage(lang) {
+    this.gallery.setLanguage(lang);
+    this.modal.setLanguage(lang);
+  }
+
   _bindFilterButtons() {
     document.querySelectorAll('.filter-btn[data-filter]').forEach(button => {
       button.addEventListener('click', () => {
@@ -220,6 +285,7 @@ class LanguageSwitcher {
   constructor() {
     this.idButton = document.getElementById('btn-id');
     this.enButton = document.getElementById('btn-en');
+    this.onLanguageChange = null;
     this._bindButtons();
   }
 
@@ -235,6 +301,8 @@ class LanguageSwitcher {
 
     this.idButton.classList.toggle('active', isIndonesian);
     this.enButton.classList.toggle('active', !isIndonesian);
+
+    if (this.onLanguageChange) this.onLanguageChange(lang);
   }
 
   _bindButtons() {
@@ -319,6 +387,8 @@ class PortfolioApp {
     this.skillBarAnimator = new SkillBarAnimator('skills');
     this.scrollFadeAnimator = new ScrollFadeAnimator();
     this.devToolsGuard = new DevToolsGuard();
+
+    this.languageSwitcher.onLanguageChange = (lang) => this.projectsController.setLanguage(lang);
   }
 
   start() {
