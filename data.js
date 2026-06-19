@@ -11,7 +11,7 @@ const PROJECT_RECORDS = [
     name: "OrangeHRM Automation",
     subtitle: "Web Automation Testing · Dummy Project",
     icon: "🤖",
-    repoUrl: "https://github.com/fettymaula/orangehrm-automation",
+    repoUrl: "https://github.com/maulaf/Katalon-OrangeHRM",
     type: ["automation", "dummy"],
     tags: [
       { label: "Dummy", style: "orange" },
@@ -58,20 +58,20 @@ const PROJECT_RECORDS = [
       { id: "TC-004", name: "Edit data karyawan", input: "Ubah nama karyawan yang sudah ada", expected: "Data berhasil diupdate", status: "pass" },
       { id: "TC-005", name: "Apply cuti karyawan", input: "Pilih jenis cuti dan tanggal", expected: "Permohonan cuti berhasil diajukan", status: "fail" },
     ],
-    pattern: `Pola Implementasi: Page Object Model (POM)
-─────────────────────────────────────────
-1. Object Repository  → Simpan semua locator element (XPath, CSS)
-2. Test Cases         → Script pengujian yang memanggil object
-3. Custom Keywords    → Fungsi reusable (login, logout, dll)
-4. Test Suites        → Kumpulan test case yang dijalankan bersama
-5. Reports            → Hasil eksekusi otomatis (pass/fail/screenshot)`
+    pattern: `Pola Implementasi: Page Object Model (POM)<br>
+─────────────────────────────────────────<br>
+1. Object Repository → Simpan semua locator element (XPath, CSS)<br>
+2. Test Cases → Script pengujian yang memanggil object<br>
+3. Custom Keywords → Fungsi reusable (login, logout, dll)<br>
+4. Test Suites → Kumpulan test case yang dijalankan bersama<br>
+5. Reports → Hasil eksekusi otomatis (pass/fail/screenshot)`
   },
   {
     id: 2,
     name: "Petstore API Testing",
     subtitle: "API Automation · Dummy Project",
     icon: "🔌",
-    repoUrl: "https://github.com/fettymaula/petstore-api-testing",
+    repoUrl: "https://github.com/maulaf/Katalon-Petstore-API",
     type: ["automation", "api", "dummy"],
     tags: [
       { label: "Dummy", style: "orange" },
@@ -119,12 +119,12 @@ const PROJECT_RECORDS = [
     ],
     pattern: `Pola Implementasi: API Automation with Katalon
 ─────────────────────────────────────────────────
-1. Buat Web Service Object (endpoint URL + method)
-2. Set Request Headers (Content-Type: application/json)
-3. Set Request Body (JSON payload)
-4. Tambahkan Verification Point:
-   - verifyResponseStatusCode(200)
-   - verifyElementPropertyValue('id', expectedId)
+1. Buat Web Service Object (endpoint URL + method)<br>
+2. Set Request Headers (Content-Type: application/json)<br>
+3. Set Request Body (JSON payload)<br>
+4. Tambahkan Verification Point:<br>
+   - verifyResponseStatusCode(200)<br>
+   - verifyElementPropertyValue('id', expectedId)<br>
 5. Run dalam Test Suite untuk regression`
   },
   {
@@ -132,7 +132,7 @@ const PROJECT_RECORDS = [
     name: "Automation Tiket.com (BDD)",
     subtitle: "Web Automation · BDD · Dummy Project",
     icon: "🎫",
-    repoUrl: "https://github.com/fettymaula/tiketcom-bdd-automation",
+    repoUrl: "https://github.com/maulaf/Katalon-Tiket.com",
     type: ["automation", "dummy"],
     tags: [
       { label: "Dummy", style: "orange" },
@@ -202,7 +202,7 @@ Keunggulan BDD:
     name: "Automation redBus (Mobile)",
     subtitle: "Mobile Automation · Dummy Project",
     icon: "📱",
-    repoUrl: "https://github.com/fettymaula/redbus-mobile-automation",
+    repoUrl: "https://github.com/maulaf/Katalon-redBus",
     type: ["automation", "mobile", "dummy"],
     tags: [
       { label: "Dummy", style: "orange" },
@@ -270,252 +270,252 @@ Best Practice:
   ✓ Screenshot on failure
   ✓ Modular test dengan Custom Keywords`
   },
-  {
-    id: 5,
-    name: "NDS (New Delivery System) — BRI",
-    subtitle: "Automation Testing · Company Project · Banking",
-    icon: "🏦",
-    repoUrl: "https://github.com/fettymaula/nds-bri-automation",
-    type: ["automation", "company"],
-    tags: [
-      { label: "BRI", style: "orange" },
-      { label: "Company Project", style: "purple" },
-      { label: "CI/CD", style: "green" },
-      { label: "Banking", style: "green" }
-    ],
-    shortDesc: {
-      id: "Automation testing untuk sistem NDS yang digunakan di seluruh cabang BRI, mencakup fitur general, finansial, dan non-finansial dengan integrasi CI/CD pipeline.",
-      en: "Automation testing for the NDS system used across all BRI branches, covering general, financial, and non-financial features with CI/CD pipeline integration."
-    },
-    description: {
-      id: `
-        New Delivery System (NDS) adalah sistem utama yang digunakan di seluruh cabang Bank Rakyat Indonesia (BRI) 
-        untuk melayani nasabah. Project ini melibatkan pembuatan automation scripts komprehensif yang mencakup 
-        transaksi finansial (setor, tarik, transfer) dan non-finansial (pembukaan rekening, perubahan data), 
-        serta diintegrasikan ke CI/CD pipeline untuk pengujian berkelanjutan.
-      `,
-      en: `
-        The New Delivery System (NDS) is the core system used across all Bank Rakyat Indonesia (BRI) branches 
-        to serve customers. This project involved building comprehensive automation scripts covering 
-        financial transactions (deposit, withdrawal, transfer) and non-financial ones (account opening, data changes), 
-        integrated into a CI/CD pipeline for continuous testing.
-      `
-    },
-    techStack: ["Katalon Studio", "Java/Groovy", "CI/CD Pipeline", "Git", "Jenkins", "SQL", "Banking Core System"],
-    projectStructure: `NDS-Automation/
-├── Test Cases/
-│   ├── General/
-│   │   ├── TC_Login_Teller.tc
-│   │   └── TC_Navigation.tc
-│   ├── Financial/
-│   │   ├── TC_Setoran_Tunai.tc
-│   │   ├── TC_Penarikan.tc
-│   │   └── TC_Transfer.tc
-│   └── NonFinancial/
-│       ├── TC_Buka_Rekening.tc
-│       └── TC_Update_Data_Nasabah.tc
-├── Custom Keywords/
-│   ├── BankingUtils.groovy
-│   └── DatabaseValidator.groovy
-├── Test Suites/
-│   ├── Smoke_Test.ts
-│   └── Regression_Full.ts
-├── Profiles/
-│   ├── dev.glbl
-│   └── staging.glbl
-└── pipeline.yml`,
-    testCases: [
-      { id: "NDS-001", name: "Login teller ke sistem NDS", input: "ID Teller + Password + Kode Cabang", expected: "Berhasil masuk ke dashboard teller", status: "pass" },
-      { id: "NDS-002", name: "Setoran tunai ke rekening", input: "No. Rekening, Nominal, Mata Uang", expected: "Saldo bertambah, struk tercetak", status: "pass" },
-      { id: "NDS-003", name: "Penarikan tunai dari rekening", input: "No. Rekening, Nominal ≤ saldo", expected: "Saldo berkurang, uang dikeluarkan", status: "pass" },
-      { id: "NDS-004", name: "Transfer antar rekening BRI", input: "Rekening asal, rekening tujuan, nominal", expected: "Saldo ter-debet/kredit sesuai", status: "pass" },
-      { id: "NDS-005", name: "Pembukaan rekening tabungan", input: "Data KTP nasabah baru", expected: "Rekening baru terbuat dengan nomor unik", status: "pass" },
-      { id: "NDS-006", name: "Penarikan melebihi saldo", input: "Nominal > saldo tersedia", expected: "Transaksi ditolak, pesan error muncul", status: "pass" },
-    ],
-    pattern: `Pola Implementasi: Automation Banking System + CI/CD
-────────────────────────────────────────────────────
-Arsitektur:
-  Developer push code → Git trigger Jenkins → 
-  Jenkins run Katalon → Report ke tim QA
+//   {
+//     id: 5,
+//     name: "NDS (New Delivery System) — BRI",
+//     subtitle: "Automation Testing · Company Project · Banking",
+//     icon: "🏦",
+//     repoUrl: "https://github.com/fettymaula/nds-bri-automation",
+//     type: ["automation", "company"],
+//     tags: [
+//       { label: "BRI", style: "orange" },
+//       { label: "Company Project", style: "purple" },
+//       { label: "CI/CD", style: "green" },
+//       { label: "Banking", style: "green" }
+//     ],
+//     shortDesc: {
+//       id: "Automation testing untuk sistem NDS yang digunakan di seluruh cabang BRI, mencakup fitur general, finansial, dan non-finansial dengan integrasi CI/CD pipeline.",
+//       en: "Automation testing for the NDS system used across all BRI branches, covering general, financial, and non-financial features with CI/CD pipeline integration."
+//     },
+//     description: {
+//       id: `
+//         New Delivery System (NDS) adalah sistem utama yang digunakan di seluruh cabang Bank Rakyat Indonesia (BRI) 
+//         untuk melayani nasabah. Project ini melibatkan pembuatan automation scripts komprehensif yang mencakup 
+//         transaksi finansial (setor, tarik, transfer) dan non-finansial (pembukaan rekening, perubahan data), 
+//         serta diintegrasikan ke CI/CD pipeline untuk pengujian berkelanjutan.
+//       `,
+//       en: `
+//         The New Delivery System (NDS) is the core system used across all Bank Rakyat Indonesia (BRI) branches 
+//         to serve customers. This project involved building comprehensive automation scripts covering 
+//         financial transactions (deposit, withdrawal, transfer) and non-financial ones (account opening, data changes), 
+//         integrated into a CI/CD pipeline for continuous testing.
+//       `
+//     },
+//     techStack: ["Katalon Studio", "Java/Groovy", "CI/CD Pipeline", "Git", "Jenkins", "SQL", "Banking Core System"],
+//     projectStructure: `NDS-Automation/
+// ├── Test Cases/
+// │   ├── General/
+// │   │   ├── TC_Login_Teller.tc
+// │   │   └── TC_Navigation.tc
+// │   ├── Financial/
+// │   │   ├── TC_Setoran_Tunai.tc
+// │   │   ├── TC_Penarikan.tc
+// │   │   └── TC_Transfer.tc
+// │   └── NonFinancial/
+// │       ├── TC_Buka_Rekening.tc
+// │       └── TC_Update_Data_Nasabah.tc
+// ├── Custom Keywords/
+// │   ├── BankingUtils.groovy
+// │   └── DatabaseValidator.groovy
+// ├── Test Suites/
+// │   ├── Smoke_Test.ts
+// │   └── Regression_Full.ts
+// ├── Profiles/
+// │   ├── dev.glbl
+// │   └── staging.glbl
+// └── pipeline.yml`,
+//     testCases: [
+//       { id: "NDS-001", name: "Login teller ke sistem NDS", input: "ID Teller + Password + Kode Cabang", expected: "Berhasil masuk ke dashboard teller", status: "pass" },
+//       { id: "NDS-002", name: "Setoran tunai ke rekening", input: "No. Rekening, Nominal, Mata Uang", expected: "Saldo bertambah, struk tercetak", status: "pass" },
+//       { id: "NDS-003", name: "Penarikan tunai dari rekening", input: "No. Rekening, Nominal ≤ saldo", expected: "Saldo berkurang, uang dikeluarkan", status: "pass" },
+//       { id: "NDS-004", name: "Transfer antar rekening BRI", input: "Rekening asal, rekening tujuan, nominal", expected: "Saldo ter-debet/kredit sesuai", status: "pass" },
+//       { id: "NDS-005", name: "Pembukaan rekening tabungan", input: "Data KTP nasabah baru", expected: "Rekening baru terbuat dengan nomor unik", status: "pass" },
+//       { id: "NDS-006", name: "Penarikan melebihi saldo", input: "Nominal > saldo tersedia", expected: "Transaksi ditolak, pesan error muncul", status: "pass" },
+//     ],
+//     pattern: `Pola Implementasi: Automation Banking System + CI/CD
+// ────────────────────────────────────────────────────
+// Arsitektur:
+//   Developer push code → Git trigger Jenkins → 
+//   Jenkins run Katalon → Report ke tim QA
 
-Environment Management:
-  - Profile 'dev' untuk development environment
-  - Profile 'staging' untuk UAT environment
-  - Konfigurasi URL, DB, kredensial per environment
+// Environment Management:
+//   - Profile 'dev' untuk development environment
+//   - Profile 'staging' untuk UAT environment
+//   - Konfigurasi URL, DB, kredensial per environment
 
-Data-Driven Testing:
-  - Test data disimpan di Excel/CSV
-  - Tidak ada hardcode data di test script
-  - Mendukung multi-skenario dalam 1 test case
+// Data-Driven Testing:
+//   - Test data disimpan di Excel/CSV
+//   - Tidak ada hardcode data di test script
+//   - Mendukung multi-skenario dalam 1 test case
 
-Database Validation:
-  - Setelah transaksi, query DB untuk verifikasi
-  - Pastikan data konsisten antara UI dan database
+// Database Validation:
+//   - Setelah transaksi, query DB untuk verifikasi
+//   - Pastikan data konsisten antara UI dan database
   
-Security Note:
-  - Semua test menggunakan dummy/UAT data
-  - Tidak ada data nasabah asli`
-  },
-  {
-    id: 6,
-    name: "AOL System — Astra Credit Companies",
-    subtitle: "Manual Testing (SIT & UAT) · Company Project",
-    icon: "🚗",
-    repoUrl: "https://github.com/fettymaula/aol-astra-credit-testing",
-    type: ["manual", "company"],
-    tags: [
-      { label: "Astra Credit", style: "orange" },
-      { label: "Company Project", style: "purple" },
-      { label: "SIT", style: "green" },
-      { label: "UAT", style: "green" }
-    ],
-    shortDesc: {
-      id: "Manual testing (SIT & UAT) untuk sistem AOL — aplikasi desktop untuk proses bisnis pembiayaan kendaraan di Astra Credit Companies.",
-      en: "Manual testing (SIT & UAT) for the AOL system — a desktop application for vehicle financing business processes at Astra Credit Companies."
-    },
-    description: {
-      id: `
-        AOL (Automotive Online) System adalah aplikasi desktop yang digunakan oleh Astra Credit Companies 
-        untuk mengelola proses pembiayaan kendaraan baru dan bekas. Sebagai QC Engineer, saya bertanggung jawab 
-        melakukan System Integration Testing (SIT) dan User Acceptance Testing (UAT), serta membuat dokumentasi 
-        user manual untuk panduan pengguna di lapangan.
-      `,
-      en: `
-        The AOL (Automotive Online) System is a desktop application used by Astra Credit Companies 
-        to manage new and used vehicle financing processes. As a QC Engineer, I was responsible for 
-        conducting System Integration Testing (SIT) and User Acceptance Testing (UAT), as well as creating 
-        user manual documentation as a field guide for users.
-      `
-    },
-    techStack: ["Manual Testing", "Microsoft Excel", "Word (User Manual)", "SIT", "UAT", "Jira", "SQL"],
-    projectStructure: `AOL-Testing/
-├── Test Plan/
-│   └── Test_Plan_AOL_v1.xlsx
-├── Test Cases/
-│   ├── SIT/
-│   │   ├── TC_Payment_New_Car.xlsx
-│   │   ├── TC_Payment_Used_Car.xlsx
-│   │   └── TC_Integration_Core.xlsx
-│   └── UAT/
-│       ├── TC_UAT_Dealer_Flow.xlsx
-│       └── TC_UAT_Admin_Flow.xlsx
-├── Bug Reports/
-│   └── Bug_Report_AOL.xlsx
-├── User Manual/
-│   └── User_Manual_AOL_v2.docx
-└── Test Summary Report/
-    └── TSR_AOL_Sprint_1.pdf`,
-    testCases: [
-      { id: "AOL-001", name: "Input pengajuan pembiayaan mobil baru", input: "Data customer + data kendaraan + DP", expected: "Pengajuan berhasil dengan nomor aplikasi unik", status: "pass" },
-      { id: "AOL-002", name: "Perhitungan cicilan otomatis", input: "Harga OTR, DP, tenor 36 bulan", expected: "Cicilan dihitung sesuai bunga yang berlaku", status: "pass" },
-      { id: "AOL-003", name: "Proses pembayaran angsuran", input: "Nomor kontrak + nominal bayar", expected: "Status pembayaran update, receipt tercetak", status: "pass" },
-      { id: "AOL-004", name: "Integrasi data ke sistem core", input: "Approval dari credit analyst", expected: "Data otomatis terinput ke sistem core banking", status: "fail" },
-      { id: "AOL-005", name: "UAT: Alur pembiayaan end-to-end", input: "Business user menjalankan skenario nyata", expected: "Seluruh alur berjalan sesuai SOP dealer", status: "pass" },
-    ],
-    pattern: `Pola Implementasi: Manual Testing Methodology
-──────────────────────────────────────────────
-1. TEST PLANNING
-   - Pelajari requirement & SRS dokumen
-   - Identifikasi scope testing (in/out of scope)
-   - Estimasi effort & resources
+// Security Note:
+//   - Semua test menggunakan dummy/UAT data
+//   - Tidak ada data nasabah asli`
+//   },
+//   {
+//     id: 6,
+//     name: "AOL System — Astra Credit Companies",
+//     subtitle: "Manual Testing (SIT & UAT) · Company Project",
+//     icon: "🚗",
+//     repoUrl: "https://github.com/fettymaula/aol-astra-credit-testing",
+//     type: ["manual", "company"],
+//     tags: [
+//       { label: "Astra Credit", style: "orange" },
+//       { label: "Company Project", style: "purple" },
+//       { label: "SIT", style: "green" },
+//       { label: "UAT", style: "green" }
+//     ],
+//     shortDesc: {
+//       id: "Manual testing (SIT & UAT) untuk sistem AOL — aplikasi desktop untuk proses bisnis pembiayaan kendaraan di Astra Credit Companies.",
+//       en: "Manual testing (SIT & UAT) for the AOL system — a desktop application for vehicle financing business processes at Astra Credit Companies."
+//     },
+//     description: {
+//       id: `
+//         AOL (Automotive Online) System adalah aplikasi desktop yang digunakan oleh Astra Credit Companies 
+//         untuk mengelola proses pembiayaan kendaraan baru dan bekas. Sebagai QC Engineer, saya bertanggung jawab 
+//         melakukan System Integration Testing (SIT) dan User Acceptance Testing (UAT), serta membuat dokumentasi 
+//         user manual untuk panduan pengguna di lapangan.
+//       `,
+//       en: `
+//         The AOL (Automotive Online) System is a desktop application used by Astra Credit Companies 
+//         to manage new and used vehicle financing processes. As a QC Engineer, I was responsible for 
+//         conducting System Integration Testing (SIT) and User Acceptance Testing (UAT), as well as creating 
+//         user manual documentation as a field guide for users.
+//       `
+//     },
+//     techStack: ["Manual Testing", "Microsoft Excel", "Word (User Manual)", "SIT", "UAT", "Jira", "SQL"],
+//     projectStructure: `AOL-Testing/
+// ├── Test Plan/
+// │   └── Test_Plan_AOL_v1.xlsx
+// ├── Test Cases/
+// │   ├── SIT/
+// │   │   ├── TC_Payment_New_Car.xlsx
+// │   │   ├── TC_Payment_Used_Car.xlsx
+// │   │   └── TC_Integration_Core.xlsx
+// │   └── UAT/
+// │       ├── TC_UAT_Dealer_Flow.xlsx
+// │       └── TC_UAT_Admin_Flow.xlsx
+// ├── Bug Reports/
+// │   └── Bug_Report_AOL.xlsx
+// ├── User Manual/
+// │   └── User_Manual_AOL_v2.docx
+// └── Test Summary Report/
+//     └── TSR_AOL_Sprint_1.pdf`,
+//     testCases: [
+//       { id: "AOL-001", name: "Input pengajuan pembiayaan mobil baru", input: "Data customer + data kendaraan + DP", expected: "Pengajuan berhasil dengan nomor aplikasi unik", status: "pass" },
+//       { id: "AOL-002", name: "Perhitungan cicilan otomatis", input: "Harga OTR, DP, tenor 36 bulan", expected: "Cicilan dihitung sesuai bunga yang berlaku", status: "pass" },
+//       { id: "AOL-003", name: "Proses pembayaran angsuran", input: "Nomor kontrak + nominal bayar", expected: "Status pembayaran update, receipt tercetak", status: "pass" },
+//       { id: "AOL-004", name: "Integrasi data ke sistem core", input: "Approval dari credit analyst", expected: "Data otomatis terinput ke sistem core banking", status: "fail" },
+//       { id: "AOL-005", name: "UAT: Alur pembiayaan end-to-end", input: "Business user menjalankan skenario nyata", expected: "Seluruh alur berjalan sesuai SOP dealer", status: "pass" },
+//     ],
+//     pattern: `Pola Implementasi: Manual Testing Methodology
+// ──────────────────────────────────────────────
+// 1. TEST PLANNING
+//    - Pelajari requirement & SRS dokumen
+//    - Identifikasi scope testing (in/out of scope)
+//    - Estimasi effort & resources
 
-2. TEST CASE DESIGN
-   - Equivalence Partitioning
-   - Boundary Value Analysis
-   - Error Guessing
-   - Decision Table
+// 2. TEST CASE DESIGN
+//    - Equivalence Partitioning
+//    - Boundary Value Analysis
+//    - Error Guessing
+//    - Decision Table
 
-3. EXECUTION TRACKING
-   - Status: Pass / Fail / Blocked / Skip
-   - Screenshot untuk setiap failure
-   - Link ke bug report di Jira
+// 3. EXECUTION TRACKING
+//    - Status: Pass / Fail / Blocked / Skip
+//    - Screenshot untuk setiap failure
+//    - Link ke bug report di Jira
 
-4. BUG LIFECYCLE
-   New → Assigned → In Progress → 
-   Fixed → Retest → Verified → Closed
+// 4. BUG LIFECYCLE
+//    New → Assigned → In Progress → 
+//    Fixed → Retest → Verified → Closed
 
-5. UAT SIGN-OFF
-   - Business user validasi skenario
-   - Sign-off document dari stakeholder`
-  },
-  {
-    id: 7,
-    name: "Sales4u — Maybank",
-    subtitle: "Manual & Automation Testing · Company Project · Banking",
-    icon: "💳",
-    repoUrl: "https://github.com/fettymaula/sales4u-maybank-testing",
-    type: ["manual", "automation", "company"],
-    tags: [
-      { label: "Maybank", style: "orange" },
-      { label: "Company Project", style: "purple" },
-      { label: "Mobile + Web", style: "green" }
-    ],
-    shortDesc: {
-      id: "Testing komprehensif untuk sales digital tools Maybank meliputi mobile app, web platform, dan admin portal untuk tim sales perbankan.",
-      en: "Comprehensive testing for Maybank's sales digital tools, covering a mobile app, web platform, and admin portal for the banking sales team."
-    },
-    description: {
-      id: `
-        Sales4u adalah ekosistem digital tools yang digunakan oleh tim sales Maybank Indonesia untuk menjual 
-        produk perbankan (tabungan, deposito, kredit, kartu kredit). Project ini mencakup pengujian pada 3 platform: 
-        mobile app untuk sales di lapangan, web platform untuk supervisor, dan admin portal untuk back office. 
-        Melibatkan manual testing intensif dan automation untuk regression.
-      `,
-      en: `
-        Sales4u is an ecosystem of digital tools used by Maybank Indonesia's sales team to sell 
-        banking products (savings, deposits, loans, credit cards). This project covered testing across 3 platforms: 
-        a mobile app for field sales, a web platform for supervisors, and an admin portal for back office. 
-        It involved intensive manual testing along with automation for regression.
-      `
-    },
-    techStack: ["Katalon Studio", "Jira", "Azure DevOps", "Swagger", "SQL", "Mobile Testing", "Web Testing"],
-    projectStructure: `Sales4u-Testing/
-├── Mobile App/
-│   ├── Test Cases/
-│   │   ├── TC_Login_Sales.xlsx
-│   │   ├── TC_Customer_Registration.xlsx
-│   │   └── TC_Product_Application.xlsx
-│   └── Automation/
-│       └── Mobile_Regression.ts
-├── Web Platform/
-│   ├── Test Cases/
-│   │   ├── TC_Dashboard_Supervisor.xlsx
-│   │   └── TC_Performance_Report.xlsx
-│   └── Automation/
-│       └── Web_Regression.ts
-├── Admin Portal/
-│   └── Test Cases/
-│       ├── TC_User_Management.xlsx
-│       └── TC_Product_Config.xlsx
-└── API Testing/
-    └── Sales4u_API_Collection.json`,
-    testCases: [
-      { id: "S4U-001", name: "Login sales ke mobile app", input: "Employee ID + Password + OTP", expected: "Berhasil masuk dengan role 'Sales'", status: "pass" },
-      { id: "S4U-002", name: "Registrasi calon nasabah baru", input: "Data KTP, foto selfie, data diri", expected: "Lead tersimpan, notifikasi ke supervisor", status: "pass" },
-      { id: "S4U-003", name: "Pengajuan produk tabungan", input: "Data nasabah + pilih produk + submit", expected: "Aplikasi terinput dengan status 'Pending Review'", status: "pass" },
-      { id: "S4U-004", name: "Supervisor approval di web platform", input: "Login supervisor + review + approve", expected: "Status aplikasi berubah ke 'Approved'", status: "pass" },
-      { id: "S4U-005", name: "Sinkronisasi data mobile ke web", input: "Data input di app mobile", expected: "Tampil real-time di web dashboard", status: "pass" },
-      { id: "S4U-006", name: "API: Get product list", input: "GET /api/products?type=savings", expected: "Response 200 dengan list produk tabungan", status: "pass" },
-    ],
-    pattern: `Pola Implementasi: Multi-Platform Testing Strategy
-──────────────────────────────────────────────────
-Koordinasi Testing 3 Platform:
-  Mobile App ←→ API ←→ Web Platform ←→ Admin Portal
+// 5. UAT SIGN-OFF
+//    - Business user validasi skenario
+//    - Sign-off document dari stakeholder`
+//   },
+//   {
+//     id: 7,
+//     name: "Sales4u — Maybank",
+//     subtitle: "Manual & Automation Testing · Company Project · Banking",
+//     icon: "💳",
+//     repoUrl: "https://github.com/fettymaula/sales4u-maybank-testing",
+//     type: ["manual", "automation", "company"],
+//     tags: [
+//       { label: "Maybank", style: "orange" },
+//       { label: "Company Project", style: "purple" },
+//       { label: "Mobile + Web", style: "green" }
+//     ],
+//     shortDesc: {
+//       id: "Testing komprehensif untuk sales digital tools Maybank meliputi mobile app, web platform, dan admin portal untuk tim sales perbankan.",
+//       en: "Comprehensive testing for Maybank's sales digital tools, covering a mobile app, web platform, and admin portal for the banking sales team."
+//     },
+//     description: {
+//       id: `
+//         Sales4u adalah ekosistem digital tools yang digunakan oleh tim sales Maybank Indonesia untuk menjual 
+//         produk perbankan (tabungan, deposito, kredit, kartu kredit). Project ini mencakup pengujian pada 3 platform: 
+//         mobile app untuk sales di lapangan, web platform untuk supervisor, dan admin portal untuk back office. 
+//         Melibatkan manual testing intensif dan automation untuk regression.
+//       `,
+//       en: `
+//         Sales4u is an ecosystem of digital tools used by Maybank Indonesia's sales team to sell 
+//         banking products (savings, deposits, loans, credit cards). This project covered testing across 3 platforms: 
+//         a mobile app for field sales, a web platform for supervisors, and an admin portal for back office. 
+//         It involved intensive manual testing along with automation for regression.
+//       `
+//     },
+//     techStack: ["Katalon Studio", "Jira", "Azure DevOps", "Swagger", "SQL", "Mobile Testing", "Web Testing"],
+//     projectStructure: `Sales4u-Testing/
+// ├── Mobile App/
+// │   ├── Test Cases/
+// │   │   ├── TC_Login_Sales.xlsx
+// │   │   ├── TC_Customer_Registration.xlsx
+// │   │   └── TC_Product_Application.xlsx
+// │   └── Automation/
+// │       └── Mobile_Regression.ts
+// ├── Web Platform/
+// │   ├── Test Cases/
+// │   │   ├── TC_Dashboard_Supervisor.xlsx
+// │   │   └── TC_Performance_Report.xlsx
+// │   └── Automation/
+// │       └── Web_Regression.ts
+// ├── Admin Portal/
+// │   └── Test Cases/
+// │       ├── TC_User_Management.xlsx
+// │       └── TC_Product_Config.xlsx
+// └── API Testing/
+//     └── Sales4u_API_Collection.json`,
+//     testCases: [
+//       { id: "S4U-001", name: "Login sales ke mobile app", input: "Employee ID + Password + OTP", expected: "Berhasil masuk dengan role 'Sales'", status: "pass" },
+//       { id: "S4U-002", name: "Registrasi calon nasabah baru", input: "Data KTP, foto selfie, data diri", expected: "Lead tersimpan, notifikasi ke supervisor", status: "pass" },
+//       { id: "S4U-003", name: "Pengajuan produk tabungan", input: "Data nasabah + pilih produk + submit", expected: "Aplikasi terinput dengan status 'Pending Review'", status: "pass" },
+//       { id: "S4U-004", name: "Supervisor approval di web platform", input: "Login supervisor + review + approve", expected: "Status aplikasi berubah ke 'Approved'", status: "pass" },
+//       { id: "S4U-005", name: "Sinkronisasi data mobile ke web", input: "Data input di app mobile", expected: "Tampil real-time di web dashboard", status: "pass" },
+//       { id: "S4U-006", name: "API: Get product list", input: "GET /api/products?type=savings", expected: "Response 200 dengan list produk tabungan", status: "pass" },
+//     ],
+//     pattern: `Pola Implementasi: Multi-Platform Testing Strategy
+// ──────────────────────────────────────────────────
+// Koordinasi Testing 3 Platform:
+//   Mobile App ←→ API ←→ Web Platform ←→ Admin Portal
 
-Testing Layers:
-  1. Unit API  → Swagger/Postman: validasi endpoint
-  2. Mobile UI → Katalon + Appium: alur sales
-  3. Web UI    → Katalon + Chrome: alur supervisor
-  4. Integration: end-to-end flow lintas platform
+// Testing Layers:
+//   1. Unit API  → Swagger/Postman: validasi endpoint
+//   2. Mobile UI → Katalon + Appium: alur sales
+//   3. Web UI    → Katalon + Chrome: alur supervisor
+//   4. Integration: end-to-end flow lintas platform
 
-Sprint Workflow (Agile/Scrum):
-  Sprint Planning → Dev → QA (1-2 day testing) → 
-  Bug Fix → Retest → Sprint Review → Release
+// Sprint Workflow (Agile/Scrum):
+//   Sprint Planning → Dev → QA (1-2 day testing) → 
+//   Bug Fix → Retest → Sprint Review → Release
 
-Jira Workflow:
-  To Do → In Progress → In Review → Done
-  Bug: Open → In Progress → Fixed → Retest → Closed`
-  }
+// Jira Workflow:
+//   To Do → In Progress → In Review → Done
+//   Bug: Open → In Progress → Fixed → Retest → Closed`
+//   }
 ];
 
 /* ==========================================================================
