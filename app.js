@@ -358,6 +358,77 @@ class ScrollFadeAnimator {
 }
 
 /* ==========================================================================
+   ThemeManager
+   Mengatur mode light/dark: default mengikuti preferensi sistem OS,
+   namun bisa di-override manual lewat tombol toggle. Pilihan manual
+   disimpan di localStorage agar diingat saat halaman dibuka kembali.
+   ========================================================================== */
+class ThemeManager {
+  constructor(toggleButtonId, htmlRootId) {
+    this.toggleButton = document.getElementById(toggleButtonId);
+    this.htmlRoot = document.getElementById(htmlRootId);
+    this.storageKey = 'portfolio-theme';
+    this.mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    this._bindToggle();
+    this._bindSystemPreferenceChange();
+  }
+
+  init() {
+    const savedTheme = this._getSavedTheme();
+    const theme = savedTheme || this._getSystemTheme();
+    this._applyTheme(theme);
+  }
+
+  _getSystemTheme() {
+    return this.mediaQuery.matches ? 'dark' : 'light';
+  }
+
+  _getSavedTheme() {
+    try {
+      return localStorage.getItem(this.storageKey);
+    } catch (err) {
+      return null; // localStorage tidak tersedia (mis. private browsing ketat)
+    }
+  }
+
+  _saveTheme(theme) {
+    try {
+      localStorage.setItem(this.storageKey, theme);
+    } catch (err) {
+      // gagal menyimpan, abaikan — toggle tetap berfungsi untuk sesi ini
+    }
+  }
+
+  _applyTheme(theme) {
+    this.htmlRoot.setAttribute('data-theme', theme);
+    this.toggleButton.textContent = theme === 'dark' ? '🌙' : '☀️';
+    this.toggleButton.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  _currentTheme() {
+    return this.htmlRoot.getAttribute('data-theme') || 'dark';
+  }
+
+  _bindToggle() {
+    this.toggleButton.addEventListener('click', () => {
+      const nextTheme = this._currentTheme() === 'dark' ? 'light' : 'dark';
+      this._applyTheme(nextTheme);
+      this._saveTheme(nextTheme);
+    });
+  }
+
+  _bindSystemPreferenceChange() {
+    this.mediaQuery.addEventListener('change', (event) => {
+      const hasManualOverride = Boolean(this._getSavedTheme());
+      if (hasManualOverride) return; // jangan timpa pilihan manual user
+
+      this._applyTheme(event.matches ? 'dark' : 'light');
+    });
+  }
+}
+
+/* ==========================================================================
    DevToolsGuard
    Menonaktifkan klik kanan dan shortcut umum untuk membuka DevTools.
    ========================================================================== */
@@ -384,6 +455,7 @@ class PortfolioApp {
     this.repository = new ProjectRepository(projectRecords);
     this.projectsController = new ProjectsController(this.repository);
     this.languageSwitcher = new LanguageSwitcher();
+    this.themeManager = new ThemeManager('themeToggle', 'htmlRoot');
     this.skillBarAnimator = new SkillBarAnimator('skills');
     this.scrollFadeAnimator = new ScrollFadeAnimator();
     this.devToolsGuard = new DevToolsGuard();
@@ -392,6 +464,7 @@ class PortfolioApp {
   }
 
   start() {
+    this.themeManager.init();
     this.projectsController.init();
     this.skillBarAnimator.observe();
     this.scrollFadeAnimator.observe();

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" id="htmlRoot">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<script>
+  // Set tema secepat mungkin (sebelum render) agar tidak ada kedipan
+  // saat beralih dari tema default ke tema tersimpan/preferensi sistem.
+  (function () {
+    try {
+      var saved = localStorage.getItem('portfolio-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (err) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 </head>
 <body>
 
@@ -17,9 +30,12 @@
 <!-- NAV -->
 
 <nav>
-  <div class="lang-toggle">
-    <button class="lang-btn active" id="btn-id">ID</button>
-    <button class="lang-btn" id="btn-en">EN</button>
+  <div class="nav-controls">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-id">ID</button>
+      <button class="lang-btn" id="btn-en">EN</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">🌙</button>
   </div>
   <ul class="nav-links">
 
