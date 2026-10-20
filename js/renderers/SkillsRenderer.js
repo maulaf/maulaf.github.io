@@ -27,7 +27,7 @@ class SkillsRenderer {
     `).join('');
 
     const tools = TOOLS.map(tool => `
-      <div class="tool-chip"><span class="tool-icon">${tool.icon}</span> ${tool.name}</div>
+      <div class="tool-chip"><span class="tool-icon">${this.renderToolIcon(tool)}</span> ${tool.name}</div>
     `).join('');
 
     this.sectionEl.innerHTML = `
@@ -40,5 +40,13 @@ class SkillsRenderer {
         </div>
       </div>
     `;
+  }
+
+  // Logo tool (satu atau beberapa); fallback ke emoji jika kosong atau gagal dimuat.
+  renderToolIcon(tool) {
+    const logos = [].concat(tool.logo || []);
+    if (!logos.length) return tool.icon;
+    return logos.map(src => `<img src="${src}" alt="" loading="lazy"
+      onerror="this.parentNode.textContent='${tool.icon}'">`).join('');
   }
 }

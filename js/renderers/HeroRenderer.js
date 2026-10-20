@@ -25,7 +25,7 @@ class HeroRenderer {
         <div class="hero-visual">
           <div class="profile-card">
             <div class="available-badge"><span class="pulse-dot"></span> ${I18n.t('hero_badge', lang)}</div>
-            <div class="profile-avatar">${p.avatarEmoji}</div>
+            <div class="profile-avatar">${this.renderAvatar(p)}</div>
             <h3>${p.shortName}</h3>
             <p>${I18n.pick(p.location, lang)}</p>
             <div class="stat-row">
@@ -40,5 +40,12 @@ class HeroRenderer {
         </div>
       </div>
     `;
+  }
+
+  // Foto profil dari project; fallback ke emoji jika path kosong atau gambar gagal dimuat.
+  renderAvatar(p) {
+    if (!p.avatarImage) return p.avatarEmoji;
+    return `<img src="${p.avatarImage}" alt="${p.shortName}"
+      onerror="this.replaceWith(document.createTextNode('${p.avatarEmoji}'))">`;
   }
 }
