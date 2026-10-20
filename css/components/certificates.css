@@ -1,0 +1,16 @@
+/* ==========================================================================
+   components/certificates.css — kartu sertifikat
+   ========================================================================== */
+
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.cert-link { text-decoration: none; color: inherit; }
+.cert-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1.2rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+  transition: all .2s;
+}
+.cert-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.cert-icon { font-size: 1.6rem; flex-shrink: 0; }
+.cert-name { font-size: 0.88rem; font-weight: 700; }
+.cert-issuer { font-size: 0.75rem; color: var(--muted); font-family: var(--mono); }

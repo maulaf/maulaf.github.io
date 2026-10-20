@@ -1,0 +1,49 @@
+/* ==========================================================================
+   components/projects.css — filter buttons, project grid, repo link
+   ========================================================================== */
+
+.project-filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.filter-btn {
+  font-family: var(--mono); font-size: 0.75rem;
+  padding: 5px 14px; border-radius: 20px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--muted); cursor: pointer; transition: all .2s;
+}
+.filter-btn.active, .filter-btn:hover {
+  border-color: var(--accent); color: var(--accent); background: var(--accent-tint-08);
+}
+
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+.project-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.8rem;
+  cursor: pointer; transition: all .2s;
+  position: relative; overflow: hidden;
+}
+.project-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(to right, var(--accent), var(--accent3));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.project-card:hover::before { transform: scaleX(1); }
+.project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 20px 50px var(--shadow-color); }
+.project-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; }
+.project-type-icon { font-size: 1.5rem; }
+.project-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
+.project-desc { font-size: 0.84rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.project-footer {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+
+.project-card-footer-row { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+.repo-link {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 4px 10px; border: 1px solid var(--border); border-radius: 20px;
+  transition: all .2s;
+}
+.repo-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-tint-08); }

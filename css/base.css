@@ -1,0 +1,71 @@
+/* ==========================================================================
+   base.css — reset, variables (dark+light), body, scrollbar
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0b0d11;
+  --surface: #13161d;
+  --surface2: #1c2030;
+  --border: #252a3a;
+  --accent: #00e5b0;
+  --accent2: #ff6b35;
+  --accent3: #7c5cfc;
+  --text: #e8eaf2;
+  --muted: #6b7280;
+  --mono: 'Space Mono', monospace;
+  --sans: 'Syne', sans-serif;
+
+  --nav-bg: rgba(11,13,17,0.85);
+  --overlay-bg: rgba(0,0,0,0.85);
+  --section-container-bg: rgba(19,22,29,0.55);
+  --accent-tint-06: rgba(0,229,176,0.06);
+  --accent-tint-08: rgba(0,229,176,0.08);
+  --accent-tint-10: rgba(0,229,176,0.1);
+  --accent-tint-30: rgba(0,229,176,0.3);
+  --accent3-tint-06: rgba(124,92,252,0.06);
+  --accent2-tint-06: rgba(255,107,53,0.06);
+  --shadow-color: rgba(0,0,0,0.3);
+  --on-accent: #000;
+}
+
+html[data-theme="light"] {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface2: #eef0f5;
+  --border: #dde1ea;
+  --accent: #00785f;
+  --accent2: #c64616;
+  --accent3: #6645d6;
+  --text: #1a1d27;
+  --muted: #5b6172;
+
+  --nav-bg: rgba(247,248,251,0.85);
+  --overlay-bg: rgba(15,17,23,0.6);
+  --section-container-bg: rgba(255,255,255,0.7);
+  --accent-tint-06: rgba(0,120,95,0.07);
+  --accent-tint-08: rgba(0,120,95,0.1);
+  --accent-tint-10: rgba(0,120,95,0.12);
+  --accent-tint-30: rgba(0,120,95,0.25);
+  --accent3-tint-06: rgba(102,69,214,0.07);
+  --accent2-tint-06: rgba(198,70,22,0.07);
+  --shadow-color: rgba(20,24,38,0.12);
+  --on-accent: #fff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background-color .3s, color .3s;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }

@@ -1,0 +1,15 @@
+/* ==========================================================================
+   components/summary.css — section Summary / About
+   ========================================================================== */
+
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.summary-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+.info-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.info-item {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--surface2); padding: 0.8rem 1.2rem;
+  border-radius: 8px; border: 1px solid var(--border);
+}
+.info-icon { font-size: 1.1rem; }
+.info-label { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+.info-val { font-size: 0.9rem; font-weight: 600; }

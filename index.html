@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fetty Athiyatul Maula — QA Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet terbagi: base → layout → components -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components/controls.css" />
+  <link rel="stylesheet" href="css/components/hero.css" />
+  <link rel="stylesheet" href="css/components/summary.css" />
+  <link rel="stylesheet" href="css/components/timeline.css" />
+  <link rel="stylesheet" href="css/components/skills.css" />
+  <link rel="stylesheet" href="css/components/education.css" />
+  <link rel="stylesheet" href="css/components/certificates.css" />
+  <link rel="stylesheet" href="css/components/projects.css" />
+  <link rel="stylesheet" href="css/components/modal.css" />
+  <link rel="stylesheet" href="css/components/contact.css" />
+  <link rel="stylesheet" href="css/components/animations.css" />
+
+  <script>
+    // Set tema sedini mungkin (sebelum render) agar tidak ada flicker.
+    // Default: light. Hormati pilihan tersimpan di localStorage.
+    (function () {
+      try {
+        var saved = localStorage.getItem('portfolio-theme');
+        document.documentElement.setAttribute('data-theme', saved || 'light');
+      } catch (err) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+<!-- Background glow -->
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- Nav shell (links di-render dari data/navigation.js) -->
+<nav>
+  <div class="nav-controls">
+    <div class="lang-toggle">
+      <button class="lang-btn" id="btn-id">ID</button>
+      <button class="lang-btn active" id="btn-en">EN</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">☀️</button>
+  </div>
+  <ul class="nav-links" id="navLinks"></ul>
+</nav>
+
+<!-- Section placeholders — konten di-render oleh renderer di js/renderers/ -->
+<section id="hero"></section>
+<section id="summary"></section>
+<section id="experience"></section>
+<section id="skills"></section>
+<section id="education"></section>
+<section id="certificates"></section>
+<section id="projects"></section>
+<section id="contact"></section>
+
+<footer id="siteFooter"></footer>
+
+<!-- Modal project detail (markup statis; isi di-render oleh ProjectModal) -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-subtitle" id="modalSubtitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeProjectModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ========================================================================
+     DATA — tidak ada logic di sini, hanya array/object.
+     Edit file di folder data/ untuk mengubah konten portfolio.
+     ======================================================================== -->
+<script src="data/translations.js"></script>
+<script src="data/navigation.js"></script>
+<script src="data/profile.js"></script>
+<script src="data/summary.js"></script>
+<script src="data/experiences.js"></script>
+<script src="data/skills.js"></script>
+<script src="data/education.js"></script>
+<script src="data/certificates.js"></script>
+<script src="data/contacts.js"></script>
+<script src="data/projects.js"></script>
+
+<!-- ========================================================================
+     MODELS — wrapper OOP untuk data mentah.
+     ======================================================================== -->
+<script src="js/models/Project.js"></script>
+<script src="js/models/ProjectRepository.js"></script>
+
+<!-- ========================================================================
+     UI — class generik (helper, animator, controller, modal).
+     ======================================================================== -->
+<script src="js/ui/I18n.js"></script>
+<script src="js/ui/ThemeManager.js"></script>
+<script src="js/ui/LanguageSwitcher.js"></script>
+<script src="js/ui/SkillBarAnimator.js"></script>
+<script src="js/ui/ScrollFadeAnimator.js"></script>
+<script src="js/ui/DevToolsGuard.js"></script>
+<script src="js/ui/ProjectCardRenderer.js"></script>
+<script src="js/ui/ProjectGallery.js"></script>
+<script src="js/ui/ProjectModalRenderer.js"></script>
+<script src="js/ui/ProjectModal.js"></script>
+<script src="js/ui/ProjectsController.js"></script>
+
+<!-- ========================================================================
+     SECTION RENDERERS — konversi data → markup DOM.
+     ======================================================================== -->
+<script src="js/renderers/SectionHeaderRenderer.js"></script>
+<script src="js/renderers/NavRenderer.js"></script>
+<script src="js/renderers/HeroRenderer.js"></script>
+<script src="js/renderers/SummaryRenderer.js"></script>
+<script src="js/renderers/ExperienceRenderer.js"></script>
+<script src="js/renderers/SkillsRenderer.js"></script>
+<script src="js/renderers/EducationRenderer.js"></script>
+<script src="js/renderers/CertificatesRenderer.js"></script>
+<script src="js/renderers/ProjectsSectionRenderer.js"></script>
+<script src="js/renderers/ContactRenderer.js"></script>
+<script src="js/renderers/FooterRenderer.js"></script>
+
+<!-- Entry point -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
