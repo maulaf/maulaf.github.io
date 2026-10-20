@@ -8,15 +8,15 @@ class SkillsRenderer {
     this.sectionEl = document.getElementById('skills');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const categories = SKILL_CATEGORIES.map(cat => `
       <div class="skill-category">
-        <div class="skill-cat-title">${cat.title}</div>
+        <div class="skill-cat-title">${I18n.pick(cat.title, lang)}</div>
         ${cat.items.map(item => `
           <div class="skill-item">
             <div class="skill-name-row">
               <span class="skill-name">${item.name}</span>
-              <span class="skill-level">${item.level}</span>
+              <span class="skill-level">${I18n.t(`skill_level_${item.level.toLowerCase()}`, lang)}</span>
             </div>
             <div class="skill-bar">
               <div class="skill-fill" data-width="${item.width}"></div>

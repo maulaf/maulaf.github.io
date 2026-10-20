@@ -2,7 +2,7 @@
    components/certificates.css — kartu sertifikat
    ========================================================================== */
 
-.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 1.2rem; }
 .cert-link { text-decoration: none; color: inherit; }
 .cert-card {
   background: var(--bg); border: 1px solid var(--border);

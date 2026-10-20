@@ -14,6 +14,7 @@ class I18n {
 
   static pick(obj, lang = I18n.DEFAULT_LANG) {
     if (!obj) return '';
+    if (typeof obj === 'string') return obj;
     return obj[lang] !== undefined ? obj[lang] : obj[I18n.DEFAULT_LANG];
   }
 }

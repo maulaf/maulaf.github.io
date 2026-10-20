@@ -5,7 +5,7 @@
 
 const SKILL_CATEGORIES = [
   {
-    title: "🔍 Testing Types",
+    title: { id: "🔍 Jenis Testing", en: "🔍 Testing Types" },
     items: [
       { name: "Manual Testing",      level: "Expert",       width: 95 },
       { name: "Automation Testing",  level: "Advanced",     width: 85 },
@@ -15,7 +15,7 @@ const SKILL_CATEGORIES = [
     ]
   },
   {
-    title: "⚙️ Testing Methodologies",
+    title: { id: "⚙️ Metodologi Testing", en: "⚙️ Testing Methodologies" },
     items: [
       { name: "System Integration Testing (SIT)",   level: "Expert",       width: 92 },
       { name: "User Acceptance Testing (UAT)",      level: "Expert",       width: 90 },
@@ -24,7 +24,7 @@ const SKILL_CATEGORIES = [
     ]
   },
   {
-    title: "📋 QA Processes",
+    title: { id: "📋 Proses QA", en: "📋 QA Processes" },
     items: [
       { name: "Test Case Design",         level: "Expert",   width: 95 },
       { name: "Bug Reporting & Tracking", level: "Expert",   width: 95 },

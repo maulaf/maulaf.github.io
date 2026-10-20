@@ -8,7 +8,7 @@ class EducationRenderer {
     this.sectionEl = document.getElementById('education');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const cards = EDUCATION.map(edu => `
       <div class="edu-card">
         <div class="edu-degree">${I18n.pick(edu.degree, lang)}</div>

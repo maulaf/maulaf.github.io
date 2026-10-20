@@ -16,27 +16,27 @@ const TRANSLATIONS = {
     nav_contact: "Kontak",
 
     // Section tags & titles
-    section_about_tag: "// 01. About",
+    section_about_tag: "// 01. Tentang",
     section_about_title: "Ringkasan",
-    section_experience_tag: "// 02. Journey",
+    section_experience_tag: "// 02. Perjalanan",
     section_experience_title: "Pengalaman Kerja",
-    section_skills_tag: "// 03. Skills",
-    section_skills_title: "Skills & Expertise",
-    section_education_tag: "// 04. Education",
+    section_skills_tag: "// 03. Keahlian",
+    section_skills_title: "Keahlian & Kompetensi",
+    section_education_tag: "// 04. Pendidikan",
     section_education_title: "Pendidikan",
-    section_certificates_tag: "// 05. Certificates",
+    section_certificates_tag: "// 05. Sertifikat",
     section_certificates_title: "Sertifikat",
-    section_projects_tag: "// 06. Projects",
+    section_projects_tag: "// 06. Proyek",
     section_projects_title: "Proyek",
-    section_contact_tag: "// 07. Contact",
+    section_contact_tag: "// 07. Kontak",
     section_contact_title: "Mari Terhubung",
 
     // Hero
-    hero_label: "// QA Engineer Portfolio",
-    hero_cta_projects: "Lihat Projects →",
+    hero_label: "// Portofolio QA Engineer",
+    hero_cta_projects: "Lihat Proyek →",
     hero_cta_contact: "Hubungi Saya",
-    hero_badge: "Open to Work",
-    stat_years: "Tahun Exp",
+    hero_badge: "Terbuka untuk Kerja",
+    stat_years: "Tahun Pengalaman",
     stat_companies: "Perusahaan",
     stat_certs: "Sertifikat",
 
@@ -48,41 +48,44 @@ const TRANSLATIONS = {
     info_domain: "Bidang",
 
     // Skills category titles
-    skills_tools_tag: "🛠️ Tools & Technologies",
+    skills_tools_tag: "🛠️ Tools & Teknologi",
+    skill_level_expert: "Ahli",
+    skill_level_advanced: "Mahir",
+    skill_level_intermediate: "Menengah",
 
     // Education
     education_relevant: "Mata Kuliah Relevan:",
 
     // Projects
-    projects_filter_all: "All",
+    projects_filter_all: "Semua",
     projects_filter_manual: "Manual Testing",
     projects_filter_automation: "Automation",
     projects_filter_api: "API Testing",
     projects_filter_mobile: "Mobile",
-    projects_filter_dummy: "Dummy/Practice",
-    projects_filter_company: "Company Project",
+    projects_filter_dummy: "Latihan/Dummy",
+    projects_filter_company: "Proyek Perusahaan",
     project_card_detail: "🔍 Lihat Detail",
     project_card_repo: "🔗 Repo",
     project_card_detail_arrow: "Detail →",
 
     // Modal
-    modal_description: "Deskripsi Project",
+    modal_description: "Deskripsi Proyek",
     modal_tech_stack: "Tech Stack",
-    modal_structure: "Struktur Project",
-    modal_test_cases: "Sample Test Cases",
+    modal_structure: "Struktur Proyek",
+    modal_test_cases: "Contoh Test Case",
     modal_test_case: "Test Case",
     modal_input: "Input",
-    modal_expected: "Expected Result",
+    modal_expected: "Hasil yang Diharapkan",
     modal_status: "Status",
-    modal_pass: "Pass",
-    modal_fail: "Fail",
+    modal_pass: "Lulus",
+    modal_fail: "Gagal",
     modal_pattern: "Pola Implementasi",
     modal_repository: "Repository",
     modal_view_repo: "Lihat Repository",
-    modal_tags: "Tags",
+    modal_tags: "Tag",
 
     // Contact
-    contact_heading: "Ada project atau<br>peluang menarik?",
+    contact_heading: "Ada proyek atau<br>peluang menarik?",
     contact_body: "Saya terbuka untuk peluang baru, kolaborasi, atau sekadar berdiskusi tentang QA dan software testing. Jangan ragu untuk menghubungi saya!",
     contact_cta_email: "Kirim Email →",
     contact_label_email: "Email",
@@ -90,7 +93,7 @@ const TRANSLATIONS = {
     contact_label_linkedin: "LinkedIn",
 
     // Footer
-    footer_text: "© {year} Fetty Athiyatul Maula · QA Engineer Portfolio · Built with ❤️ using HTML/CSS/JS"
+    footer_text: "© {year} Fetty Athiyatul Maula · Portofolio QA Engineer · Dibuat dengan ❤️ menggunakan HTML/CSS/JS"
   },
 
   en: {
@@ -137,6 +140,9 @@ const TRANSLATIONS = {
 
     // Skills category titles
     skills_tools_tag: "🛠️ Tools & Technologies",
+    skill_level_expert: "Expert",
+    skill_level_advanced: "Advanced",
+    skill_level_intermediate: "Intermediate",
 
     // Education
     education_relevant: "Relevant Coursework:",

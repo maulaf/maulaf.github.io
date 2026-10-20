@@ -35,12 +35,12 @@ const EXPERIENCES = [
       { label: "Mobile & Web", style: "purple" },
       { label: "Admin Portal", style: "purple" },
       { label: "Test Case Design", style: "" },
-      { label: "Banking — Maybank", style: "yellow" }
+      { label: "Banking — Maybank", style: "orange" }
     ]
   },
   {
     role: "QA Engineer",
-    period: "May 2023 – Feb 2026",
+    period: "May 2023 – Feb 2025",
     company: "Monster Group",
     description: {
       id: "Melakukan manual dan automation testing untuk berbagai proyek dan produk, termasuk mobile apps, web-based platforms, dan admin portals. Bertanggung jawab atas pembuatan test case, eksekusi pengujian, pelaporan bug, dan kolaborasi erat dengan tim developer, business analyst, dan project manager.",
@@ -66,7 +66,7 @@ const EXPERIENCES = [
     tags: [
       { label: "CI/CD Integration", style: "green" },
       { label: "Automation Scripts", style: "green" },
-      { label: "Banking — BRI", style: "orange" },
+      { label: "Banking — BRI", style: "blue" },
       { label: "NDS System", style: "purple" }
     ]
   },

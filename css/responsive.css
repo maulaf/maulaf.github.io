@@ -1,0 +1,103 @@
+/* ==========================================================================
+   responsive.css — semua media query.
+   Dimuat PALING AKHIR supaya override tidak tertimpa oleh file komponen.
+   Breakpoint: 1024px (tablet landscape), 900px (nav jadi hamburger),
+               768px (tablet), 600px (HP), 400px (HP kecil).
+   ========================================================================== */
+
+/* Tombol hamburger — hanya tampil di layar kecil */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Elemen yang bisa terlalu lebar di layar kecil */
+.contact-val, .info-val { overflow-wrap: anywhere; }
+.structure-tree, .pattern-box { overflow-x: auto; }
+
+@media (max-width: 1024px) {
+  .nav-links a { font-size: 0.75rem; }
+  .hero-grid { gap: 2.5rem; }
+}
+
+@media (max-width: 900px) {
+  .nav-toggle { display: flex; }
+
+  /* Nav links berubah jadi dropdown di bawah bar */
+  .nav-links {
+    display: none;
+    position: absolute; top: 60px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 30px var(--shadow-color);
+    padding: 0.5rem 5vw 1rem;
+  }
+  nav.menu-open .nav-links { display: flex; }
+  .nav-links a {
+    display: block;
+    padding: 0.8rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 70px 5vw; }
+  #hero { min-height: auto; padding-top: 100px; }
+  .hero-grid,
+  .summary-grid,
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-bio { max-width: none; }
+  .profile-card { width: 100%; max-width: 340px; }
+}
+
+@media (max-width: 600px) {
+  section { padding: 56px 4vw; }
+  .section-container { padding: 1.2rem; border-radius: 14px; }
+  .section-header { margin-bottom: 2rem; }
+  .hero-title { font-size: 1.8rem; }
+
+  .projects-grid,
+  .skills-grid,
+  .edu-grid,
+  .cert-grid { grid-template-columns: 1fr; }
+
+  .btn-group { flex-direction: column; }
+  .btn { width: 100%; text-align: center; }
+
+  /* Timeline lebih rapat */
+  .timeline { padding-left: 1.4rem; }
+  .timeline-dot { left: -1.95rem; }
+  .timeline-card { padding: 1.2rem; }
+  .timeline-card:hover { transform: none; }
+
+  .info-item, .contact-card { padding: 0.8rem 1rem; }
+  .contact-card:hover { transform: none; }
+  .project-card { padding: 1.4rem; }
+
+  /* Modal hampir full screen */
+  .modal-overlay { padding: 0.5rem; }
+  .modal { border-radius: 14px; max-height: 95vh; }
+  .modal-header { padding: 1.2rem 1.2rem 1rem; gap: 1rem; }
+  .modal-title { font-size: 1.15rem; }
+  .modal-body { padding: 1.2rem; }
+  .structure-tree, .pattern-box { padding: 1rem; font-size: 0.75rem; }
+}
+
+@media (max-width: 400px) {
+  nav { padding: 0 4vw; }
+  .nav-controls { gap: 0.5rem; }
+  .lang-btn { padding: 5px 10px; }
+  .stat-row { justify-content: space-between; }
+}

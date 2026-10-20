@@ -1,6 +1,7 @@
 /* ==========================================================================
    LanguageSwitcher.js
-   Mengatur toggle ID/EN. Preferensi disimpan di localStorage.
+   Mengatur toggle ID/EN. Pilihan tidak disimpan, jadi setiap halaman dibuka
+   selalu kembali ke bahasa default (I18n.DEFAULT_LANG).
    Pemanggil mendaftar via onLanguageChange(lang); hook hanya dipicu saat
    user mengubah bahasa (bukan saat init), supaya tidak terjadi double-render
    pada pertama kali page load.
@@ -10,8 +11,7 @@ class LanguageSwitcher {
   constructor() {
     this.idButton = document.getElementById('btn-id');
     this.enButton = document.getElementById('btn-en');
-    this.storageKey = 'portfolio-lang';
-    this.currentLang = this._readSavedLang() || I18n.DEFAULT_LANG;
+    this.currentLang = I18n.DEFAULT_LANG;
     this.onLanguageChange = null;
     this._bindButtons();
   }
@@ -19,7 +19,6 @@ class LanguageSwitcher {
   setLanguage(lang) {
     this.currentLang = lang;
     this.applyUiState();
-    this._saveLang(lang);
     if (this.onLanguageChange) this.onLanguageChange(lang);
   }
 
@@ -33,15 +32,5 @@ class LanguageSwitcher {
   _bindButtons() {
     this.idButton.addEventListener('click', () => this.setLanguage('id'));
     this.enButton.addEventListener('click', () => this.setLanguage('en'));
-  }
-
-  _readSavedLang() {
-    try { return localStorage.getItem(this.storageKey); }
-    catch (err) { return null; }
-  }
-
-  _saveLang(lang) {
-    try { localStorage.setItem(this.storageKey, lang); }
-    catch (err) { /* abaikan jika localStorage dibatasi */ }
   }
 }

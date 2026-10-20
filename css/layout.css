@@ -62,29 +62,5 @@ footer {
   font-family: var(--mono); font-size: 0.75rem; color: var(--muted);
 }
 
-/* ----- RESPONSIVE ----- */
-@media (max-width: 1024px) {
-  .nav-links a { font-size: 0.75rem; }
-}
-
-@media (max-width: 900px) {
-  .nav-links { display: none; }
-}
-
-@media (max-width: 768px) {
-  .hero-grid, .summary-grid, .contact-grid { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
-  .nav-links { display: none; }
-  section { padding: 70px 5vw; }
-}
-
-@media (max-width: 600px) {
-  .section-container { padding: 1.2rem; }
-  .hero-title { font-size: 1.8rem; }
-  .projects-grid,
-  .skills-grid,
-  .edu-grid,
-  .cert-grid { grid-template-columns: 1fr; }
-  .btn-group { flex-direction: column; }
-  .btn { width: 100%; text-align: center; }
-}
+/* Media query ada di css/responsive.css (dimuat paling akhir agar tidak
+   tertimpa oleh file komponen). */

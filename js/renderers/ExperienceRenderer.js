@@ -8,7 +8,7 @@ class ExperienceRenderer {
     this.sectionEl = document.getElementById('experience');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const items = EXPERIENCES.map(exp => `
       <div class="timeline-item">
         <div class="timeline-dot"></div>

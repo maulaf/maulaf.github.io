@@ -4,7 +4,7 @@
    ========================================================================== */
 
 class ProjectModalRenderer {
-  render(project, lang = 'id') {
+  render(project, lang = I18n.DEFAULT_LANG) {
     return `
       <div class="modal-section">
         <div class="modal-section-title">📋 ${I18n.t('modal_description', lang)}</div>
@@ -32,9 +32,9 @@ class ProjectModalRenderer {
             <tbody>${project.testCases.map(tc => `
               <tr>
                 <td><code style="color:var(--accent);font-size:0.75rem">${tc.id}</code></td>
-                <td>${tc.name}</td>
-                <td style="font-size:0.78rem">${tc.input}</td>
-                <td style="font-size:0.78rem">${tc.expected}</td>
+                <td>${I18n.pick(tc.name, lang)}</td>
+                <td style="font-size:0.78rem">${I18n.pick(tc.input, lang)}</td>
+                <td style="font-size:0.78rem">${I18n.pick(tc.expected, lang)}</td>
                 <td class="${tc.status}">${tc.status === 'pass' ? `✓ ${I18n.t('modal_pass', lang)}` : `✗ ${I18n.t('modal_fail', lang)}`}</td>
               </tr>
             `).join('')}</tbody>
@@ -43,7 +43,7 @@ class ProjectModalRenderer {
       </div>
       <div class="modal-section">
         <div class="modal-section-title">⚙️ ${I18n.t('modal_pattern', lang)}</div>
-        <div class="pattern-box">${project.pattern}</div>
+        <div class="pattern-box">${I18n.pick(project.pattern, lang)}</div>
       </div>
       ${this._renderRepoSection(project, lang)}
       <div class="modal-section">

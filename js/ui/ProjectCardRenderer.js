@@ -4,7 +4,7 @@
    ========================================================================== */
 
 class ProjectCardRenderer {
-  render(project, lang = 'id') {
+  render(project, lang = I18n.DEFAULT_LANG) {
     return `
       <div class="project-card" data-project-id="${project.id}">
         <div class="project-card-header">

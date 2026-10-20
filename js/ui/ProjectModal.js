@@ -11,7 +11,7 @@ class ProjectModal {
     this.titleEl = document.getElementById('modalTitle');
     this.subtitleEl = document.getElementById('modalSubtitle');
     this.bodyEl = document.getElementById('modalBody');
-    this.currentLang = 'id';
+    this.currentLang = I18n.DEFAULT_LANG;
     this.currentProject = null;
 
     this._bindDismissEvents();

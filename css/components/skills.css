@@ -2,7 +2,7 @@
    components/skills.css — skill bars + tool chips
    ========================================================================== */
 
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 1.5rem; }
 .skill-category {
   background: var(--bg); border: 1px solid var(--border);
   border-radius: 12px; padding: 1.5rem;

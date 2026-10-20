@@ -29,11 +29,11 @@ class Project {
     return Boolean(this.repoUrl);
   }
 
-  getShortDesc(lang = 'id') {
+  getShortDesc(lang = I18n.DEFAULT_LANG) {
     return this.shortDesc[lang] || this.shortDesc.id;
   }
 
-  getDescription(lang = 'id') {
+  getDescription(lang = I18n.DEFAULT_LANG) {
     return this.description[lang] || this.description.id;
   }
 }

@@ -8,7 +8,7 @@ class SummaryRenderer {
     this.sectionEl = document.getElementById('summary');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const paragraphs = SUMMARY_DATA.paragraphs
       .map(p => `<p>${I18n.pick(p, lang)}</p>`)
       .join('');

@@ -8,7 +8,7 @@ class FooterRenderer {
     this.footerEl = document.getElementById('siteFooter');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const year = new Date().getFullYear();
     const text = I18n.t('footer_text', lang).replace('{year}', year);
     this.footerEl.innerHTML = `<p>${text}</p>`;

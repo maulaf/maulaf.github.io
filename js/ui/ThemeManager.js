@@ -1,8 +1,7 @@
 /* ==========================================================================
    ThemeManager.js
    Default theme = light. User bisa toggle ke dark lewat tombol; pilihan
-   manual disimpan di localStorage sehingga diingat saat halaman dibuka
-   kembali.
+   tidak disimpan, jadi setiap halaman dibuka selalu kembali ke light.
    ========================================================================== */
 
 class ThemeManager {
@@ -11,24 +10,12 @@ class ThemeManager {
   constructor(toggleButtonId, htmlRootId) {
     this.toggleButton = document.getElementById(toggleButtonId);
     this.htmlRoot = document.getElementById(htmlRootId);
-    this.storageKey = 'portfolio-theme';
 
     this._bindToggle();
   }
 
   init() {
-    const theme = this._getSavedTheme() || ThemeManager.DEFAULT_THEME;
-    this._applyTheme(theme);
-  }
-
-  _getSavedTheme() {
-    try { return localStorage.getItem(this.storageKey); }
-    catch (err) { return null; }
-  }
-
-  _saveTheme(theme) {
-    try { localStorage.setItem(this.storageKey, theme); }
-    catch (err) { /* abaikan */ }
+    this._applyTheme(ThemeManager.DEFAULT_THEME);
   }
 
   _applyTheme(theme) {
@@ -45,7 +32,6 @@ class ThemeManager {
     this.toggleButton.addEventListener('click', () => {
       const nextTheme = this._currentTheme() === 'dark' ? 'light' : 'dark';
       this._applyTheme(nextTheme);
-      this._saveTheme(nextTheme);
     });
   }
 }

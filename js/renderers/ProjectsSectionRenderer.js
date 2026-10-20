@@ -9,7 +9,7 @@ class ProjectsSectionRenderer {
     this.sectionEl = document.getElementById('projects');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const filters = PROJECT_FILTERS.map((f, idx) => `
       <button class="filter-btn ${idx === 0 ? 'active' : ''}" data-filter="${f.value}">${I18n.t(f.labelKey, lang)}</button>
     `).join('');

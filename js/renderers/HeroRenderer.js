@@ -8,7 +8,7 @@ class HeroRenderer {
     this.sectionEl = document.getElementById('hero');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const p = PROFILE_DATA;
     this.sectionEl.innerHTML = `
       <div class="hero-grid">

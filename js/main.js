@@ -2,7 +2,7 @@
    main.js
    Orchestrator: menginisialisasi semua modul saat DOM siap.
    Alur:
-     1. ThemeManager terapkan tema tersimpan / preferensi sistem.
+     1. ThemeManager terapkan tema default (light).
      2. Setiap section di-render dari data array via Renderer-nya masing-masing.
      3. ProjectsController dilampirkan ke section #projects yang baru di-render.
      4. Animator (scroll fade, skill bar) menempel ke DOM final.
@@ -54,7 +54,7 @@ class PortfolioApp {
     // #projects baru saja di-render → ProjectsController perlu dibuat ulang
     // supaya mengambil referensi #projectsGrid dan tombol filter yang baru.
     this.projectsController = new ProjectsController(this.repository);
-    this.projectsController.gallery.setLanguage(lang);
+    this.projectsController.setLanguage(lang);
     this.projectsController.init();
     window.closeProjectModal = () => this.projectsController.closeModal();
 

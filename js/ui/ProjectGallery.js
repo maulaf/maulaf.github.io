@@ -10,7 +10,7 @@ class ProjectGallery {
     this.gridElement = document.getElementById(gridElementId);
     this.cardRenderer = cardRenderer;
     this.currentFilter = 'all';
-    this.currentLang = 'id';
+    this.currentLang = I18n.DEFAULT_LANG;
     this.onCardSelect = null;
 
     this._bindCardClicks();

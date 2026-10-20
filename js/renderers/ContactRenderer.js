@@ -8,7 +8,7 @@ class ContactRenderer {
     this.sectionEl = document.getElementById('contact');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const email = (CONTACTS.find(c => c.labelKey === 'contact_label_email') || {}).href || '#';
 
     const cards = CONTACTS.map(c => {

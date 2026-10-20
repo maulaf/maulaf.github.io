@@ -8,7 +8,7 @@ class CertificatesRenderer {
     this.sectionEl = document.getElementById('certificates');
   }
 
-  render(lang = 'id') {
+  render(lang = I18n.DEFAULT_LANG) {
     const cards = CERTIFICATES.map(cert => `
       <a href="${cert.url}" target="_blank" rel="noopener" class="cert-link">
         <div class="cert-card">
