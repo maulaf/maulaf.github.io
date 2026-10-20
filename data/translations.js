@@ -93,7 +93,7 @@ const TRANSLATIONS = {
     contact_label_linkedin: "LinkedIn",
 
     // Footer
-    footer_text: "© {year} Fetty Athiyatul Maula · Portofolio QA Engineer · Dibuat dengan ❤️ menggunakan HTML/CSS/JS"
+    footer_text: "© {year} Fetty Athiyatul Maula · Portofolio QA Engineer"
   },
 
   en: {
@@ -184,6 +184,6 @@ const TRANSLATIONS = {
     contact_label_linkedin: "LinkedIn",
 
     // Footer
-    footer_text: "© {year} Fetty Athiyatul Maula · QA Engineer Portfolio · Built with ❤️ using HTML/CSS/JS"
+    footer_text: "© {year} Fetty Athiyatul Maula · QA Engineer Portfolio"
   }
 };

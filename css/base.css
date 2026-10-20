@@ -15,7 +15,7 @@
   --text: #e8eaf2;
   --muted: #6b7280;
   --mono: 'Space Mono', monospace;
-  --sans: 'Syne', sans-serif;
+  --sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --nav-bg: rgba(11,13,17,0.85);
   --overlay-bg: rgba(0,0,0,0.85);
