@@ -6,8 +6,8 @@
 const SUMMARY_DATA = {
   paragraphs: [
     {
-      id: "Saya adalah QA Engineer dengan pengalaman lebih dari 4 tahun di industri perbankan, teknologi, dan keuangan. Saya terbiasa bekerja di lingkungan agile yang cepat, berkolaborasi lintas tim untuk menghasilkan produk berkualitas tinggi.",
-      en: "I am a QA Engineer with more than 4 years of experience in banking, technology, and financial industries. I am experienced working in fast-paced agile environments and collaborating across teams to deliver high-quality products."
+      id: "Saya adalah QA Engineer dengan pengalaman lebih dari 5 tahun di industri perbankan, teknologi, dan keuangan. Saya terbiasa bekerja di lingkungan agile yang cepat, berkolaborasi lintas tim untuk menghasilkan produk berkualitas tinggi.",
+      en: "I am a QA Engineer with more than 5 years of experience in banking, technology, and financial industries. I am experienced working in fast-paced agile environments and collaborating across teams to deliver high-quality products."
     },
     {
       id: "Keahlian saya mencakup <strong>manual testing</strong> (SIT, UAT, regression) hingga <strong>automation testing</strong> menggunakan Katalon Studio, Selenium, dan integrasi CI/CD. Saya juga berpengalaman dalam API testing menggunakan Swagger dan SQL untuk validasi data.",

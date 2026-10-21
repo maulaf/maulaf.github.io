@@ -14,8 +14,8 @@ const PROFILE_DATA = {
     en: "Quality Assurance Engineer"
   },
   bio: {
-    id: "4+ tahun pengalaman di software testing — manual, automation, mobile, web, dan API. Passionate dalam meningkatkan kualitas produk dan memastikan pengalaman terbaik bagi pengguna.",
-    en: "4+ years of experience in software testing — manual, automation, mobile, web, and API testing. Passionate about improving product quality and ensuring the best experience for users."
+    id: "5+ tahun pengalaman di software testing — manual, automation, mobile, web, dan API. Passionate dalam meningkatkan kualitas produk dan memastikan pengalaman terbaik bagi pengguna.",
+    en: "5+ years of experience in software testing — manual, automation, mobile, web, and API testing. Passionate about improving product quality and ensuring the best experience for users."
   },
   avatarImage: "assets/images/QA.jpg",  // foto profil; kosongkan untuk pakai emoji
   avatarEmoji: "👩‍💻",                         // fallback jika foto tidak ada / gagal dimuat
@@ -24,7 +24,7 @@ const PROFILE_DATA = {
     en: "QA Engineer · Tangerang Selatan, Indonesia"
   },
   stats: [
-    { num: "4+", labelKey: "stat_years" },
+    { num: "5+", labelKey: "stat_years" },
     { num: "5",  labelKey: "stat_companies" },
     { num: "3",  labelKey: "stat_certs" }
   ],

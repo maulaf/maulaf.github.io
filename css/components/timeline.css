@@ -2,24 +2,49 @@
    components/timeline.css — Experience timeline + tag chips
    ========================================================================== */
 
-.timeline { position: relative; padding-left: 2rem; }
-.timeline::before {
-  content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
-  width: 2px; background: linear-gradient(to bottom, var(--accent), transparent);
+/* Horizontal, scrollable timeline (newest on the left) */
+.timeline-wrap { position: relative; }
+.timeline {
+  display: flex; gap: 1.5rem;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-padding-inline: 0.25rem;
+  padding: 0 0.25rem 1.25rem;
+  scrollbar-width: thin; scrollbar-color: var(--accent) transparent;
 }
-.timeline-item { position: relative; margin-bottom: 3rem; }
+.timeline::-webkit-scrollbar { height: 6px; }
+.timeline::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+.timeline::-webkit-scrollbar-track { background: var(--surface2); border-radius: 3px; }
+.timeline-item {
+  position: relative; flex: 0 0 340px; padding-top: 2.2rem;
+  scroll-snap-align: start; display: flex;
+}
+/* Garis horizontal: tiap item menggambar segmennya sendiri agar ikut ter-scroll */
+.timeline-item::before {
+  content: ''; position: absolute; top: 6px; left: 0; right: -1.5rem;
+  height: 2px; background: var(--accent); opacity: 0.5;
+}
+.timeline-item:last-child::before { right: 0; background: linear-gradient(to right, var(--accent), transparent); }
 .timeline-dot {
-  position: absolute; left: -2.55rem; top: 6px;
+  position: absolute; left: 0; top: 0;
   width: 14px; height: 14px; border-radius: 50%;
   background: var(--accent); border: 3px solid var(--bg);
   z-index: 1;
 }
 .timeline-card {
+  flex: 1; display: flex; flex-direction: column;
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 12px; padding: 1.5rem 1.8rem;
   transition: border-color .2s, transform .2s;
 }
-.timeline-card:hover { border-color: var(--accent); transform: translateX(4px); }
+.timeline-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.timeline-nav { display: flex; justify-content: flex-end; gap: 0.5rem; margin-bottom: 1rem; }
+.timeline-nav button {
+  width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border); color: var(--text);
+  font-size: 1rem; transition: border-color .2s, color .2s, opacity .2s;
+}
+.timeline-nav button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.timeline-nav button:disabled { opacity: 0.35; cursor: default; }
 .timeline-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem; }
 .timeline-role { font-size: 1rem; font-weight: 700; }
 .timeline-period {
@@ -29,7 +54,6 @@
 }
 .timeline-company { font-size: 0.85rem; color: var(--accent2); margin-bottom: 0.8rem; font-weight: 600; }
 .timeline-desc { color: var(--muted); font-size: 0.88rem; }
-.timeline-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
 
 /* Tag chips (shared with project cards) */
 .tag {
