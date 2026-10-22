@@ -16,3 +16,5 @@
   font-size: 0.85rem;
   line-height: 1.8;
 }
+.edu-gpa { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+.edu-gpa strong { color: var(--accent); }

@@ -13,7 +13,6 @@ class HeroRenderer {
     this.sectionEl.innerHTML = `
       <div class="hero-grid">
         <div>
-          <div class="hero-label">${I18n.t('hero_label', lang)}</div>
           <h1 class="hero-title">${p.name.first} <span>${p.name.last}</span></h1>
           <div class="hero-role">${I18n.pick(p.role, lang)}</div>
           <p class="hero-bio">${I18n.pick(p.bio, lang)}</p>

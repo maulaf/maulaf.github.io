@@ -25,7 +25,7 @@ class SummaryRenderer {
 
     this.sectionEl.innerHTML = `
       <div class="section-inner section-container">
-        ${SectionHeaderRenderer.render({ tagKey: 'section_about_tag', titleKey: 'section_about_title', lang })}
+        ${SectionHeaderRenderer.render({ titleKey: 'section_about_title', lang })}
         <div class="summary-grid fade-in">
           <div class="summary-text">${paragraphs}</div>
           <div class="info-list">${infoList}</div>

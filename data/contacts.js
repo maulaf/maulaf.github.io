@@ -14,7 +14,7 @@ const CONTACTS = [
   {
     icon: "📱",
     labelKey: "contact_label_phone",
-    value: "+62 85156392506",
+    value: "+62 851-5639-2506",
     href: "tel:+6285156392506",
     external: false
   },

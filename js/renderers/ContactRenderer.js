@@ -26,7 +26,7 @@ class ContactRenderer {
 
     this.sectionEl.innerHTML = `
       <div class="section-inner section-container">
-        ${SectionHeaderRenderer.render({ tagKey: 'section_contact_tag', titleKey: 'section_contact_title', lang })}
+        ${SectionHeaderRenderer.render({ titleKey: 'section_contact_title', lang })}
         <div class="contact-grid fade-in">
           <div class="contact-cta">
             <h3>${I18n.t('contact_heading', lang)}</h3>

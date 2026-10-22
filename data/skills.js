@@ -43,22 +43,25 @@ const SKILL_CATEGORIES = [
 // icon: emoji fallback jika logo kosong / gagal dimuat.
 const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons";
 
+// Urutan = relevansi (paling relevan di atas); hanya TOOLS_VISIBLE pertama yang tampil awal.
+const TOOLS_VISIBLE = 10;
+
 const TOOLS = [
   { icon: "⚡", name: "Katalon Studio",    logo: "" },
   { icon: "🟠", name: "Selenium",          logo: `${DEVICON}/selenium/selenium-original.svg` },
-  { icon: "🥒", name: "Cucumber (BDD)",    logo: `${DEVICON}/cucumber/cucumber-plain.svg` },
   { icon: "📱", name: "Appium",            logo: "https://cdn.simpleicons.org/appium" },
-  { icon: "🤖", name: "Android Studio",    logo: `${DEVICON}/androidstudio/androidstudio-original.svg` },
-  { icon: "🌐", name: "Chrome DevTools",   logo: `${DEVICON}/chrome/chrome-original.svg` },
-  { icon: "⭐", name: "Groovy",            logo: `${DEVICON}/groovy/groovy-original.svg` },
-  { icon: "🐙", name: "Git / GitHub",      logo: [`${DEVICON}/git/git-original.svg`, "https://cdn.simpleicons.org/github/8b949e"] },
-  { icon: "☁️", name: "Azure DevOps",      logo: `${DEVICON}/azuredevops/azuredevops-original.svg` },
-  { icon: "🐛", name: "Jira",              logo: `${DEVICON}/jira/jira-original.svg` },
-  { icon: "📅", name: "Monday.com",        logo: "" },
+  { icon: "🥒", name: "Cucumber (BDD)",    logo: `${DEVICON}/cucumber/cucumber-plain.svg` },
   { icon: "🔌", name: "Swagger / Postman", logo: [`${DEVICON}/swagger/swagger-original.svg`, `${DEVICON}/postman/postman-original.svg`] },
   { icon: "🗄️", name: "SQL",               logo: `${DEVICON}/azuresqldatabase/azuresqldatabase-original.svg` },
+  { icon: "🐛", name: "Jira",              logo: `${DEVICON}/jira/jira-original.svg` },
+  { icon: "☁️", name: "Azure DevOps",      logo: `${DEVICON}/azuredevops/azuredevops-original.svg` },
+  { icon: "🐙", name: "Git / GitHub",      logo: [`${DEVICON}/git/git-original.svg`, "https://cdn.simpleicons.org/github/8b949e"] },
+  { icon: "🌐", name: "Chrome DevTools",   logo: `${DEVICON}/chrome/chrome-original.svg` },
+  { icon: "🤖", name: "Android Studio",    logo: `${DEVICON}/androidstudio/androidstudio-original.svg` },
+  { icon: "⭐", name: "Groovy",            logo: `${DEVICON}/groovy/groovy-original.svg` },
+  { icon: "💻", name: "Visual Studio",     logo: `${DEVICON}/visualstudio/visualstudio-original.svg` },
+  { icon: "📅", name: "Monday.com",        logo: "" },
   { icon: "📝", name: "Notion",            logo: `${DEVICON}/notion/notion-original.svg` },
   { icon: "📄", name: "Google Docs",       logo: "https://cdn.simpleicons.org/googledocs" },
-  { icon: "📊", name: "Google Sheets",     logo: "https://cdn.simpleicons.org/googlesheets" },
-  { icon: "💻", name: "Visual Studio",     logo: `${DEVICON}/visualstudio/visualstudio-original.svg` }
+  { icon: "📊", name: "Google Sheets",     logo: "https://cdn.simpleicons.org/googlesheets" }
 ];

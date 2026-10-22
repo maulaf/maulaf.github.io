@@ -9,8 +9,8 @@ const EXPERIENCES = [
     period: "Feb 2026 – Present",
     company: "PT Higo Fitur Indonesia",
     description: {
-      id: "Melakukan pengujian end-to-end meliputi functional testing, integration testing, exploratory testing, dan regression testing untuk memastikan kualitas dan stabilitas sistem. Bertanggung jawab dalam menemukan defect, memvalidasi perbaikan bug, serta memastikan pengalaman pengguna berjalan dengan lancar di seluruh modul, sambil berkolaborasi dengan tim lintas fungsi untuk mendukung delivery produk yang andal.",
-      en: "Perform end-to-end testing including functional, integration, exploratory, and regression testing to ensure system quality and stability. Responsible for identifying defects, validating bug fixes, and ensuring seamless user experience across modules while collaborating with cross-functional teams to support reliable product delivery."
+      id: "Menangani beberapa proyek sekaligus dengan melakukan pengujian end-to-end meliputi functional testing, integration testing, exploratory testing, dan regression testing untuk memastikan kualitas dan stabilitas sistem. Bertanggung jawab dalam menemukan defect, memvalidasi perbaikan bug, serta memastikan pengalaman pengguna berjalan dengan lancar di seluruh modul, sambil berkolaborasi dengan developer dan project manager untuk mendukung delivery produk yang andal.",
+      en: "Handle multiple projects, performing end-to-end testing, including functional, integration, exploratory, and regression testing, to ensure system quality and stability. Responsible for identifying defects, validating bug fixes, and ensuring a seamless user experience across modules while collaborating with developers and project managers to support reliable product delivery."
     }
   },
   {
@@ -18,8 +18,8 @@ const EXPERIENCES = [
     period: "Jan 2025 – Jan 2026",
     company: "Ikonsultan · Placement at Maybank Indonesia",
     description: {
-      id: "Melakukan manual dan automation testing untuk sales digital tools Maybank, termasuk mobile apps, web-based platforms, dan admin portals. Bertanggung jawab atas pembuatan test case, eksekusi pengujian, pelaporan bug, dan kolaborasi erat dengan tim developer dan business analyst.",
-      en: "Performed manual and automation testing for Maybank sales digital tools, including mobile apps, web-based platforms, and admin portals. Responsible for creating test cases, executing tests, bug reporting, and collaborating closely with developers and business analysts."
+      id: "Menguji sales digital tools Maybank Indonesia di mobile app, platform web, dan admin portal, baik secara manual maupun automation. Menyusun test case berdasarkan kebutuhan bisnis, mengeksekusi pengujian, serta bekerja erat dengan developer dan business analyst untuk menyamakan pemahaman requirement dan memastikan setiap isu terselesaikan.",
+      en: "Tested Maybank Indonesia's sales digital tools across the mobile app, web platform, and admin portal using both manual and automation testing. Designed test cases based on business requirements, executed tests, and worked closely with developers and business analysts to align on requirements and see every issue through to resolution."
     }
   },
   {
@@ -27,8 +27,8 @@ const EXPERIENCES = [
     period: "May 2023 – Feb 2025",
     company: "Monster Group",
     description: {
-      id: "Melakukan manual dan automation testing untuk berbagai proyek dan produk, termasuk mobile apps, web-based platforms, dan admin portals. Bertanggung jawab atas pembuatan test case, eksekusi pengujian, pelaporan bug, dan kolaborasi erat dengan tim developer, business analyst, dan project manager.",
-      en: "Performed manual and automation testing for various projects and products, including mobile apps, web-based platforms, and admin portals. Responsible for creating test cases, executing tests, reporting bugs, and collaborating closely with developers, business analysts, and project manager."
+      id: "Melakukan manual dan automation testing untuk berbagai proyek dan produk, termasuk aplikasi mobile, platform web, dan admin portal. Bertanggung jawab atas pembuatan test case, eksekusi pengujian, pelaporan bug, dan kolaborasi erat dengan tim developer, business analyst, dan project manager.",
+      en: "Performed manual and automation testing for various projects and products, including mobile apps, web-based platforms, and admin portals. Responsible for creating test cases, executing tests, reporting bugs, and collaborating closely with developers, business analysts, and project managers."
     }
   },
   {
@@ -36,8 +36,8 @@ const EXPERIENCES = [
     period: "May 2022 – May 2023",
     company: "Sharing Vision · Placement at Bank Rakyat Indonesia (BRI)",
     description: {
-      id: "Mengotomatiskan pengujian untuk New Delivery System (NDS) yang digunakan di seluruh cabang BRI untuk melayani nasabah. Membuat automation scripts untuk fitur general, finansial, dan non-finansial, serta mengintegrasikannya ke dalam CI/CD pipeline.",
-      en: "Automated testing for the New Delivery System (NDS) used across all BRI branches to serve customers. Created automation scripts for general, financial, and non-financial features and integrated them into the CI/CD pipeline."
+      id: "Membangun automation testing untuk New Delivery System (NDS), sistem layanan nasabah yang digunakan di seluruh cabang BRI. Membuat automation script untuk fitur general, finansial, dan non-finansial, lalu mengintegrasikannya ke dalam CI/CD pipeline.",
+      en: "Built test automation for the New Delivery System (NDS), the customer service system used across all BRI branches. Created automation scripts for general, financial, and non-financial features and integrated them into the CI/CD pipeline."
     }
   },
   {
@@ -45,8 +45,8 @@ const EXPERIENCES = [
     period: "May 2021 – May 2022",
     company: "Persada · Placement at Astra Credit Companies",
     description: {
-      id: "Melakukan manual testing (SIT dan UAT) dengan fokus pada sistem AOL, aplikasi desktop untuk proses bisnis di Astra Credit Companies, termasuk pembayaran kendaraan baru dan bekas. Mengembangkan dokumentasi user manual untuk panduan pengguna.",
-      en: "Conducted manual testing (SIT and UAT) focused on the AOL system, a desktop application for business processes at Astra Credit Companies, including new and used vehicle payments. Developed user manual documentation for users."
+      id: "Melakukan manual testing (SIT dan UAT) untuk AOL, aplikasi desktop yang menjalankan proses bisnis Astra Credit Companies, termasuk pembayaran kendaraan baru dan bekas. Menyusun dokumentasi user manual sebagai panduan pengguna.",
+      en: "Performed manual testing (SIT and UAT) for AOL, the desktop application that runs Astra Credit Companies' business processes, including new and used vehicle payments. Wrote user manuals to guide end users."
     }
   },
   {
@@ -54,8 +54,8 @@ const EXPERIENCES = [
     period: "Oct 2019 – May 2020",
     company: "Primalogic Global Teknologi",
     description: {
-      id: "Menulis dan memelihara aplikasi asuransi menggunakan C# dan Visual Studio. Bertanggung jawab atas perbaikan bugs dan pengerjaan minor change requests.",
-      en: "Developed and maintained insurance applications using C# and Visual Studio. Responsible for bug fixing and handling minor change requests."
+      id: "Mengembangkan dan memelihara aplikasi asuransi menggunakan C# dan Visual Studio, termasuk perbaikan bug dan pengerjaan minor change request.",
+      en: "Developed and maintained insurance applications using C# and Visual Studio, including bug fixes and minor change requests."
     }
   }
 ];

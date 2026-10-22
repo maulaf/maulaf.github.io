@@ -26,20 +26,34 @@ class SkillsRenderer {
       </div>
     `).join('');
 
-    const tools = TOOLS.map(tool => `
-      <div class="tool-chip"><span class="tool-icon">${this.renderToolIcon(tool)}</span> ${tool.name}</div>
+    const tools = TOOLS.map((tool, i) => `
+      <div class="tool-chip${i >= TOOLS_VISIBLE ? ' tool-chip--extra' : ''}"><span class="tool-icon">${this.renderToolIcon(tool)}</span> ${tool.name}</div>
     `).join('');
+    const hasMore = TOOLS.length > TOOLS_VISIBLE;
 
     this.sectionEl.innerHTML = `
       <div class="section-inner section-container">
-        ${SectionHeaderRenderer.render({ tagKey: 'section_skills_tag', titleKey: 'section_skills_title', lang })}
+        ${SectionHeaderRenderer.render({ titleKey: 'section_skills_title', lang })}
         <div class="skills-grid fade-in">${categories}</div>
         <div style="margin-top: 3rem;">
           <div class="section-tag" style="margin-bottom: 1.2rem;">${I18n.t('skills_tools_tag', lang)}</div>
           <div class="tools-grid">${tools}</div>
+          ${hasMore ? `<button type="button" class="tools-toggle">${I18n.t('skills_show_more', lang)}</button>` : ''}
         </div>
       </div>
     `;
+
+    if (hasMore) this.bindToolsToggle(lang);
+  }
+
+  // Tampilkan / sembunyikan tools di luar TOOLS_VISIBLE.
+  bindToolsToggle(lang) {
+    const grid = this.sectionEl.querySelector('.tools-grid');
+    const btn = this.sectionEl.querySelector('.tools-toggle');
+    btn.addEventListener('click', () => {
+      const expanded = grid.classList.toggle('is-expanded');
+      btn.textContent = I18n.t(expanded ? 'skills_show_less' : 'skills_show_more', lang);
+    });
   }
 
   // Logo tool (satu atau beberapa); fallback ke emoji jika kosong atau gagal dimuat.

@@ -25,7 +25,7 @@ class ExperienceRenderer {
 
     this.sectionEl.innerHTML = `
       <div class="section-inner section-container">
-        ${SectionHeaderRenderer.render({ tagKey: 'section_experience_tag', titleKey: 'section_experience_title', lang })}
+        ${SectionHeaderRenderer.render({ titleKey: 'section_experience_title', lang })}
         <div class="timeline-wrap fade-in">
           <div class="timeline-nav">
             <button type="button" class="timeline-prev" aria-label="${lang === 'en' ? 'Previous' : 'Sebelumnya'}">←</button>

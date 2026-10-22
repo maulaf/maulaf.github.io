@@ -16,7 +16,7 @@ class ProjectsSectionRenderer {
 
     this.sectionEl.innerHTML = `
       <div class="section-inner section-container">
-        ${SectionHeaderRenderer.render({ tagKey: 'section_projects_tag', titleKey: 'section_projects_title', lang })}
+        ${SectionHeaderRenderer.render({ titleKey: 'section_projects_title', lang })}
         <div class="project-filters fade-in">${filters}</div>
         <div class="projects-grid fade-in" id="projectsGrid"></div>
       </div>

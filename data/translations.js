@@ -16,26 +16,18 @@ const TRANSLATIONS = {
     nav_contact: "Kontak",
 
     // Section tags & titles
-    section_about_tag: "// 01. Tentang",
     section_about_title: "Ringkasan",
-    section_experience_tag: "// 02. Perjalanan",
     section_experience_title: "Pengalaman Kerja",
-    section_skills_tag: "// 03. Keahlian",
     section_skills_title: "Keahlian & Kompetensi",
-    section_education_tag: "// 04. Pendidikan",
     section_education_title: "Pendidikan",
-    section_certificates_tag: "// 05. Sertifikat",
     section_certificates_title: "Sertifikat",
-    section_projects_tag: "// 06. Proyek",
     section_projects_title: "Proyek",
-    section_contact_tag: "// 07. Kontak",
     section_contact_title: "Mari Terhubung",
 
     // Hero
-    hero_label: "// Portofolio QA Engineer",
     hero_cta_projects: "Lihat Proyek →",
     hero_cta_contact: "Hubungi Saya",
-    hero_badge: "Terbuka untuk Kerja",
+    hero_badge: "Terbuka untuk Peluang Baru",
     stat_years: "Tahun Pengalaman",
     stat_companies: "Perusahaan",
     stat_certs: "Sertifikat",
@@ -46,6 +38,7 @@ const TRANSLATIONS = {
     info_phone: "Telepon",
     info_specialization: "Spesialisasi",
     info_domain: "Bidang",
+    info_platform: "Platform",
 
     // Skills category titles
     skills_tools_tag: "🛠️ Tools & Teknologi",
@@ -55,6 +48,12 @@ const TRANSLATIONS = {
 
     // Education
     education_relevant: "Mata Kuliah Relevan:",
+    education_gpa: "IPK",
+    skills_show_more: "Tampilkan Lebih Banyak",
+    skills_show_less: "Tampilkan Lebih Sedikit",
+
+    // Certificates
+    cert_view_credential: "Lihat Kredensial →",
 
     // Projects
     projects_filter_all: "Semua",
@@ -107,26 +106,18 @@ const TRANSLATIONS = {
     nav_contact: "Contact",
 
     // Section tags & titles
-    section_about_tag: "// 01. About",
     section_about_title: "Summary",
-    section_experience_tag: "// 02. Journey",
     section_experience_title: "Work Experience",
-    section_skills_tag: "// 03. Skills",
     section_skills_title: "Skills & Expertise",
-    section_education_tag: "// 04. Education",
     section_education_title: "Education",
-    section_certificates_tag: "// 05. Certificates",
     section_certificates_title: "Certificates",
-    section_projects_tag: "// 06. Projects",
     section_projects_title: "Projects",
-    section_contact_tag: "// 07. Contact",
     section_contact_title: "Let’s Connect",
 
     // Hero
-    hero_label: "// QA Engineer Portfolio",
     hero_cta_projects: "View Projects →",
     hero_cta_contact: "Contact Me",
-    hero_badge: "Open to Work",
+    hero_badge: "Open to New Opportunities",
     stat_years: "Years Exp",
     stat_companies: "Companies",
     stat_certs: "Certs",
@@ -137,6 +128,7 @@ const TRANSLATIONS = {
     info_phone: "Phone",
     info_specialization: "Specialization",
     info_domain: "Domain",
+    info_platform: "Platform",
 
     // Skills category titles
     skills_tools_tag: "🛠️ Tools & Technologies",
@@ -146,6 +138,12 @@ const TRANSLATIONS = {
 
     // Education
     education_relevant: "Relevant Coursework:",
+    education_gpa: "GPA",
+    skills_show_more: "Show More",
+    skills_show_less: "Show Less",
+
+    // Certificates
+    cert_view_credential: "View Credential →",
 
     // Projects
     projects_filter_all: "All",
