@@ -14,43 +14,99 @@ class ProjectModalRenderer {
         <div class="modal-section-title">⚡ ${I18n.t('modal_tech_stack', lang)}</div>
         <div class="tech-stack">${project.techStack.map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
       </div>
-      <div class="modal-section">
-        <div class="modal-section-title">📁 ${I18n.t('modal_structure', lang)}</div>
-        <div class="structure-tree">${project.projectStructure}</div>
-      </div>
-      <div class="modal-section">
+      ${project.coverage.length ? `<div class="modal-section">
+        <div class="modal-section-title">📊 ${I18n.t('modal_coverage', lang)}</div>
+        ${this._renderCoverage(project.coverage, lang)}
+      </div>` : ''}
+      ${project.testCases.length ? `<div class="modal-section">
         <div class="modal-section-title">🧪 ${I18n.t('modal_test_cases', lang)}</div>
-        <div style="overflow-x:auto">
+        <div class="tc-table-wrap">
           <table class="tc-table">
             <thead><tr>
               <th>ID</th>
               <th>${I18n.t('modal_test_case', lang)}</th>
               <th>${I18n.t('modal_input', lang)}</th>
               <th>${I18n.t('modal_expected', lang)}</th>
-              <th>${I18n.t('modal_status', lang)}</th>
             </tr></thead>
             <tbody>${project.testCases.map(tc => `
               <tr>
-                <td><code style="color:var(--accent);font-size:0.75rem">${tc.id}</code></td>
+                <td><code class="tc-id">${tc.id}</code></td>
                 <td>${I18n.pick(tc.name, lang)}</td>
-                <td style="font-size:0.78rem">${I18n.pick(tc.input, lang)}</td>
-                <td style="font-size:0.78rem">${I18n.pick(tc.expected, lang)}</td>
-                <td class="${tc.status}">${tc.status === 'pass' ? `✓ ${I18n.t('modal_pass', lang)}` : `✗ ${I18n.t('modal_fail', lang)}`}</td>
+                <td class="tc-detail">${I18n.pick(tc.input, lang)}</td>
+                <td class="tc-detail">${I18n.pick(tc.expected, lang)}</td>
               </tr>
             `).join('')}</tbody>
           </table>
         </div>
-      </div>
+      </div>` : ''}
       <div class="modal-section">
-        <div class="modal-section-title">⚙️ ${I18n.t('modal_pattern', lang)}</div>
-        <div class="pattern-box">${I18n.pick(project.pattern, lang)}</div>
+        <div class="modal-section-title">⚙️ ${I18n.t('modal_approach', lang)}</div>
+        ${this._renderApproach(project.approach, lang)}
       </div>
       ${this._renderRepoSection(project, lang)}
       <div class="modal-section">
         <div class="modal-section-title">🏷️ ${I18n.t('modal_tags', lang)}</div>
-        <div style="display:flex;flex-wrap:wrap;gap:0.4rem">${project.tags.map(tag => `<span class="tag ${tag.style}">${tag.label}</span>`).join('')}</div>
+        <div class="modal-tags">${project.tags.map(tag => `<span class="tag ${tag.style}">${tag.label}</span>`).join('')}</div>
       </div>
     `;
+  }
+
+  /* coverage = [{ module, count, scope }] — jumlah test case per modul di repo. */
+  _renderCoverage(coverage, lang) {
+    const total = coverage.reduce((sum, c) => sum + c.count, 0);
+    return `
+      <div class="tc-table-wrap">
+        <table class="tc-table">
+          <thead><tr>
+            <th>${I18n.t('modal_module', lang)}</th>
+            <th>${I18n.t('modal_count', lang)}</th>
+            <th>${I18n.t('modal_scope', lang)}</th>
+          </tr></thead>
+          <tbody>${coverage.map(c => `
+            <tr>
+              <td>${I18n.pick(c.module, lang)}</td>
+              <td class="coverage-count">${c.count}</td>
+              <td class="tc-detail">${I18n.pick(c.scope, lang)}</td>
+            </tr>
+          `).join('')}</tbody>
+          ${coverage.length > 1 ? `<tfoot><tr>
+            <td>${I18n.t('modal_total', lang)}</td>
+            <td class="coverage-count">${total}</td>
+            <td></td>
+          </tr></tfoot>` : ''}
+        </table>
+      </div>
+    `;
+  }
+
+  /* approach = { name?, steps?: [], code?: [{label, content}], notes?: [{title, items: []}] }
+     Setiap teks boleh berupa string atau { id, en }. */
+  _renderApproach(approach, lang) {
+    const steps = approach.steps || [];
+    const code = approach.code || [];
+    const notes = approach.notes || [];
+    return `
+      <div class="approach-box">
+        ${approach.name ? `<div class="approach-name">${I18n.pick(approach.name, lang)}</div>` : ''}
+        ${steps.length ? `<ol class="approach-steps">${steps.map(s => `<li>${I18n.pick(s, lang)}</li>`).join('')}</ol>` : ''}
+        ${notes.map(n => `
+          <div class="approach-note">
+            <div class="approach-label">${I18n.pick(n.title, lang)}</div>
+            <ul class="approach-list">${n.items.map(i => `<li>${I18n.pick(i, lang)}</li>`).join('')}</ul>
+          </div>
+        `).join('')}
+        ${code.map(c => `
+          <div class="approach-code">
+            <div class="approach-label">${I18n.pick(c.label, lang)}</div>
+            <pre>${this._escape(I18n.pick(c.content, lang))}</pre>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  _escape(text) {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
   _renderRepoSection(project, lang) {

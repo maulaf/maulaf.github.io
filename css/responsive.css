@@ -22,7 +22,7 @@
 
 /* Elemen yang bisa terlalu lebar di layar kecil */
 .contact-val, .info-val { overflow-wrap: anywhere; }
-.structure-tree, .pattern-box { overflow-x: auto; }
+.approach-box { overflow-x: auto; }
 
 @media (max-width: 1024px) {
   .nav-links a { font-size: 0.75rem; }
@@ -91,7 +91,7 @@
   .modal-header { padding: 1.2rem 1.2rem 1rem; gap: 1rem; }
   .modal-title { font-size: 1.15rem; }
   .modal-body { padding: 1.2rem; }
-  .structure-tree, .pattern-box { padding: 1rem; font-size: 0.75rem; }
+  .approach-box { padding: 1rem; font-size: 0.75rem; }
 }
 
 @media (max-width: 400px) {

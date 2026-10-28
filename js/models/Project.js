@@ -12,13 +12,13 @@ class Project {
     this.icon = record.icon;
     this.repoUrl = record.repoUrl;
     this.type = record.type;
-    this.tags = record.tags;
+    this.tags = record.tags.map(label => ({ label, style: TAG_STYLES[label] || 'green' }));
     this.shortDesc = record.shortDesc;
     this.description = record.description;
     this.techStack = record.techStack;
-    this.projectStructure = record.projectStructure;
-    this.testCases = record.testCases;
-    this.pattern = record.pattern;
+    this.coverage = record.coverage || [];
+    this.testCases = record.testCases || [];
+    this.approach = record.approach;
   }
 
   hasType(filterType) {
@@ -27,6 +27,10 @@ class Project {
 
   hasRepo() {
     return Boolean(this.repoUrl);
+  }
+
+  getSubtitle(lang = I18n.DEFAULT_LANG) {
+    return I18n.pick(this.subtitle, lang);
   }
 
   getShortDesc(lang = I18n.DEFAULT_LANG) {

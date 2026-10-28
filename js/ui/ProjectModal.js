@@ -43,7 +43,7 @@ class ProjectModal {
   _renderContent() {
     const project = this.currentProject;
     this.titleEl.textContent = project.name;
-    this.subtitleEl.textContent = project.subtitle;
+    this.subtitleEl.textContent = project.getSubtitle(this.currentLang);
     this.bodyEl.innerHTML = this.modalRenderer.render(project, this.currentLang);
   }
 

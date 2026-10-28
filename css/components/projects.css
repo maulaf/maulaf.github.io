@@ -30,7 +30,7 @@
 .project-card:hover::before { transform: scaleX(1); }
 .project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 20px 50px var(--shadow-color); }
 .project-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; }
-.project-type-icon { font-size: 1.5rem; }
+.project-type-icon { font-size: 1.8rem; }
 .project-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
 .project-desc { font-size: 0.84rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
 .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
