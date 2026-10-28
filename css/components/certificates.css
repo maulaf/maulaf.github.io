@@ -14,6 +14,7 @@
 .cert-icon { font-size: 1.6rem; flex-shrink: 0; }
 .cert-name { font-size: 0.88rem; font-weight: 700; }
 .cert-issuer { font-size: 0.75rem; color: var(--muted); font-family: var(--mono); }
+.cert-meta { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
 .cert-btn {
   margin-top: auto; align-self: flex-end;
   font-family: var(--mono); font-size: 0.72rem; color: var(--muted);

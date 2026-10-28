@@ -1,17 +1,20 @@
 /* ==========================================================================
    projects.js
    ✏️  DATA PROJECTS — edit di sini untuk menambah/ubah project.
-   Setiap project WAJIB punya `id` unik dan `repoUrl`.
+   Setiap project WAJIB punya `id` unik. `repoUrl` boleh kosong (mis. proyek
+   perusahaan yang kodenya tidak publik) — tombol repo otomatis disembunyikan.
 
    Prinsip isi: semua yang ditulis di sini HARUS bisa dicek di repo.
    Jangan menulis modul, teknik, atau tool yang tidak ada di repo.
+   Proyek perusahaan (tag Company): tulis hanya yang benar-benar dikerjakan,
+   tanpa data rahasia klien; angka/tools ditambahkan bila sudah dikonfirmasi.
 
    Konvensi agar semua modal detail seragam:
    - tags      : urutan Jenis → Metode → Platform; warna otomatis dari TAG_STYLES.
    - techStack : urutan Tool → Framework/Library → Bahasa → Platform → Build → Git.
                  Hanya tools/teknologi, bukan metodologi (BDD, Mobile Testing).
-   - coverage  : [{ module, count, scope }] — jumlah test case per modul di repo.
-   - testCases : 4–5 sampel dari repo (campur positive & negative).
+   - coverage  : [{ module, count, scope }] — jumlah test case per modul di repo (opsional).
+   - testCases : 4–5 sampel dari repo, campur positive & negative (opsional).
                  `id` = ID/nama asli di repo. `name` & `expected` selalu { id, en };
                  `input` boleh string bila murni teknis (endpoint, kredensial).
    - approach  : teknik yang benar-benar dipakai, bukan tutorial umum.
@@ -28,7 +31,8 @@ const TAG_STYLES = {
   BDD: "green",
   Web: "purple",
   API: "purple",
-  Mobile: "purple"
+  Mobile: "purple",
+  Desktop: "purple"
 };
 
 const PROJECT_RECORDS = [
@@ -384,7 +388,7 @@ def sampleBeforeTestCase(TestCaseContext testCaseContext) {
   },
   {
     id: 5,
-    name: "Template Test Case & Dokumentasi QA",
+    name: "QA Test Case & Documentation Template",
     subtitle: { id: "Manual Testing · Dokumentasi QA · CMS Login & Logout", en: "Manual Testing · QA Documentation · CMS Login & Logout" },
     icon: "📝",
     repoUrl: "https://docs.google.com/spreadsheets/d/1ti-W6N4cHmFuzOGHcpuczSbHgsDhGAPZXv86eDGMbFA",
@@ -416,6 +420,124 @@ def sampleBeforeTestCase(TestCaseContext testCaseContext) {
             { id: "Equivalence Partitioning: variasi huruf email, format email valid/tidak valid, karakter spesial yang tidak diizinkan", en: "Equivalence Partitioning: email casing, valid/invalid email formats, disallowed special characters" },
             { id: "State-based: akun banned, suspend, inactive, dihapus — sebelum dan sesudah diaktifkan kembali, serta kata sandi lama/baru setelah reset", en: "State-based: banned, suspended, inactive, and deleted accounts — before and after reactivation, plus old/new password after a reset" },
             { id: "Kondisi error lingkungan: tanpa koneksi internet dan server down", en: "Environment errors: no internet connection and server down" }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 6,
+    name: "BRI New Delivery System (NDS)",
+    subtitle: { id: "Test Automation · Perbankan · Bank Rakyat Indonesia", en: "Test Automation · Banking · Bank Rakyat Indonesia" },
+    icon: "🏦",
+    repoUrl: "",
+    type: ["automation", "company"],
+    tags: ["Company", "Automation"],
+    shortDesc: {
+      id: "Membangun test automation untuk sistem layanan nasabah yang dipakai di seluruh cabang BRI, terintegrasi ke CI/CD pipeline.",
+      en: "Built test automation for the customer service system used across all BRI branches, integrated into the CI/CD pipeline."
+    },
+    description: {
+      id: `
+        New Delivery System (NDS) adalah sistem layanan nasabah yang digunakan di seluruh cabang Bank Rakyat Indonesia.
+        Sebagai QA Automation (Sharing Vision, Mei 2022 – Mei 2023), saya membuat automation script
+        untuk fitur general, finansial, dan non-finansial, lalu mengintegrasikannya ke dalam CI/CD pipeline
+        agar pengujian berjalan otomatis di setiap rilis.
+      `,
+      en: `
+        New Delivery System (NDS) is the customer service system used across all Bank Rakyat Indonesia branches.
+        As a QA Automation engineer (Sharing Vision, May 2022 – May 2023), I built automation scripts
+        for general, financial, and non-financial features, then integrated them into the CI/CD pipeline
+        so tests run automatically on every release.
+      `
+    },
+    techStack: [],
+    approach: {
+      notes: [
+        {
+          title: { id: "Cakupan pekerjaan", en: "Scope of work" },
+          items: [
+            { id: "Automation script untuk fitur general, finansial, dan non-finansial", en: "Automation scripts for general, financial, and non-financial features" },
+            { id: "Integrasi automation test ke dalam CI/CD pipeline", en: "Integration of automated tests into the CI/CD pipeline" }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 7,
+    name: "Maybank Sales Digital Tools",
+    subtitle: { id: "Manual & Automation · Perbankan · Maybank Indonesia", en: "Manual & Automation · Banking · Maybank Indonesia" },
+    icon: "💳",
+    repoUrl: "",
+    type: ["manual", "automation", "mobile", "company"],
+    tags: ["Company", "Manual", "Automation", "Mobile", "Web"],
+    shortDesc: {
+      id: "Pengujian manual & automation sales digital tools Maybank Indonesia di mobile app, platform web, dan admin portal.",
+      en: "Manual & automation testing of Maybank Indonesia's sales digital tools across the mobile app, web platform, and admin portal."
+    },
+    description: {
+      id: `
+        Sales digital tools adalah aplikasi yang dipakai tim sales Maybank Indonesia, tersedia di mobile app,
+        platform web, dan admin portal. Sebagai QA Engineer (Ikonsultan, Jan 2025 – Jan 2026), saya menyusun
+        test case dari kebutuhan bisnis, mengeksekusi pengujian manual dan automation, serta bekerja erat dengan
+        developer dan business analyst untuk menyamakan pemahaman requirement sampai setiap isu terselesaikan.
+      `,
+      en: `
+        Sales digital tools are the applications used by Maybank Indonesia's sales team, available as a mobile app,
+        a web platform, and an admin portal. As a QA Engineer (Ikonsultan, Jan 2025 – Jan 2026), I designed
+        test cases from business requirements, ran manual and automated tests, and worked closely with
+        developers and business analysts to align on requirements and see every issue through to resolution.
+      `
+    },
+    techStack: [],
+    approach: {
+      notes: [
+        {
+          title: { id: "Cakupan pekerjaan", en: "Scope of work" },
+          items: [
+            { id: "Pengujian tiga platform: mobile app, web, dan admin portal", en: "Testing across three platforms: mobile app, web, and admin portal" },
+            { id: "Desain test case berdasarkan kebutuhan bisnis", en: "Test case design based on business requirements" },
+            { id: "Eksekusi manual dan automation testing", en: "Manual and automated test execution" },
+            { id: "Klarifikasi requirement bersama developer dan business analyst", en: "Requirement clarification with developers and business analysts" }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: 8,
+    name: "Astra Credit Companies — AOL",
+    subtitle: { id: "Manual Testing · Multifinance · SIT & UAT", en: "Manual Testing · Multifinance · SIT & UAT" },
+    icon: "🚗",
+    repoUrl: "",
+    type: ["manual", "company"],
+    tags: ["Company", "Manual", "Desktop"],
+    shortDesc: {
+      id: "SIT dan UAT aplikasi desktop AOL yang menjalankan proses bisnis Astra Credit Companies, termasuk pembayaran kendaraan baru dan bekas.",
+      en: "SIT and UAT of AOL, the desktop application that runs Astra Credit Companies' business processes, including new and used vehicle payments."
+    },
+    description: {
+      id: `
+        AOL adalah aplikasi desktop yang menjalankan proses bisnis Astra Credit Companies (ACC), perusahaan pembiayaan kendaraan,
+        termasuk pembayaran kendaraan baru dan bekas. Sebagai QC Engineer (Persada, Mei 2021 – Mei 2022),
+        saya melakukan manual testing pada tahap SIT dan UAT, serta menyusun user manual sebagai panduan pengguna.
+      `,
+      en: `
+        AOL is the desktop application that runs the business processes of Astra Credit Companies (ACC), a vehicle financing company,
+        including new and used vehicle payments. As a QC Engineer (Persada, May 2021 – May 2022),
+        I performed manual testing during SIT and UAT, and wrote user manuals to guide end users.
+      `
+    },
+    techStack: [],
+    approach: {
+      notes: [
+        {
+          title: { id: "Cakupan pekerjaan", en: "Scope of work" },
+          items: [
+            { id: "System Integration Testing (SIT) dan User Acceptance Testing (UAT)", en: "System Integration Testing (SIT) and User Acceptance Testing (UAT)" },
+            { id: "Alur pembayaran kendaraan baru dan bekas", en: "New and used vehicle payment flows" },
+            { id: "Penyusunan user manual untuk pengguna akhir", en: "User manuals for end users" }
           ]
         }
       ]

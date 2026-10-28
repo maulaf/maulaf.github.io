@@ -43,5 +43,15 @@ class ProjectGallery {
       const id = Number(card.dataset.projectId);
       if (this.onCardSelect) this.onCardSelect(id);
     });
+
+    // Card bisa dibuka dengan keyboard (Enter / Space) saat sedang difokus.
+    this.gridElement.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const card = event.target.closest('.project-card');
+      if (!card || event.target !== card) return;
+
+      event.preventDefault();
+      if (this.onCardSelect) this.onCardSelect(Number(card.dataset.projectId));
+    });
   }
 }

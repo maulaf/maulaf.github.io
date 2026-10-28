@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fetty Athiyatul Maula — QA Engineer</title>
 
+  <!-- SEO & social preview: konten utama di-render via JS, jadi ringkasannya ditulis statis di sini. -->
+  <meta name="description" content="Portfolio of Fetty Athiyatul Maula, a QA Engineer with 5+ years of manual and automation testing for web, mobile, API, and desktop apps in banking, multifinance, and technology." />
+  <meta name="author" content="Fetty Athiyatul Maula" />
+  <link rel="canonical" href="https://maulaf.github.io/" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://maulaf.github.io/" />
+  <meta property="og:title" content="Fetty Athiyatul Maula — QA Engineer" />
+  <meta property="og:description" content="QA Engineer with 5+ years of manual and automation testing for web, mobile, API, and desktop apps in banking, multifinance, and technology." />
+  <meta property="og:image" content="https://maulaf.github.io/assets/images/QA.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Fetty Athiyatul Maula",
+    "jobTitle": "QA Engineer",
+    "url": "https://maulaf.github.io/",
+    "image": "https://maulaf.github.io/assets/images/QA.jpg",
+    "address": { "@type": "PostalAddress", "addressLocality": "Tangerang Selatan", "addressCountry": "ID" },
+    "sameAs": ["https://linkedin.com/in/fetty-athiyatul-maula", "https://github.com/maulaf"]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
@@ -39,9 +62,9 @@
 <!-- Nav shell (links di-render dari data/navigation.js) -->
 <nav>
   <div class="nav-controls">
-    <div class="lang-toggle">
-      <button class="lang-btn" id="btn-id">ID</button>
-      <button class="lang-btn active" id="btn-en">EN</button>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button class="lang-btn" id="btn-id" lang="id" aria-label="Bahasa Indonesia" aria-pressed="false">ID</button>
+      <button class="lang-btn active" id="btn-en" lang="en" aria-label="English" aria-pressed="true">EN</button>
     </div>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">☀️</button>
   </div>
@@ -63,13 +86,13 @@
 
 <!-- Modal project detail (markup statis; isi di-render oleh ProjectModal) -->
 <div class="modal-overlay" id="projectModal">
-  <div class="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalSubtitle">
     <div class="modal-header">
       <div>
-        <div class="modal-title" id="modalTitle"></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
         <div class="modal-subtitle" id="modalSubtitle"></div>
       </div>
-      <button class="modal-close" onclick="closeProjectModal()">✕</button>
+      <button class="modal-close" id="modalClose" aria-label="Close" onclick="closeProjectModal()">✕</button>
     </div>
     <div class="modal-body" id="modalBody"></div>
   </div>
@@ -102,9 +125,7 @@
 <script src="js/ui/I18n.js"></script>
 <script src="js/ui/ThemeManager.js"></script>
 <script src="js/ui/LanguageSwitcher.js"></script>
-<script src="js/ui/SkillBarAnimator.js"></script>
 <script src="js/ui/ScrollFadeAnimator.js"></script>
-<script src="js/ui/DevToolsGuard.js"></script>
 <script src="js/ui/ProjectCardRenderer.js"></script>
 <script src="js/ui/ProjectGallery.js"></script>
 <script src="js/ui/ProjectModalRenderer.js"></script>

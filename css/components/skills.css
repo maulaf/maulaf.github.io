@@ -13,12 +13,11 @@
   color: var(--accent); margin-bottom: 1.2rem;
   display: flex; align-items: center; gap: 0.6rem;
 }
-.skill-item { margin-bottom: 1rem; }
-.skill-name-row { display: flex; justify-content: space-between; margin-bottom: 0.3rem; }
-.skill-name { font-size: 0.85rem; }
-.skill-level { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
-.skill-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-.skill-fill { height: 100%; border-radius: 2px; background: linear-gradient(to right, var(--accent), var(--accent3)); transition: width 1s ease; width: 0%; }
+.skill-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-chip {
+  font-size: 0.82rem; padding: 0.35rem 0.8rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+}
 
 /* Tools */
 .tools-grid { display: flex; flex-wrap: wrap; gap: 1rem; }

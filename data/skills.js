@@ -1,40 +1,57 @@
 /* ==========================================================================
    skills.js
-   Kategori skill (dengan skill bar) dan daftar tools.
+   Kategori skill dan daftar tools.
+   Skill ditulis sebagai daftar tanpa level/persentase; cantumkan hanya yang
+   bisa ditunjukkan lewat pengalaman kerja atau project. Item: string atau { id, en }.
    ========================================================================== */
 
 const SKILL_CATEGORIES = [
   {
     title: { id: "🔍 Jenis Testing", en: "🔍 Testing Types" },
     items: [
-      { name: "Functional Testing",                level: "Expert",       width: 95 },
-      { name: "Regression Testing",                level: "Expert",       width: 90 },
-      { name: "System Integration Testing (SIT)",  level: "Expert",       width: 92 },
-      { name: "User Acceptance Testing (UAT)",     level: "Expert",       width: 90 },
-      { name: "End-to-End Testing",                level: "Advanced",     width: 85 },
-      { name: "Exploratory Testing",               level: "Advanced",     width: 80 },
-      { name: "API Testing",                       level: "Advanced",     width: 80 }
+      "Functional Testing",
+      "Regression Testing",
+      "System Integration Testing (SIT)",
+      "User Acceptance Testing (UAT)",
+      "End-to-End Testing",
+      "Exploratory Testing",
+      "API Testing"
     ]
   },
   {
-    title: { id: "⚙️ Pendekatan & Metodologi Testing", en: "⚙️ Testing Approaches & Methodologies" },
+    title: { id: "🧠 Metode & Teknik", en: "🧠 Methods & Techniques" },
     items: [
-      { name: "Manual Testing",                     level: "Expert",       width: 95 },
-      { name: "Automation Testing",                 level: "Advanced",     width: 85 },
-      { name: "Agile / Scrum",                      level: "Advanced",     width: 85 },
-      { name: "Behavior Driven Development (BDD)",  level: "Intermediate", width: 75 },
-      { name: "Continuous Testing (CI/CD)",         level: "Intermediate", width: 70 }
+      "Manual Testing",
+      "Test Automation",
+      "Behavior Driven Development (BDD)",
+      "Data-Driven Testing",
+      "Boundary Value Analysis",
+      "Equivalence Partitioning",
+      { id: "Integrasi CI/CD", en: "CI/CD Integration" }
     ]
   },
   {
-    title: { id: "📋 Proses QA", en: "📋 QA Processes" },
+    title: { id: "📋 Proses QA", en: "📋 QA Process" },
     items: [
-      { name: "Test Planning",            level: "Advanced", width: 85 },
-      { name: "Test Case Design",         level: "Expert",   width: 95 },
-      { name: "Test Execution",           level: "Expert",   width: 95 },
-      { name: "Bug Reporting & Tracking", level: "Expert",   width: 95 },
-      { name: "Root Cause Analysis",      level: "Advanced", width: 80 },
-      { name: "Test Documentation",       level: "Expert",   width: 90 }
+      "Test Planning",
+      "Test Case Design",
+      "Test Execution",
+      "Bug Reporting & Tracking",
+      "Root Cause Analysis",
+      "Test Documentation",
+      "Agile / Scrum"
+    ]
+  },
+  {
+    title: { id: "🏦 Domain & Platform", en: "🏦 Domains & Platforms" },
+    items: [
+      { id: "Perbankan", en: "Banking" },
+      { id: "Pembiayaan (Multifinance)", en: "Multifinance" },
+      { id: "Asuransi", en: "Insurance" },
+      "Web",
+      "Mobile (Android)",
+      "API",
+      "Desktop"
     ]
   }
 ];

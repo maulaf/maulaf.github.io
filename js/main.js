@@ -5,7 +5,7 @@
      1. ThemeManager terapkan tema default (light).
      2. Setiap section di-render dari data array via Renderer-nya masing-masing.
      3. ProjectsController dilampirkan ke section #projects yang baru di-render.
-     4. Animator (scroll fade, skill bar) menempel ke DOM final.
+     4. Animator scroll fade menempel ke DOM final.
      5. LanguageSwitcher memicu _fullRender ulang saat bahasa diganti.
    ========================================================================== */
 
@@ -31,8 +31,6 @@ class PortfolioApp {
 
     this.projectsController = null;
     this.scrollFadeAnimator = new ScrollFadeAnimator();
-    this.skillBarAnimator = null;
-    this.devToolsGuard = new DevToolsGuard();
   }
 
   start() {
@@ -42,8 +40,6 @@ class PortfolioApp {
     const lang = this.languageSwitcher.currentLang;
     this._fullRender(lang);
     this.languageSwitcher.applyUiState();
-
-    this.devToolsGuard.enable();
 
     this.languageSwitcher.onLanguageChange = (newLang) => this._fullRender(newLang);
   }
@@ -60,8 +56,6 @@ class PortfolioApp {
 
     // Animator menempel ke DOM yang baru di-render
     this.scrollFadeAnimator.observe();
-    this.skillBarAnimator = new SkillBarAnimator('skills');
-    this.skillBarAnimator.observe();
   }
 }
 

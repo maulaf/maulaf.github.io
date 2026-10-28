@@ -42,9 +42,6 @@ const TRANSLATIONS = {
 
     // Skills category titles
     skills_tools_tag: "🛠️ Tools & Teknologi",
-    skill_level_expert: "Ahli",
-    skill_level_advanced: "Mahir",
-    skill_level_intermediate: "Menengah",
 
     // Education
     education_relevant: "Mata Kuliah Relevan:",
@@ -54,6 +51,8 @@ const TRANSLATIONS = {
 
     // Certificates
     cert_view_credential: "Lihat Kredensial →",
+    cert_issued: "Terbit",
+    cert_instructor: "Instruktur",
 
     // Projects
     projects_filter_all: "Semua",
@@ -61,7 +60,7 @@ const TRANSLATIONS = {
     projects_filter_automation: "Automation",
     projects_filter_api: "API Testing",
     projects_filter_mobile: "Mobile",
-    projects_filter_dummy: "Latihan/Dummy",
+    projects_filter_dummy: "Latihan",
     projects_filter_company: "Proyek Perusahaan",
     project_card_detail: "🔍 Lihat Detail",
     project_card_repo: "🔗 Repo",
@@ -132,9 +131,6 @@ const TRANSLATIONS = {
 
     // Skills category titles
     skills_tools_tag: "🛠️ Tools & Technologies",
-    skill_level_expert: "Expert",
-    skill_level_advanced: "Advanced",
-    skill_level_intermediate: "Intermediate",
 
     // Education
     education_relevant: "Relevant Coursework:",
@@ -144,6 +140,8 @@ const TRANSLATIONS = {
 
     // Certificates
     cert_view_credential: "View Credential →",
+    cert_issued: "Issued",
+    cert_instructor: "Instructor",
 
     // Projects
     projects_filter_all: "All",
@@ -151,7 +149,7 @@ const TRANSLATIONS = {
     projects_filter_automation: "Automation",
     projects_filter_api: "API Testing",
     projects_filter_mobile: "Mobile",
-    projects_filter_dummy: "Dummy/Practice",
+    projects_filter_dummy: "Practice",
     projects_filter_company: "Company Project",
     project_card_detail: "🔍 View Details",
     project_card_repo: "🔗 Repo",

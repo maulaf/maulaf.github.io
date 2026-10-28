@@ -12,17 +12,9 @@ class SkillsRenderer {
     const categories = SKILL_CATEGORIES.map(cat => `
       <div class="skill-category">
         <div class="skill-cat-title">${I18n.pick(cat.title, lang)}</div>
-        ${cat.items.map(item => `
-          <div class="skill-item">
-            <div class="skill-name-row">
-              <span class="skill-name">${item.name}</span>
-              <span class="skill-level">${I18n.t(`skill_level_${item.level.toLowerCase()}`, lang)}</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-fill" data-width="${item.width}"></div>
-            </div>
-          </div>
-        `).join('')}
+        <ul class="skill-list">
+          ${cat.items.map(item => `<li class="skill-chip">${I18n.pick(item, lang)}</li>`).join('')}
+        </ul>
       </div>
     `).join('');
 

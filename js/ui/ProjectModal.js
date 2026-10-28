@@ -24,13 +24,20 @@ class ProjectModal {
     this.currentProject = project;
     this._renderContent();
 
+    this.returnFocusEl = document.activeElement;
     this.overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    this.overlay.querySelector('.modal-close').focus();
   }
 
   close() {
+    if (!this.overlay.classList.contains('open')) return;
     this.overlay.classList.remove('open');
     document.body.style.overflow = '';
+
+    // Kembalikan fokus ke card yang membuka modal (bila masih ada di DOM).
+    if (this.returnFocusEl && document.contains(this.returnFocusEl)) this.returnFocusEl.focus();
+    this.returnFocusEl = null;
   }
 
   setLanguage(lang) {

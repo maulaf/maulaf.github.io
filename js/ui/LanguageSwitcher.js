@@ -26,6 +26,8 @@ class LanguageSwitcher {
     const isId = this.currentLang === 'id';
     this.idButton.classList.toggle('active', isId);
     this.enButton.classList.toggle('active', !isId);
+    this.idButton.setAttribute('aria-pressed', String(isId));
+    this.enButton.setAttribute('aria-pressed', String(!isId));
     document.documentElement.setAttribute('lang', this.currentLang);
   }
 

@@ -22,7 +22,7 @@
   position: sticky; top: 0; background: var(--surface); z-index: 1;
   display: flex; justify-content: space-between; align-items: flex-start;
 }
-.modal-title { font-size: 1.4rem; font-weight: 800; }
+.modal-title { font-size: 1.4rem; font-weight: 800; margin: 0; }
 .modal-subtitle { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
 .modal-close {
   background: var(--surface2); border: 1px solid var(--border);

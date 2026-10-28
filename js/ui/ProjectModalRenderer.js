@@ -10,10 +10,10 @@ class ProjectModalRenderer {
         <div class="modal-section-title">📋 ${I18n.t('modal_description', lang)}</div>
         <div class="modal-desc">${project.getDescription(lang)}</div>
       </div>
-      <div class="modal-section">
+      ${project.techStack.length ? `<div class="modal-section">
         <div class="modal-section-title">⚡ ${I18n.t('modal_tech_stack', lang)}</div>
         <div class="tech-stack">${project.techStack.map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
-      </div>
+      </div>` : ''}
       ${project.coverage.length ? `<div class="modal-section">
         <div class="modal-section-title">📊 ${I18n.t('modal_coverage', lang)}</div>
         ${this._renderCoverage(project.coverage, lang)}
