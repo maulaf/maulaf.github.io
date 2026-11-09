@@ -426,6 +426,57 @@ def sampleBeforeTestCase(TestCaseContext testCaseContext) {
     }
   },
   {
+    id: 9,
+    name: "Bug & Defect Tracker",
+    subtitle: { id: "Manual Testing · Defect Management · Multi-Project", en: "Manual Testing · Defect Management · Multi-Project" },
+    icon: "🐞",
+    repoUrl: "https://docs.google.com/spreadsheets/d/1cEglcptAAmXN_8db870FW4QPcYZbK6YF",
+    type: ["manual", "company"],
+    tags: ["Company", "Manual", "Web"],
+    shortDesc: {
+      id: "Tracker bug & defect berbasis spreadsheet untuk banyak project dan platform, dengan dashboard ringkasan status, severity, dan fix rate.",
+      en: "A spreadsheet-based bug & defect tracker for multiple projects and platforms, with a summary dashboard for status, severity, and fix rate."
+    },
+    description: {
+      id: `
+        Tracker bug & defect yang saya buat untuk mencatat dan memantau defect dari beberapa project sekaligus
+        (Web, CMS, dan platform lainnya). Setiap defect dicatat lengkap dengan langkah reproduksi, expected vs actual result,
+        severity, priority, status, PIC developer, serta evidence sebelum dan sesudah retest.
+        Sheet ringkasan menampilkan jumlah bug open, fixed, dan closed beserta fix rate,
+        yang bisa difilter per tahun, bulan, dan PIC developer. Saat ini memuat 800+ defect dari 6 project.
+      `,
+      en: `
+        A bug & defect tracker I built to log and monitor defects across several projects at once
+        (Web, CMS, and other platforms). Each defect is recorded with steps to reproduce, expected vs actual result,
+        severity, priority, status, developer PIC, and evidence before and after retest.
+        The summary sheet shows open, fixed, and closed bug counts along with the fix rate,
+        filterable by year, month, and developer PIC. It currently holds 800+ defects across 6 projects.
+      `
+    },
+    techStack: ["Google Sheets"],
+    approach: {
+      notes: [
+        {
+          title: { id: "Struktur tracker", en: "Tracker structure" },
+          items: [
+            { id: "Bug & Defect Logs: satu baris per defect, dengan Defect ID berformat PROJECT-PLATFORM-NNN (mis. WFV-CMS-001)", en: "Bug & Defect Logs: one row per defect, with Defect IDs in PROJECT-PLATFORM-NNN format (e.g. WFV-CMS-001)" },
+            { id: "Bugs & Defect Summary: jumlah Open/Fixed/Closed per severity untuk setiap project dan platform, fix rate, dan % open", en: "Bugs & Defect Summary: Open/Fixed/Closed counts by severity for each project and platform, fix rate, and % open" },
+            { id: "Data Mapping: master data untuk dropdown (project, platform, status, severity, priority, defect type, environment, tester, developer)", en: "Data Mapping: master data for dropdowns (project, platform, status, severity, priority, defect type, environment, tester, developer)" }
+          ]
+        },
+        {
+          title: { id: "Klasifikasi defect", en: "Defect classification" },
+          items: [
+            { id: "Status: Open → In Progress → Fixed → Retest → Closed, plus Re-opened dan Rejected", en: "Status: Open → In Progress → Fixed → Retest → Closed, plus Re-opened and Rejected" },
+            { id: "Severity Low–Critical dan Priority P1–P4", en: "Severity Low–Critical and Priority P1–P4" },
+            { id: "Defect type: Functional, UI/Layout, Content/Typo, Validation, Responsive, Data/Integration, Security, Performance", en: "Defect types: Functional, UI/Layout, Content/Typo, Validation, Responsive, Data/Integration, Security, Performance" },
+            { id: "Setiap defect ditautkan ke Test Case ID-nya agar mudah ditelusuri", en: "Each defect is linked to its Test Case ID for traceability" }
+          ]
+        }
+      ]
+    }
+  },
+  {
     id: 6,
     name: "BRI New Delivery System (NDS)",
     subtitle: { id: "Test Automation · Perbankan · Bank Rakyat Indonesia", en: "Test Automation · Banking · Bank Rakyat Indonesia" },
