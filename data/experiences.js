@@ -14,6 +14,15 @@ const EXPERIENCES = [
     }
   },
   {
+    role: "Freelance QA Tester",
+    period: "2025",
+    company: "Freelance · Mandiri Click",
+    description: {
+      id: "Melakukan pengujian untuk modul Consent Dana Pensiun dan Exit Management pada update aplikasi Mandiri Click berdasarkan desain dan prototype Figma. Memvalidasi alur pengguna, tampilan UI, dan fungsionalitas terhadap desain, menyusun serta mengeksekusi test case, dan melaporkan temuan bug beserta ketidaksesuaian desain kepada tim.",
+      en: "Tested the Consent Dana Pensiun (pension fund consent) and Exit Management modules in the Mandiri Click app update against its Figma designs and prototype. Validated user flows, UI, and functionality against the design, wrote and executed test cases, and reported bugs and design mismatches to the team."
+    }
+  },
+  {
     role: "QA Engineer",
     period: "Jan 2025 – Jan 2026",
     company: "Ikonsultan · Placement at Maybank Indonesia",
