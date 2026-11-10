@@ -24,5 +24,12 @@ const CONTACTS = [
     value: "Fetty Athiyatul Maula",
     href: "https://linkedin.com/in/fetty-athiyatul-maula",
     external: true
+  },
+  {
+    icon: "🐙",
+    labelKey: "contact_label_github",
+    value: "github.com/maulaf",
+    href: "https://github.com/maulaf",
+    external: true
   }
 ];

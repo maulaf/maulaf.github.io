@@ -5,7 +5,7 @@
 
 class ProjectsController {
   constructor(repository) {
-    this.gallery = new ProjectGallery(repository, 'projectsGrid', new ProjectCardRenderer());
+    this.gallery = new ProjectGallery(repository, 'projectsGrid', new ProjectCardRenderer(), 'projectsToggle');
     this.modal = new ProjectModal(repository, new ProjectModalRenderer(), 'projectModal');
 
     this.gallery.onCardSelect = (id) => this.modal.open(id);

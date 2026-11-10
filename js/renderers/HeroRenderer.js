@@ -19,6 +19,7 @@ class HeroRenderer {
           <div class="btn-group">
             <a href="#projects" class="btn btn-primary">${I18n.t('hero_cta_projects', lang)}</a>
             <a href="#contact" class="btn btn-outline">${I18n.t('hero_cta_contact', lang)}</a>
+            ${p.cvFile ? `<a href="${p.cvFile}" class="btn btn-outline" download>${I18n.t('hero_cta_cv', lang)}</a>` : ''}
           </div>
         </div>
         <div class="hero-visual">

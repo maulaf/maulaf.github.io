@@ -13,7 +13,18 @@
   border-color: var(--accent); color: var(--accent); background: var(--accent-tint-08);
 }
 
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 1.5rem; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 1.5rem; scroll-margin-top: 100px; }
+
+/* Show More / Show Less — gaya sama dengan .tools-toggle di skills.css */
+.projects-toggle-wrap { display: flex; justify-content: center; margin-top: 2rem; }
+.projects-toggle {
+  font-family: var(--mono); font-size: 0.75rem; color: var(--muted);
+  background: none; cursor: pointer;
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px;
+  transition: all .2s;
+}
+.projects-toggle[hidden] { display: none; }
+.projects-toggle:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-tint-08); }
 .project-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 14px; padding: 1.8rem;

@@ -27,6 +27,7 @@ const TRANSLATIONS = {
     // Hero
     hero_cta_projects: "Lihat Proyek →",
     hero_cta_contact: "Hubungi Saya",
+    hero_cta_cv: "Unduh CV ↓",
     hero_badge: "Terbuka untuk Peluang Baru",
     stat_years: "Tahun Pengalaman",
     stat_companies: "Perusahaan",
@@ -89,6 +90,7 @@ const TRANSLATIONS = {
     contact_label_email: "Email",
     contact_label_phone: "WhatsApp / Telepon",
     contact_label_linkedin: "LinkedIn",
+    contact_label_github: "GitHub",
 
     // Footer
     footer_text: "© {year} Fetty Athiyatul Maula · Portofolio QA Engineer"
@@ -116,6 +118,7 @@ const TRANSLATIONS = {
     // Hero
     hero_cta_projects: "View Projects →",
     hero_cta_contact: "Contact Me",
+    hero_cta_cv: "Download CV ↓",
     hero_badge: "Open to New Opportunities",
     stat_years: "Years Exp",
     stat_companies: "Companies",
@@ -178,6 +181,7 @@ const TRANSLATIONS = {
     contact_label_email: "Email",
     contact_label_phone: "WhatsApp / Phone",
     contact_label_linkedin: "LinkedIn",
+    contact_label_github: "GitHub",
 
     // Footer
     footer_text: "© {year} Fetty Athiyatul Maula · QA Engineer Portfolio"

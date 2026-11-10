@@ -19,6 +19,7 @@ const PROFILE_DATA = {
   },
   avatarImage: "assets/images/QA1.jpg",  // foto profil; kosongkan untuk pakai emoji
   avatarEmoji: "👩‍💻",                         // fallback jika foto tidak ada / gagal dimuat
+  cvFile: "assets/cv/CV_Fetty_Athiyatul_Maula.pdf", // file CV untuk tombol download; kosongkan untuk menyembunyikan tombol
   location: {
     id: "QA Engineer · Tangerang Selatan, Indonesia",
     en: "QA Engineer · Tangerang Selatan, Indonesia"

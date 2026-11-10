@@ -19,6 +19,9 @@ class ProjectsSectionRenderer {
         ${SectionHeaderRenderer.render({ titleKey: 'section_projects_title', lang })}
         <div class="project-filters fade-in">${filters}</div>
         <div class="projects-grid fade-in" id="projectsGrid"></div>
+        <div class="projects-toggle-wrap">
+          <button type="button" class="projects-toggle" id="projectsToggle" aria-controls="projectsGrid" hidden></button>
+        </div>
       </div>
     `;
   }

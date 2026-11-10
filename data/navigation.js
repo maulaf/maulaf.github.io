@@ -13,6 +13,9 @@ const NAV_LINKS = [
   { href: "#contact",      labelKey: "nav_contact" }
 ];
 
+// Jumlah card project yang tampil sebelum tombol "Show More".
+const PROJECTS_VISIBLE = 4;
+
 const PROJECT_FILTERS = [
   { value: "all",        labelKey: "projects_filter_all" },
   { value: "manual",     labelKey: "projects_filter_manual" },
