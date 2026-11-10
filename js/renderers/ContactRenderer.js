@@ -8,6 +8,13 @@ class ContactRenderer {
     this.sectionEl = document.getElementById('contact');
   }
 
+  // Logo aplikasi; fallback ke emoji jika logo kosong atau gagal dimuat.
+  renderIcon(c) {
+    if (!c.logo) return c.icon;
+    return `<img src="${c.logo}" alt="" loading="lazy"
+      onerror="this.parentNode.textContent='${c.icon}'">`;
+  }
+
   render(lang = I18n.DEFAULT_LANG) {
     const email = (CONTACTS.find(c => c.labelKey === 'contact_label_email') || {}).href || '#';
 
@@ -15,7 +22,7 @@ class ContactRenderer {
       const external = c.external ? 'target="_blank" rel="noopener"' : '';
       return `
         <a href="${c.href}" ${external} class="contact-card">
-          <span class="contact-icon">${c.icon}</span>
+          <span class="contact-icon">${this.renderIcon(c)}</span>
           <div>
             <div class="contact-label">${I18n.t(c.labelKey, lang)}</div>
             <div class="contact-val">${c.value}</div>
