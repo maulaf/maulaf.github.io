@@ -41,18 +41,6 @@ const SKILL_CATEGORIES = [
       "Test Documentation",
       "Agile / Scrum"
     ]
-  },
-  {
-    title: { id: "🏦 Domain & Platform", en: "🏦 Domains & Platforms" },
-    items: [
-      { id: "Perbankan", en: "Banking" },
-      { id: "Pembiayaan (Multifinance)", en: "Multifinance" },
-      { id: "Asuransi", en: "Insurance" },
-      "Web",
-      "Mobile (Android)",
-      "API",
-      "Desktop"
-    ]
   }
 ];
 
@@ -79,6 +67,5 @@ const TOOLS = [
   { icon: "💻", name: "Visual Studio",     logo: `${DEVICON}/visualstudio/visualstudio-original.svg` },
   { icon: "📅", name: "Monday.com",        logo: "" },
   { icon: "📝", name: "Notion",            logo: `${DEVICON}/notion/notion-original.svg` },
-  { icon: "📄", name: "Google Docs",       logo: "https://cdn.simpleicons.org/googledocs" },
-  { icon: "📊", name: "Google Sheets",     logo: "https://cdn.simpleicons.org/googlesheets" }
+  { icon: "📄", name: "Google Workspace",  logo: `${DEVICON}/google/google-original.svg` }
 ];
